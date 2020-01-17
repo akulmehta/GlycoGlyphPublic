@@ -1,0 +1,399 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"	 style="display: none;">
+    <defs>
+
+        <symbol id="4eleg"  viewBox="0 0 50 50" data-abbr="4eLeg" data-shortname="4-Epilegionaminic acid">
+            <polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:1.5346;stroke-miterlimit:10;" points="48,25 25,39.3 2,25 25,10.7 	"/>
+        </symbol>
+
+        <symbol id="6dalt"  viewBox="0 0 50 50" data-abbr="6dAlt" data-shortname="6-Deoxy-L-altrose">
+            <polygon style="fill:#F69EA1;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+        
+        <symbol id="6daltnac"  viewBox="0 0 50 50" data-abbr="6dAltNAc"  data-shortname="N-Acetyl-6-deoxy-L-altrosamine">
+            <polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.2385;" points="47.4,43.4 2.6,43.4 25.1,7.6 	"/>
+            <polygon style="fill:#F69EA1;stroke:#010101;stroke-width:2.2385;stroke-linejoin:bevel;" points="47.4,43.4 25.1,43.4 25.1,7.6 	
+                "/>
+        </symbol>
+
+        <symbol id="6dgul"  viewBox="0 0 50 50" data-abbr="6dGul"  data-shortname="6-Deoxy-D-gulose">
+            <polygon style="fill:#F47920;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+
+        <symbol id="6dtal"  viewBox="0 0 50 50" data-abbr="6dTal"  data-shortname="6-Deoxy-D-talose">
+            <polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+
+        <symbol id="6dtalnac"  viewBox="0 0 50 50" data-abbr="6dTalNAc"  data-shortname="N-Acetyl-6-deoxy-D-talosamine">
+            <polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.2385;" points="47.4,43.4 2.6,43.4 25.1,7.6 	"/>
+            <polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:2.2385;stroke-linejoin:bevel;" points="47.4,43.4 25.1,43.4 25.1,7.6 	
+                "/>
+        </symbol>
+
+        <symbol id="abe"  viewBox="0 0 50 50" data-abbr="Abe"  data-shortname="Abequose">
+            <polygon style="fill:#F47920;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+
+        <symbol id="aci"  viewBox="0 0 50 50" data-abbr="Aci"  data-shortname="Acinetaminic acid">
+            <polygon style="fill:#F69EA1;stroke:#010101;stroke-width:1.5346;stroke-miterlimit:10;" points="48,25 25,39.3 2,25 25,10.7 	"/>
+        </symbol>
+        
+        <symbol id="all"  viewBox="0 0 50 50" data-abbr="All"  data-shortname="D-Allose">
+            <path style="fill:#A54399;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+        <symbol id="alla"  viewBox="0 0 50 50" data-abbr="AllA"  data-shortname="D-Alluronic acid">
+            <polygon style="fill:#A54399;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+
+        </symbol>
+
+        <symbol id="alln"  viewBox="0 0 50 50" data-abbr="AllN" data-shortname="D-Allosamine">
+            <polygon style="fill:#A54499;stroke:#010101;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+
+        <symbol id="allnac"  viewBox="0 0 50 50" data-abbr="AllNAc" data-shortname="N-Acetyl-D-allosamine">
+            <polygon style="fill:#A54399;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="alt"  viewBox="0 0 50 50" data-abbr="Alt" data-shortname="L-Altrose">
+        	<path style="fill:#F69EA1;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+    		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+        <symbol id="alta"  viewBox="0 0 50 50" data-abbr="AltA" data-shortname="L-Altruronic acid">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#F69FA2;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="altn"  viewBox="0 0 50 50" data-abbr="AltN" data-shortname="L-Altrosamine">
+        	<polygon style="fill:#F69FA2;stroke:#010101;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+
+        <symbol id="altnac"  viewBox="0 0 50 50" data-abbr="AltNAc" data-shortname="N-Acetyl-L-altrosamine">
+        		<polygon style="fill:#F69EA1;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="api"  viewBox="0 0 50 50" data-abbr="Api" data-shortname="L-Apiose">
+        	<polygon style="fill:#0072BC;stroke:#010101;stroke-width:2.1647;" points="39.2,48.4 24.5,48.4 10.8,48.4 3.1,18.8 25,1.9 
+		46.9,18.8 	"/>
+        </symbol>
+
+        <symbol id="ara"  viewBox="0 0 50 50" data-abbr="Ara" data-shortname="L-Arabinose">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:2.0385;" points="25,4.1 31.9,18 47.2,20.2 36.1,31.1 38.7,46.3 25,39.1 
+		11.3,46.3 13.9,31.1 2.8,20.2 18.1,18 	"/>
+        </symbol>
+
+        <symbol id="bac"  viewBox="0 0 50 50" data-abbr="Bac" data-shortname="Bacillosamine">
+        	<polygon style="fill:#0072BC;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="col"  viewBox="0 0 50 50" data-abbr="Col" data-shortname="Colitose">
+        	<polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+        
+        <symbol id="ddmanhep"  viewBox="0 0 50 50" data-abbr="DDmanHep" data-shortname="D-glycero-D-manno-Heptose">
+        	<polygon style="fill:#F69EA1;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="dha"  viewBox="0 0 50 50" data-abbr="Dha" data-shortname="3-Deoxy-D-lyxo-heptulosaric acid">
+        	<polygon style="fill:#F47920;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="dig"  viewBox="0 0 50 50" data-abbr="Dig" data-shortname="D-Digitoxose">
+        	<polygon style="fill:#A54399;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+
+        <symbol id="fru"  viewBox="0 0 50 50" data-abbr="Fru" data-shortname="D-Fructose">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:2.1647;" points="39.2,48.4 24.5,48.4 10.8,48.4 3.1,18.8 25,1.9 
+		    46.9,18.8 	"/>
+        </symbol>
+
+        <symbol id="fuc"  viewBox="0 0 50 50" data-abbr="Fuc" data-shortname="L-Fucose">
+            <polygon style="fill:#ED1C24;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+
+        <symbol id="fucnac"  viewBox="0 0 50 50" data-abbr="FucNAc" data-shortname="N-Acetyl-L-fucosamine">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.2385;" points="47.4,43.4 2.6,43.4 25.1,7.6 	"/>
+        	<polygon style="fill:#ED1C24;stroke:#010101;stroke-width:2.2385;stroke-linejoin:bevel;" points="47.4,43.4 25.1,43.4 25.1,7.6 	
+	    	"/>
+        </symbol>
+
+        <symbol id="gal"  viewBox="0 0 50 50" data-abbr="Gal" data-shortname="D-Galactose">
+        	<path style="fill:#FFD400;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+    		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+        <symbol id="gala"  viewBox="0 0 50 50" data-abbr="GalA" data-shortname="D-Galacturonic acid">
+        	<polygon style="fill:#FFD400;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+				24.8,25 				"/>
+        </symbol>
+        
+        <symbol id="galn"  viewBox="0 0 50 50" data-abbr="GalN" data-shortname="D-Galactosamine">
+        	<polygon style="fill:#FFD400;stroke:#000000;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+
+        <symbol id="galnac"  viewBox="0 0 50 50" data-abbr="GalNAc" data-shortname="N-Acetyl-D-galactosamine">
+            <polygon style="fill:#FFD400;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="glc"  viewBox="0 0 50 50" data-abbr="Glc" data-shortname="D-Glucose">
+            <path style="fill:#0072BC;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+            S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>     
+        
+        <symbol id="glca"  viewBox="0 0 50 50" data-abbr="GlcA" data-shortname="D-Glucuronic acid">
+        	<polygon style="fill:#0072BC;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="glcn"  viewBox="0 0 50 50" data-abbr="GlcN" data-shortname="D-Glucosamine">
+        	<polygon style="fill:#0072BC;stroke:#000000;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+        
+        <symbol id="glcnac"  viewBox="0 0 50 50" data-abbr="GlcNAc" data-shortname="N-Acetyl-D-glucosamine">
+        	<polygon style="fill:#0072BC;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="gul"  viewBox="0 0 50 50" data-abbr="Gul" data-shortname="D-Gulose">
+        	<path style="fill:#F47920;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+    		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+                
+        <symbol id="gula"  viewBox="0 0 50 50" data-abbr="GulA" data-shortname="D-Guluronic acid">
+			<polygon style="fill:#F47920;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="guln"  viewBox="0 0 50 50" data-abbr="GulN" data-shortname="D-Gulosamine">
+        	<polygon style="fill:#F47920;stroke:#000000;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+        
+        <symbol id="gulnac"  viewBox="0 0 50 50" data-abbr="GulNAc" data-shortname="N-Acetyl-D-gulosamine">
+        	<polygon style="fill:#F47920;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="ido"  viewBox="0 0 50 50" data-abbr="Ido" data-shortname="L-Idose">
+        	<path style="fill:#A17A4D;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+    		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+        
+        <symbol id="idoa"  viewBox="0 0 50 50" data-abbr="IdoA" data-shortname="L-Iduronic acid">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#A17A4D;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="idon"  viewBox="0 0 50 50" data-abbr="IdoN" data-shortname="L-Idosamine">
+        	<polygon style="fill:#A27B4E;stroke:#010101;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+        
+        <symbol id="idonac"  viewBox="0 0 50 50" data-abbr="IdoNAc" data-shortname="N-Acetyl-L-idosamine">
+            <polygon style="fill:#A17A4D;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="kdn"  viewBox="0 0 50 50" data-abbr="Kdn" data-shortname="3-Deoxy-D-glycero-D-galacto-nonulosonic acid">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:1.9778;" points="2,25 25,48 48,25 25,2 	"/>
+        </symbol>
+
+        <symbol id="kdo"  viewBox="0 0 50 50" data-abbr="Kdo" data-shortname="3-Deoxy-D-manno-octulosonic acid">
+        	<polygon style="fill:#FFD400;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="ldmanhep"  viewBox="0 0 50 50" data-abbr="LDmanHep" data-shortname="L-glycero-D-manno-Heptose">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="leg"  viewBox="0 0 50 50" data-abbr="Leg" data-shortname="Legionaminic acid">
+        	<polygon style="fill:#FFD400;stroke:#010101;stroke-width:1.5346;stroke-miterlimit:10;" points="48,25 25,39.3 2,25 25,10.7 	"/>
+        </symbol>
+
+        <symbol id="lyx"  viewBox="0 0 50 50" data-abbr="Lyx" data-shortname="D-Lyxose">
+        	<polygon style="fill:#FFD400;stroke:#010101;stroke-width:2.0385;" points="25,4.1 31.9,18 47.2,20.2 36.1,31.1 38.7,46.3 25,39.1 
+		11.3,46.3 13.9,31.1 2.8,20.2 18.1,18 	"/>
+        </symbol>
+
+        <symbol id="man"  viewBox="0 0 50 50" data-abbr="Man" data-shortname="D-Mannose">
+        	<path style="fill:#00A651;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+		    S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+        <symbol id="mana"  viewBox="0 0 50 50" data-abbr="ManA" data-shortname="D-Mannuronic acid">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="mann"  viewBox="0 0 50 50" data-abbr="ManN" data-shortname="D-Mannosamine">
+        	<polygon style="fill:#00A651;stroke:#000000;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+
+        <symbol id="mannac"  viewBox="0 0 50 50" data-abbr="ManNAc" data-shortname="N-Acetyl-D-mannosamine">
+        		<polygon style="fill:#00A651;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="mur"  viewBox="0 0 50 50" data-abbr="Mur" data-shortname="Muramic acid">
+        	<polygon style="fill:#A17A4D;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="murnac"  viewBox="0 0 50 50" data-abbr="MurNAc" data-shortname="N-Acetylmuramic acid">
+        	<polygon style="fill:#A54399;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="murngc"  viewBox="0 0 50 50" data-abbr="MurNGc" data-shortname="N-Glycolylmuramic acid">
+        	<polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:1.7566;" points="10.6,41.1 1.2,25 10.6,8.9 39.4,8.9 48.8,25 39.4,41.1 
+			"/>
+        </symbol>
+
+        <symbol id="neu"  viewBox="0 0 50 50" data-abbr="Neu" data-shortname="Neuraminic acid">
+        	<polygon style="fill:#A17A4D;stroke:#010101;stroke-width:1.9778;" points="2,25 25,48 48,25 25,2 	"/>
+        </symbol>
+
+        <symbol id="neu5ac"  viewBox="0 0 50 50" data-abbr="Neu5Ac" data-shortname="N-Acetylneuraminic acid">
+        	<polygon style="fill:#A54399;stroke:#010101;stroke-width:1.9778;" points="2,25 25,48 48,25 25,2 	"/>
+        </symbol>
+
+        <symbol id="neu5gc"  viewBox="0 0 50 50" data-abbr="Neu5Gc" data-shortname="N-Glycolylneuraminic acid">
+        	<polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:1.9778;" points="2,25 25,48 48,25 25,2 	"/>
+        </symbol>
+
+        <symbol id="oli"  viewBox="0 0 50 50" data-abbr="Oli" data-shortname="Olivose">
+        	<polygon style="fill:#0072BC;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+
+        <symbol id="par"  viewBox="0 0 50 50" data-abbr="Par" data-shortname="Paratose">
+        	<polygon style="fill:#F69EA1;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+
+        <symbol id="pse"  viewBox="0 0 50 50" data-abbr="Pse" data-shortname="Pseudaminic acid">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:1.5346;stroke-miterlimit:10;" points="48,25 25,39.3 2,25 25,10.7 	"/>
+        </symbol>
+
+        <symbol id="psi"  viewBox="0 0 50 50" data-abbr="Psi" data-shortname="D-Psicose">
+        	<polygon style="fill:#F69EA1;stroke:#010101;stroke-width:2.1647;" points="39.2,48.4 24.5,48.4 10.8,48.4 3.1,18.8 25,1.9 
+		46.9,18.8 	"/>
+        </symbol>
+
+        <symbol id="qui"  viewBox="0 0 50 50" data-abbr="Qui" data-shortname="D-Quinovose">
+            <polygon style="fill:#0072BC;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+
+        <symbol id="quinac"  viewBox="0 0 50 50" data-abbr="QuiNAc" data-shortname="N-Acetyl-D-quinovosamine">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.2385;" points="47.4,43.4 2.6,43.4 25.1,7.6 	"/>
+        	<polygon style="fill:#0072BC;stroke:#010101;stroke-width:2.2385;stroke-linejoin:bevel;" points="47.4,43.4 25.1,43.4 25.1,7.6 	
+	    	"/>
+        </symbol>
+
+        <symbol id="rha"  viewBox="0 0 50 50" data-abbr="Rha" data-shortname="L-Rhamnose">
+            <polygon style="fill:#00A651;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+        </symbol>
+
+        <symbol id="rhanac"  viewBox="0 0 50 50" data-abbr="RhaNAc" data-shortname="N-Acetyl-L-rhamnosamine">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.2385;" points="47.4,43.4 2.6,43.4 25.1,7.6 	"/>
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:2.2385;stroke-linejoin:bevel;" points="47.4,43.4 25.1,43.4 25.1,7.6 	
+    		"/>
+        </symbol>
+
+        <symbol id="rib"  viewBox="0 0 50 50" data-abbr="Rib" data-shortname="D-Ribose">
+        	<polygon style="fill:#F69EA1;stroke:#010101;stroke-width:2.0385;" points="25,4.1 31.9,18 47.2,20.2 36.1,31.1 38.7,46.3 25,39.1 
+	    	11.3,46.3 13.9,31.1 2.8,20.2 18.1,18 	"/>
+        </symbol>
+
+        <symbol id="sia"  viewBox="0 0 50 50" data-abbr="Sia" data-shortname="Sialic acid">
+        	<polygon style="fill:#ED1C24;stroke:#010101;stroke-width:1.9778;" points="2,25 25,48 48,25 25,2 	"/>
+        </symbol>
+
+        <symbol id="sor"  viewBox="0 0 50 50" data-abbr="Sor" data-shortname="L-Sorbose">
+        	<polygon style="fill:#F47920;stroke:#010101;stroke-width:2.1647;" points="39.2,48.4 24.5,48.4 10.8,48.4 3.1,18.8 25,1.9 
+    		46.9,18.8 	"/>
+        </symbol>
+
+        <symbol id="tag"  viewBox="0 0 50 50" data-abbr="Tag" data-shortname="D-Tagatose">
+        	<polygon style="fill:#FFD400;stroke:#010101;stroke-width:2.1647;" points="39.2,48.4 24.5,48.4 10.8,48.4 3.1,18.8 25,1.9 
+    		46.9,18.8 	"/>
+        </symbol>
+
+        <symbol id="tal"  viewBox="0 0 50 50" data-abbr="Tal" data-shortname="D-Talose">
+        	<path style="fill:#8FCCE9;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+		S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+        <symbol id="tala"  viewBox="0 0 50 50" data-abbr="TalA" data-shortname="D-Taluronic acid">
+        	<polygon style="fill:#8FCCE9;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>      
+
+        <symbol id="taln"  viewBox="0 0 50 50" data-abbr="TalN" data-shortname="D-Talosamine">
+        	<polygon style="fill:#8FCBE8;stroke:#010101;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+
+        <symbol id="talnac"  viewBox="0 0 50 50" data-abbr="TalNAc" data-shortname="N-Acetyl-D-talosamine">
+        	<polygon style="fill:#8FCCE9;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="tyv"  viewBox="0 0 50 50" data-abbr="Tyv" data-shortname="Tyvelose">
+        	<polygon style="fill:#00A651;stroke:#010101;stroke-width:1.6405;" points="48.8,38.2 1.2,38.2 1.2,11.8 48.8,11.8 	"/>
+        </symbol>
+
+        <symbol id="xyl"  viewBox="0 0 50 50" data-abbr="Xyl" data-shortname="D-Xylose">
+        	<polygon style="fill:#F47920;stroke:#010101;stroke-width:2.0385;" points="25,4.1 31.9,18 47.2,20.2 36.1,31.1 38.7,46.3 25,39.1 
+	    	11.3,46.3 13.9,31.1 2.8,20.2 18.1,18 	"/>
+        </symbol>
+
+        <symbol id="hex"  viewBox="0 0 50 50" data-abbr="Hex" data-shortname="Hexose">
+            <path style="fill:#FFFFFF;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+            S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>     
+        
+        <symbol id="hexa"  viewBox="0 0 50 50" data-abbr="HexA" data-shortname="Hexuronic acid">
+        	<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;" points="2.1,25 25,47.9 47.9,25 25,2.1 				"/>
+			<polygon style="fill:#FFFFFF;stroke:#010101;stroke-width:1.9699;stroke-linejoin:round;" points="2.2,25 25,47.9 47.8,25 
+					24.8,25 				"/>
+        </symbol>
+
+        <symbol id="hexn"  viewBox="0 0 50 50" data-abbr="HexN" data-shortname="Hexosamine">
+        	<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;" points="1.7,1.7 1.7,48.3 48.3,48.3 48.3,1.7 			"/>
+			<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5486;stroke-linejoin:round;" points="1.8,1.8 1.7,48.3 48.2,48.2 
+				24.8,24.8 			"/>
+        </symbol>
+        
+        <symbol id="hexnac"  viewBox="0 0 50 50" data-abbr="HexNAc" data-shortname="N-Acetyl Hexosamine">
+        	<polygon style="fill:#FFFFFF;stroke:#000000;stroke-width:2.5381;" points="1.8,48.2 48.2,48.2 48.2,1.8 1.8,1.8 		"/>
+        </symbol>
+
+        <symbol id="unknown"  viewBox="0 0 50 50" data-abbr="Unknown" data-shortname="Miscellaneous">
+            <path style="fill:#333333;stroke:#000000;stroke-width:2.4164;" d="M1.7,25c0,12.8,10.4,23.3,23.3,23.3S48.3,37.8,48.3,25
+            S37.8,1.7,25,1.7S1.7,12.2,1.7,25z"/>
+        </symbol>
+
+    </defs>
+</svg>

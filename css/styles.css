@@ -1,0 +1,244 @@
+#glycoglyphdiv {
+  font-family: 'Ubuntu', sans-serif;
+  margin: 10px;
+  padding: 10px;
+}
+
+
+.container {
+  width: 90%;
+}
+
+#drawsetting {
+  width: 300px;
+}
+
+.gdn-navul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  cursor: pointer;
+}
+
+.gdn-navli {
+  float: left;
+}
+
+.gdn-navli span {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.gdn-navli span:hover {
+  background-color: #111;
+}
+
+.gdndropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 360px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 10px 10px;
+  z-index: 1;
+}
+
+.gdndropdown:hover .gdndropdown-content {
+  display: block;
+}
+
+.gdndropdown-content.hide{
+  display: none;
+}
+
+/* Secondary navigation */
+.gdndropdown2ul {
+}
+
+.gdndropdown2ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F9F9F9;
+}
+
+.gdndropdown2li {
+  float: left;
+}
+
+.gdndropdown2li span {
+  display: block;
+  color: #333 !important;
+  background-color: #F9F9F9 !important;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gdndropdown2li span:hover {
+  background-color: #fff;
+}
+
+.gdndropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 20px;
+  z-index: 1;
+}
+
+.gdndropdown2li:hover .gdndropdown-content2 {
+  display: block;
+}
+
+.gdndropdown-content2 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+/* End secondary navigation */
+
+
+.monosaccharidelist {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  padding: 10px;
+}
+
+.monobtndiv {
+  display: inline-block;
+  padding: 3px 5px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-decoration: none;
+  line-height: 0%;
+
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.monobtndiv:hover {
+  background-color: #c3c3c3;
+  border-color: #666;
+}
+
+.monobtndiv:active {
+  background-color: #666;
+  border-color: #333;
+}
+
+/* Glycan Structure */
+#d3glycanstruc {
+  border: 1px solid #ced4da;
+  padding: 10px;
+  width: 400px;
+  height: 540px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: .25rem;
+  position: absolute;
+}
+
+path.glyd3link {
+  stroke: black;
+}
+
+/*Dropdown Content*/
+
+#glydrawSettings {
+  position: relative;
+  /* display: none; */
+}
+
+
+.btn-radio {
+  color: #333;
+  background-color: #fff;
+  border-color: #2e6da4;
+  cursor: pointer;
+}
+
+input[type=radio]{
+  opacity: 0;
+  position: absolute;
+}
+
+.btn.btn-radio.checked {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.template {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.template button {
+  cursor: pointer;
+}
+
+.addcursor {
+  cursor: url( '../img/plus-solid.svg' ), pointer;
+}
+
+.replacecursor {
+  cursor: url( '../img/exchange-alt-solid.svg' ), pointer;
+}
+
+.deletecursor {
+  cursor: url( '../img/eraser-solid.svg' ), pointer;
+}
+
+#multimode {
+  float: right;
+  padding: .4rem 1rem;
+  background: aliceblue;
+  border-radius: 0.25em;
+  border: 1px solid #2e6da4;
+}
+
+.show {
+  visibility: visible
+}
+.hide {
+  visibility: hidden;
+}
+
+#gtcid {
+  padding: 1em;
+}
+
+.tutorialoverlay {
+  position:fixed;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,0.3);
+}

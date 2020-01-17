@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    role="img"
+    viewBox="0 0 512 512"
+    width="20px"
+    height="20px"
+    version="1.1"
+    id="svg829">
+
+    <path 
+    style="fill:#ffba3b;stroke:#333333;stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.8;fill-opacity:1"
+    d="M450,158.5c-16-31.7-39.5-58.9-68.8-79.7c-36.9-26.1-80.5-40-125.8-40c-45.4,0-88.9,13.8-125.8,40
+			C93.4,104.3,66.2,139.7,50.9,181l56.2,20.9c22.9-61.6,82.5-103,148.2-103c57.5,0,110.2,31.6,137.9,80.7l-48.6,18.1l129.1,106.8
+			l28-165.2L450,158.5z"
+    />
+
+    <path 
+    style="fill:#ffba3b;stroke:#333333;stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.8;fill-opacity:1"
+    d="M403.6,312c-22.9,61.6-82.5,103-148.2,103c-57.5,0-110.2-31.6-137.9-80.7l48.6-18.1L37,209.4L9,374.6l51.7-19.2
+			c16,31.7,39.5,58.9,68.8,79.7c36.9,26.1,80.5,40,125.8,40c45.4,0,88.9-13.8,125.8-40c36.1-25.5,63.3-60.9,78.6-102.2L403.6,312z"
+    />
+
+</svg>
