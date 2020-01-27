@@ -5,6 +5,10 @@
 
 GlycoGlyph provides an interface to draw glycan structures using a Graphical User Interface (GUI) and produce appropriate names according to CFG naming convention (modified condensed IUPAC nomenclature). Alternatively, it also allows you to type in the names and see the structure of the glycan. It therefore allows the seamless interconversion of name and structure.
 
+## Video Tutorial
+
+https://www.youtube.com/watch?v=Z1zEZGO_wKY
+
 ## Overview of How GlycoGlyph Works
 
 ![Overview of how GlycoGlyph Works](https://glycotoolkit.com/wp-content/uploads/2019/11/Figure1@4x-100.png)At the core of GlycoGlyph is the ability to create the Glycan Tree JSON. This tree JSON can be created from the CFG Linear Nomenclature. The tree can then be used by D3.js hierarchy module to generate the structure. The tree json can also be parsed to produce the name, allowing seemless name and structure interconversion. A user can therefore either write the name or input the structure using the GUI to generate the structure.
