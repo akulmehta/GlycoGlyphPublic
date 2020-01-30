@@ -169,7 +169,7 @@ function glycantojson(glycanname) {
     return arr.reduce(parseTreeReducer, [])[0];
   }
 
-  function parseTreeReducer(array, ch) {
+  function parseTreeReducer(array, ch, idx) {
     let indexBracket = array.lastIndexOf('{');
     if (ch === '{') {
       // is it an open bracket?
@@ -238,6 +238,7 @@ function glycantojson(glycanname) {
         substituent: sub, //substituent
         linknum: linknum, //linkage number
         anomer: anomer, //anomeric configuration of sugar
+        uniqueNodeID: idx, //use the parsetreereducer index as the uniqueNodeID
 
         // ensure that we only get the nodes that are after the
         // last open bracket from the array stack and remove them.
