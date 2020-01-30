@@ -24,7 +24,7 @@ function addmono(path, multiple) {
     if (obj.name === path[pathcount].data.name) {
       if (pathcount < path.length - 1) {
         pathcount++;
-        var index = obj.children.findIndex((e) => e.name === path[pathcount].data.name)
+        var index = obj.children.findIndex((e) => (e.name === path[pathcount].data.name && e.uniqueNodeID === path[pathcount].data.uniqueNodeID));
         recurse(obj.children[index]);
       } else {
 
