@@ -109,8 +109,8 @@ function jsonToGlycoCT(json) {
       let parentAttachmentPos = link.charAt(link.length - 1),
         childAttachmentPos = link.charAt(link.indexOf('-') - 1);
 
-      if (parentAttachmentPos === "?") { parentAttachmentPos = "x" };
-      if (childAttachmentPos === "?") { childAttachmentPos = "x" };
+      if (parentAttachmentPos === "?") { parentAttachmentPos = "-1" };
+      if (childAttachmentPos === "?") { childAttachmentPos = "1" };
       LIN += `${LINcount}:${parentRES}o(${parentAttachmentPos}+${childAttachmentPos})${parentCount}d\n`;
       LINcount++;
     }
