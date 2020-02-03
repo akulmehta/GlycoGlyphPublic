@@ -80,7 +80,7 @@ function jsonToGlycoCT(json) {
     let type = getRingType(thismono, thisanomer);
 
     // start writing out the name
-    console.log(strippedmono);
+    //console.log(strippedmono);
     // Start with the RES portion of the parent monosaccharide
     if (gctMonoList.hasOwnProperty(strippedmono)) {
       //Check if gct stripped mono has a transform, if not append the type and append to RES                                                                                        

@@ -97,7 +97,7 @@ $(window).keydown(KeyDownListeners);
 
 //attach the keyup listener to remove the multimode
 $(window).keyup(function (e) {
-  console.log(e);
+  // console.log(e);
   if (e.originalEvent.key === "m") {
     // resetchildglycan(); //function from addinfo.js
     $("#multimode").empty().addClass('hide').removeClass('show');
