@@ -99,7 +99,8 @@ function glycantojson(glycanname) {
           if (nextcb === -1 && nextob === -1 && cbcount > 1) {
             var outputob = [...output.matchAll(/\(/g)]; //get an array of all open brackets
             var outputcb = [...output.matchAll(/\)/g)]; //get an array of all closed brackets
-            output = ')' + ('('.repeat(outputcb.length - outputob.length)) + output;
+            // console.log({outputob, outputcb, cbcount})
+            output = ')' + ('('.repeat(outputcb.length - outputob.length - cbcount + 1)) + output;
           }
           else {
             output = ')' + '('.repeat(cbcount) + output; // for all other cb it pushes appropriate cb based on the cb count from the parent name.
