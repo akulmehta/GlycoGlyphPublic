@@ -45,11 +45,13 @@ function glycantojson(glycanname) {
       //go backwards from the right of the name
 
       c = name.charAt(i); // char at position i
+      var nameslicei = name.slice(i, name.length);
       var nextcb = name.slice(0, i).lastIndexOf(')'); // position of last closed bracket from point i
       var nextob = name.slice(0, i).lastIndexOf('('); // position of last open bracket from point i
+      var countnameob = [...nameslicei.matchAll(/\(/g)].length;
+      var countnamecb = [...nameslicei.matchAll(/\(/g)].length;
       var prevcb = name.indexOf(')', i + 1); // position of last closed bracket from point i
       var prevob = name.indexOf('(', i + 1); // position of last open bracket from point i
-
 
       if (c == ')') {
         //when the loop encounters a ) it starts a bunch of counters below:
@@ -78,7 +80,6 @@ function glycantojson(glycanname) {
 
         if (c == '(' && prevob > prevcb && nextob > nextcb) {
           output = ')(' + output; // condition above checks if the bracket is a nested () thereby pushing only single )(  for it
-
         } else if (c == '(') {
           // console.log('condition where c is a (')
 
@@ -99,8 +100,14 @@ function glycantojson(glycanname) {
           if (nextcb === -1 && nextob === -1 && cbcount > 1) {
             var outputob = [...output.matchAll(/\(/g)]; //get an array of all open brackets
             var outputcb = [...output.matchAll(/\)/g)]; //get an array of all closed brackets
-            // console.log({outputob, outputcb, cbcount})
-            output = ')' + ('('.repeat(outputcb.length - outputob.length - cbcount + 1)) + output;
+            var outputbracketcount = 0;
+            if (countnamecb === cbcount) {
+              outputbracketcount = outputcb.length - outputob.length;
+            }else {
+              outputbracketcount = outputcb.length - outputob.length - cbcount + 1;
+            }
+            output = ')' + ('('.repeat(outputbracketcount)) + output;
+            // console.log(output);
           }
           else {
             output = ')' + '('.repeat(cbcount) + output; // for all other cb it pushes appropriate cb based on the cb count from the parent name.
