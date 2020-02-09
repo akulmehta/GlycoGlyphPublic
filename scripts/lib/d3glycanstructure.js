@@ -266,7 +266,7 @@ function fixfucers(node, width) {
 
   //go through each node and check if fucose present.
   node.each((d) => {
-    if (d.data.name.search('Fuc') > -1) {
+    if (d.data.monosaccharide === "Fuc") {
       //get the x-limits for the child nodes of the parent of the fucose
       // if (d.parent.depth === 0) { return; }
       if (d.depth === 0) { return; }
@@ -318,14 +318,14 @@ function fixfucers(node, width) {
       //find the difference in x between the siblings of the fucose and the parent
       var diffx; //the difference in x between parent and siblings
       d.parent.children.forEach((e) => {
-        if (e.data.name.search('Fuc') === -1 && diffx == undefined) {
+        if (e.data.monosaccharide !== "Fuc" && diffx == undefined) {
           diffx = e.x - parentx;
         }
       });
 
       //go through each sibling of the fucose and adjust the x.
       d.parent.children.forEach((c, i) => {
-        if (c.data.name.search('Fuc') === -1 && c.data.name !== d.parent.data.name) {
+        if (c.data.monosaccharide !== "Fuc" && c.data.name !== d.parent.data.name) {
           c.each((child) => {
             child.x = child.x - diffx;
           })
@@ -343,14 +343,15 @@ function transformlinkText(d, i, linkRotate, fontSize, linkAbbr,symbsize) {
     var angle = Math.atan2((d.y - d.parent.y), (d.parent.x - d.x)) * 180 / Math.PI;
     //adjust angle for fucose if not using classical drawing
     var fuctype = document.getElementById('fucoseopt').value;
-    if (d.data.name.search('Fuc') > -1 && fuctype != 'fucoriginal' && d.depth > 0) {
+    if (d.data.monosaccharide === "Fuc" && fuctype != 'fucoriginal' && d.depth > 0) {
+
       if (d.x < d.parent.x) {
         angle = 30 //to the left
       } else {
         angle = 150 //to the right
       }
     }
-    if (d.data.monosaccharide == "Fuc" && fuctype != 'fucoriginal') {
+    if (d.data.monosaccharide === "Fuc" && fuctype != 'fucoriginal') {
       if (angle <= 45) {
         return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + 25) / 2 + ') rotate(' + angle + ')';
       } else {
@@ -385,11 +386,11 @@ function rotateFuc(d, o) {
   var fuctype = document.getElementById('fucoseopt').value;
   if (fuctype === 'fucoriginal') {
     return 'translate(' + o.x(d) + ',' + o.y(d) + ')';
-  } else if (d.data.name.search('Fuc') === -1) {
+  } else if (d.data.monosaccharide !== "Fuc") {
     return 'translate(' + o.x(d) + ',' + o.y(d) + ')';
   }
   else {
-    d.y = d.y + 2;
+    d.y = d.y + 4;
     if (d.x < d.parent.x) {
       return 'translate(' + o.x(d) + ',' + o.y(d) + ') rotate(-30)';
     } else {
@@ -471,22 +472,4 @@ function subText(d) {
 
   return str;
 
-  // if (str.search(/\[.*\]\[.*\]/) > -1) {
-  //   var strout = '';
-  //   strout = str.substring(str.indexOf('[') + 1, str.indexOf(']'));
-  //   strout = strout + ',';
-  //   strout = strout + str.substring(str.lastIndexOf('[') + 1, str.lastIndexOf(']'));
-  //   return strout;
-  // }
-  // if (str.search(/\d.\[.*\]/) > -1) {
-  //   var strout = '';
-  //   strout = str.substring(str.indexOf('[') - 2, str.indexOf('['));
-  //   strout = strout + ',';
-  //   strout = strout + str.substring(str.indexOf('[') + 1, str.indexOf(']'));
-  //   return strout;
-  // }
-  // if (str.search(/\[.*\]/) > -1) {
-  //   str = str.substring(str.indexOf('[') + 1, str.indexOf(']'));
-  //   return str;
-  // }
 }

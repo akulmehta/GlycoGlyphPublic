@@ -119,7 +119,7 @@
         </symbol>
 
         <symbol id="fuc"  viewBox="0 0 50 50" data-abbr="Fuc" data-shortname="L-Fucose">
-            <polygon style="fill:#ED1C24;stroke:#010101;stroke-width:2.2429;" points="47.4,42.9 2.6,42.9 17,19.9 24.8,7.1 "/>
+            <polygon style="fill:#ED1C24;stroke:#010101;stroke-width:2.2429;" points="25 7.5, 50 50, 0 50"/>
         </symbol>
 
         <symbol id="fucnac"  viewBox="0 0 50 50" data-abbr="FucNAc" data-shortname="N-Acetyl-L-fucosamine">
