@@ -5,6 +5,10 @@
 
 GlycoGlyph provides an interface to draw glycan structures using a Graphical User Interface (GUI) and produce appropriate names according to CFG naming convention (modified condensed IUPAC nomenclature). Alternatively, it also allows you to type in the names and see the structure of the glycan. It therefore allows the seamless interconversion of name and structure.
 
+## Tool Page
+
+You can use GlycoGlyph at [https://glycotoolkit.com/Tools/GlycoGlyph/](https://glycotoolkit.com/Tools/GlycoGlyph/)
+
 ## Video Tutorial
 
 https://www.youtube.com/watch?v=Z1zEZGO_wKY
