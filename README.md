@@ -14,6 +14,9 @@ https://www.youtube.com/watch?v=Z1zEZGO_wKY
 ![Overview of how GlycoGlyph Works](https://glycotoolkit.com/wp-content/uploads/2019/11/Figure1@4x-100.png)At the core of GlycoGlyph is the ability to create the Glycan Tree JSON. This tree JSON can be created from the CFG Linear Nomenclature. The tree can then be used by D3.js hierarchy module to generate the structure. The tree json can also be parsed to produce the name, allowing seemless name and structure interconversion. A user can therefore either write the name or input the structure using the GUI to generate the structure.
 In the figure above, the steps are highlighted to walk through what steps would be involved when a user tries to build a structure either using the GUI, or using the name.
 
+## Please Cite
+
+If you use GlycoGlyph, please cite: [https://doi.org/10.1093/bioinformatics/btaa190](https://doi.org/10.1093/bioinformatics/btaa190)
 
 # For Developers
 
