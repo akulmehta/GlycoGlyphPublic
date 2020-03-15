@@ -29,8 +29,22 @@
   <div id="glycoglyphdiv" class="gdncontainer">
     <div class="container">
       <div class="row justify-content-between">
-        <div class="col-8">
+        <div class="col-6">
           <h4>GlycoGlyph</h4>
+        </div>
+        <div class="col-2">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="citebtn" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                  How To Cite
+                </button>
+            <div class="dropdown-menu" style="min-width: 500px" aria-labelledby="citebtn">
+              <div class="alert alert-primary" role="alert">
+                <strong>Please Cite: </strong> 
+                <a href="https://doi.org/10.1093/bioinformatics/btaa190" target="_blank" class="alert-link">https://doi.org/10.1093/bioinformatics/btaa190</a>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-2">
           <h6>
@@ -39,7 +53,7 @@
           </h6>
         </div>
         <div class="col-2">
-          V1.0
+          V1.0.0
         </div>
       </div>
 
@@ -52,7 +66,6 @@
           <div id="undodiv" class="hide">
             <button class="btn btn-secondary btn-sm" onclick="undo()" title="Undo">
               <img src="img/undo.svg" width="16px" alt="">
-              </i>
             </button>
           </div>
           <div id="redodiv" class="hide">
