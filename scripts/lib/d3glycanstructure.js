@@ -355,7 +355,8 @@ function transformlinkText(d, i, linkRotate, fontSize, linkAbbr,symbsize) {
       if (angle <= 45) {
         return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + 25) / 2 + ') rotate(' + angle + ')';
       } else {
-        return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + 46) / 2 + ') rotate(' + angle + ')';
+        angle = -30;
+        return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + 30) / 2 + ') rotate(' + angle + ')';
       }
     }
     if (linkRotate == false) {
@@ -420,10 +421,22 @@ function drawsymbol(d, i, type) {
 //returns the linkage text after replacing the a to alpha and b to beta
 function linkageText(d, abbr) {
   var str = d.data.linkage;
+
+  //special case for fucose to the right
+  if (d.data.monosaccharide === "Fuc" && d.x > d.parent.x) {
+    if (abbr == true) {
+      str = str.replace(/[\d\?]\-/g, '');
+    }
+    str = str.split("").reverse().join("");
+    str = str.replace (/a/gi, '\u03B1').replace(/b/gi, '\u03B2');
+    console.log(str);
+    return str;
+  }
+
   if (abbr == true) {
     str = str.replace(/a(?=[\d\?]\-[\d\?])/g, '\u03B1')
       .replace(/b(?=[\d\?]\-[\d\?])/, '\u03B2')
-      .replace(/[\d|\?]\-/g, '');
+      .replace(/[\d\?]\-/g, '');
     return str;
   }
   if (str.search(/[a,b,\?][\d,\?]\-[\d,\?]/) > -1) {
