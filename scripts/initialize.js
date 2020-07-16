@@ -9,7 +9,7 @@ $("#" + nameid).on('keyup', function () {
   tracknames(name);
   //draw structure based on name
   if (name.length > 0) {
-    d3glycanstructure(name, 'd3glycanstruc');
+    d3glycanstructure(name, {drawdivID: 'd3glycanstruc'});
     cfgToGlycoCT();
   }
   //clear drawing area if text is cleared
@@ -23,7 +23,7 @@ $("#" + nameid).on('keyup', function () {
 $('#redraw').on('click', function () {
   var name = document.getElementById(nameid).value;
   if (name != "") {
-    d3glycanstructure(name, 'd3glycanstruc');
+    d3glycanstructure(name, {drawdivID: 'd3glycanstruc'});
   }
 })
 
@@ -35,12 +35,17 @@ d3.select("#d3glycanstruc").on("mouseover", () => {
   } else {
     d3.select("#d3glycanstruc").classed('addcursor', false);
   }
-}).on("click", () => {
+}).on("mouseup", () => {
+  var modelist = Array.from(document.querySelectorAll('#modelist input'));
+  var mode = modelist.length && modelist.find(r => r.checked).value;
   //add first mono if nothing is drawn.
   if ($("#d3glycanstrucSVG").length == 0) {
-    if (childglycan.name == "") {
+    if (childglycan.name == "" && mode == 'add') {
       alert('Select a monosaccharide to add and get started.')
-    } else {
+    } else if (mode === 'delete' || mode === 'replace') {
+      alert ('Switch to add mode to start.')
+    }
+    else {
       addfirstmono();
     }
   }
@@ -114,7 +119,7 @@ $(document).ready(() => {
   name = "";
   tracknames(name);
   if (name != "") {
-    d3glycanstructure(name, 'd3glycanstruc');
+    d3glycanstructure(name, {drawdivID: 'd3glycanstruc'});
   }
 
   //preload the cursors

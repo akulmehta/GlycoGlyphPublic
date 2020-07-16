@@ -80,5 +80,5 @@ function savesvg(svgid) {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-    d3glycanstructure(document.getElementById(nameid).value, 'd3glycanstruc');//redraw glycan
+    d3glycanstructure(document.getElementById(nameid).value, {drawdivID: 'd3glycanstruc'});//redraw glycan
 }

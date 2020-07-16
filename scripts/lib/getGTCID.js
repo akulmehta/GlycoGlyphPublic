@@ -27,6 +27,13 @@ function getGTCID() {
           <td class="unknown" id="unknowngtcid"></td>
           <td class="open" id="opengtcid"></td>
         </tr>
+        <tr>
+          <td>View Details:</th>
+          <td class="alpha" id="alphadetails"></td>
+          <td class="beta" id="betadetails"></td>
+          <td class="unknown" id="unknowndetails"></td>
+          <td class="open" id="opendetails"></td>
+      </tr>
       </tbody>
     </table>
     `);
@@ -40,14 +47,14 @@ function getGTCID() {
   function recursetoglycan(glycan) {
     if (glycan.monosaccharide != "") {
       return glycan;
-    }else {
+    } else {
       return recursetoglycan(glycan.children[0])
     }
   }
   glycanobj = recursetoglycan(glycanobj);
 
   let primaryanomer;
-  if (glycanobj.monosaccharide !== "") {primaryanomer = glycanobj.anomer;}
+  if (glycanobj.monosaccharide !== "") { primaryanomer = glycanobj.anomer; }
 
   //for each anomer
   types.forEach((f) => {
@@ -60,11 +67,57 @@ function getGTCID() {
     //Query GlyTouCan
     $.get(url).done(function (data) {
       if (data.id === undefined) { //if undefined it means there was some error in the GlycoCT
-        $(`#${f.name}gtcid`).html(`Error`);
+        $(`#${f.name}gtcid`).html(`Error in Structure`);
+        console.log(data);
       } else if (data.id === "no accnumber") { //if No Accession Number 
         $(`#${f.name}gtcid`).html(`Not Available`)
-      } else { // If successful retrieval of accession number
-        $(`#${f.name}gtcid`).html(`<a href="https://glytoucan.org/Structures/Glycans/${data.id}" target="_blank">${data.id}</a>`)
+        console.log(data);
+      } else { // If successful retrieval of accession number populate the table
+        $(`#${f.name}gtcid`).html(`${data.id}`)
+
+        $.get(`https://api.glygen.org/glycan/detail/${data.id}/`).done((glygenResp) => {
+
+          $(`#${f.name}details`).append(`
+            <a href="https://www.glygen.org/glycan/${data.id}" target="_blank"
+            title="View in GlyGen">
+            <span class="glygen-logo detail-icon"></span></a>
+            <a href="https://glytoucan.org/Structures/Glycans/${data.id}" target="_blank"
+            title="View in GlyTouCan">
+            <span class="glytoucan-logo detail-icon"></span></a>`);
+
+          if (glygenResp.crossref) {
+            let pubchemURL = glygenResp.crossref.find(f => f.database === "PubChem Compound");
+            if (pubchemURL) {
+              $(`#${f.name}details`).append(` 
+              <a href="${pubchemURL.url}" target="_blank"
+              title="View in PubChem">
+              <span class="pubchem-logo detail-icon"></span></a>`);
+            }
+            let chebiURL = glygenResp.crossref.find(f => f.database === "ChEBI");
+            if (chebiURL) {
+              $(`#${f.name}details`).append(` 
+              <a href="${chebiURL.url}" target="_blank"
+              title="View in ChEBI">
+              <span class="chebi-logo detail-icon"></span></a>`);
+            }
+          }
+        }).fail((failglygenResp) => {
+          if (failglygenResp.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
+            console.log('GlyTouCan ID does not exist in glygen');
+          } else {
+            console.log('Failed to connect to GlyGen');
+            console.log(failglygenResp);
+          }
+          $(`#${f.name}details`).append(`
+          <span class="glygen-logo detail-icon disabled-icon"></span>
+          <a href="https://glytoucan.org/Structures/Glycans/${data.id}" target="_blank"
+            title="View in GlyTouCan">
+            <span class="glytoucan-logo detail-icon"></span></a>
+          `)
+        });
+
+
+
       };
     }).fail(function () { // if failed to connect to GlyCosmos alert the user
       alert("Error communicating with GlyTouCan.");

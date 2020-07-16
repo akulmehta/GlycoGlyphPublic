@@ -1,11 +1,18 @@
 
 //function fixes order of children based on linker
-function sortchildren(obj) {
-  if (obj.data.children.length > 0) {
+function sortchildren(obj, reverse = false) {
+  if (obj.children && obj.data.children.length > 0) {
 
-    obj.children.sort(function (x, y) {
-      return d3.ascending(x.data.linknum, y.data.linknum);
-    });
+    if (reverse) {
+      obj.children.sort(function (x, y) {
+        return d3.descending(x.data.linknum, y.data.linknum);
+      });
+    } else {
+      obj.children.sort(function (x, y) {
+        return d3.ascending(x.data.linknum, y.data.linknum);
+      });
+    }
+    
 
     // to check for core fucose 
     //    1. One Child Monosaccharide is "Fuc"
@@ -24,7 +31,7 @@ function sortchildren(obj) {
 
     //recurse all children
     obj.children.forEach(e => {
-      sortchildren(e);
+      sortchildren(e, reverse);
     });
   }
 

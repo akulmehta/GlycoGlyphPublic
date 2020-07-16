@@ -132,10 +132,10 @@ function jsonToGlycoCT(json) {
           break;
         case (s.indexOf("Ac") > -1):
           position = s.split(/(?!\d)/g)[0];
-          console.log(position);
+          // console.log(position);
           substituent = "acetyl";
           //special case
-          if (thismono === "Neu5Ac") { substituent = "n-acetyl" };
+          if (thismono === "Neu5Ac" && position == 5) { substituent = "n-acetyl" };
           break;
         case (s.indexOf("Gc") > -1):
           position = s.split(/(?!\d)/g)[0];

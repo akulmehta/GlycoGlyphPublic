@@ -22,7 +22,7 @@ function undo() {
   if (trackname[tracknum-1] != undefined) {
     nameinput.value = trackname[tracknum-1];
     if (nameinput.value != "") {
-      d3glycanstructure(nameinput.value, 'd3glycanstruc');
+      d3glycanstructure(nameinput.value, {drawdivID: 'd3glycanstruc'});
     } else {
       $("#d3glycanstruc").empty();
     }
@@ -44,7 +44,7 @@ function redo() {
   if (tracknum <= trackname.length){
     nameinput.value = trackname[tracknum-1];
     if (nameinput.value != "") {
-      d3glycanstructure(nameinput.value, 'd3glycanstruc');
+      d3glycanstructure(nameinput.value, {drawdivID: 'd3glycanstruc'});
     } else {
       $("#d3glycanstruc").empty();
     }

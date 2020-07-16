@@ -1,9 +1,8 @@
 #glycoglyphdiv {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   margin: 10px;
   padding: 10px;
 }
-
 
 .container {
   width: 90%;
@@ -43,7 +42,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 360px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 10px 10px;
   z-index: 1;
 }
@@ -52,7 +51,7 @@
   display: block;
 }
 
-.gdndropdown-content.hide{
+.gdndropdown-content.hide {
   display: none;
 }
 
@@ -65,7 +64,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 }
 
 .gdndropdown2li {
@@ -75,7 +74,7 @@
 .gdndropdown2li span {
   display: block;
   color: #333 !important;
-  background-color: #F9F9F9 !important;
+  background-color: #f9f9f9 !important;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -91,7 +90,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 300px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 20px;
   z-index: 1;
 }
@@ -109,7 +108,6 @@
 }
 
 /* End secondary navigation */
-
 
 .monosaccharidelist {
   display: grid;
@@ -155,12 +153,13 @@
 #d3glycanstruc {
   border: 1px solid #ced4da;
   padding: 10px;
-  width: 400px;
-  height: 540px;
+  width: 560px;
+  height: 560px;
   padding: 10px;
   margin: 5px;
-  border-radius: .25rem;
-  position: absolute;
+  border-radius: 0.25rem;
+  display:flex;
+  align-items: center;
 }
 
 path.glyd3link {
@@ -174,7 +173,6 @@ path.glyd3link {
   /* display: none; */
 }
 
-
 .btn-radio {
   color: #333;
   background-color: #fff;
@@ -182,7 +180,7 @@ path.glyd3link {
   cursor: pointer;
 }
 
-input[type=radio]{
+input[type="radio"] {
   opacity: 0;
   position: absolute;
 }
@@ -202,27 +200,27 @@ input[type=radio]{
 }
 
 .addcursor {
-  cursor: url( '../img/plus-solid.svg' ), pointer;
+  cursor: url("../img/plus-solid.svg"), pointer;
 }
 
 .replacecursor {
-  cursor: url( '../img/exchange-alt-solid.svg' ), pointer;
+  cursor: url("../img/exchange-alt-solid.svg"), pointer;
 }
 
 .deletecursor {
-  cursor: url( '../img/eraser-solid.svg' ), pointer;
+  cursor: url("../img/eraser-solid.svg"), pointer;
 }
 
 #multimode {
   float: right;
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
   background: aliceblue;
   border-radius: 0.25em;
   border: 1px solid #2e6da4;
 }
 
 .show {
-  visibility: visible
+  visibility: visible;
 }
 .hide {
   visibility: hidden;
@@ -233,12 +231,63 @@ input[type=radio]{
 }
 
 .tutorialoverlay {
-  position:fixed;
-  padding:0;
-  margin:0;
-  top:0;
-  left:0;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background:rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.glygen-logo {
+  background: no-repeat url(../img/icons/glygen.png) center;
+}
+
+.pubchem-logo {
+  background: no-repeat url(../img/icons/pubchem.png) center;
+}
+
+.glytoucan-logo {
+  background: no-repeat url(../img/icons/glytoucan.png) center;
+}
+
+.chebi-logo {
+  background: no-repeat url(../img/icons/chebi.png) center;
+}
+
+.detail-icon {
+  display: inline-block;
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  border: skyblue solid 1px;
+  border-radius: 50%;
+}
+
+.disabled-icon {
+  display:none;
+}
+
+
+.detail-icon:hover {
+  box-shadow: 0px 0px 3px 1px rgba(0, 136, 255, 0.67);
+}
+
+table td {
+  text-align: center;
+}
+
+table th {
+  text-align: center;
+}
+
+table th:first-child {
+  text-align: left;
+}
+
+table td:first-child {
+  text-align: left;
 }

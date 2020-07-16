@@ -15,6 +15,6 @@ function starttemplate(name) {
 
   tracknames(nameinput.value);
   
-  d3glycanstructure(nameinput.value, 'd3glycanstruc');
+  d3glycanstructure(nameinput.value, {drawdivID: 'd3glycanstruc'});
   cfgToGlycoCT();
 }

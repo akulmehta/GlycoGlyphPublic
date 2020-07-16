@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <title>GlycoGlyph</title>
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -50,12 +49,14 @@
         </div>
         <div class="col-2">
           <div class="dropdown">
-            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="videoTutorial" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                  Video Tutorial
-                </button>
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="videoTutorial"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Video Tutorial
+            </button>
             <div class="dropdown-menu" aria-labelledby="videoTutorial" style="min-width: 600px;">
-              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z1zEZGO_wKY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z1zEZGO_wKY" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -66,7 +67,7 @@
           </h6>
         </div>
         <div class="col-1">
-          V1.0.1
+          v1.1.0
         </div>
       </div>
 
@@ -428,11 +429,11 @@
           <button type="button" name="" id="getGTCIDBtn" class="btn btn-primary" onclick="getGTCID()">
             Get GlyTouCan ID
           </button>
-          <div id="gtcid" class="container"></div>
+          <div id="gtcid"></div>
 
         </div>
-        <div class="col-4">
-          <div class="d-flex flex-row">
+        <div class="col-6">
+          <div class="d-flex flex-row col-8">
             <div class="mr-auto p-2">
               <label for="d3glycanstruc">Draw Here: </label>
             </div>
@@ -448,17 +449,17 @@
                     <div class="container">
                       <h5>Node Settings</h5>
                       <div class="form-group row">
-                        <label for="symbolsize" class="col-sm-7 col-form-label">Symbol Size</label>
+                        <label for="symbsize" class="col-sm-7 col-form-label">Symbol Size</label>
                         <div class="col-sm-5">
-                          <input type="number" class="form-control" id="symbolsize" value="25">
+                          <input type="number" class="form-control" id="symbsize" value="25">
                         </div>
                       </div>
-                      <select id="drawingchoice" style="min-width:80%" class="form-control">
+                      <select id="drawingareachoice" style="min-width:80%" class="form-control">
                         <option value="fixglycansize"> Fix Glycan Scaling </option>
                         <option value="fixdrawingarea"> Fit Glycan in Box </option>
                       </select>
-                      <label for="fucoseopt">Fucose Drawing:</label>
-                      <select id="fucoseopt" style="min-width:80%" class="form-control">
+                      <label for="fucopt">Fucose Drawing:</label>
+                      <select id="fucopt" style="min-width:80%" class="form-control">
                         <option value="fucout">Fucose Outwards</option>
                         <option value="fucleft"> Fucose Left</option>
                         <option value="fucdown"> Fucose Name Dependant</option>
@@ -467,16 +468,16 @@
                       <hr>
                       <h5>Linkage Settings</h5>
                       <div>
-                        <input type="checkbox" id="linkagevisible" checked>
-                        <label for="linkagevisible" class="form-check-label">Visible</label>
+                        <input type="checkbox" id="linkageVisible" checked>
+                        <label for="linkageVisible" class="form-check-label">Visible</label>
                       </div>
                       <div>
-                        <input type="checkbox" id="linkagerotate" checked>
-                        <label for="linkagerotate" class="form-check-label">Rotate Along Link</label>
+                        <input type="checkbox" id="linkRotate" checked>
+                        <label for="linkRotate" class="form-check-label">Rotate Along Link</label>
                       </div>
                       <div>
-                        <input type="checkbox" id="linkageabbr">
-                        <label for="linkageabbr" class="form-check-label">Abbreviated Linkage Text</label>
+                        <input type="checkbox" id="linkAbbr">
+                        <label for="linkAbbr" class="form-check-label">Abbreviated Linkage Text</label>
                       </div>
                       <div class="form-group row">
                         <label for="linkFontSize" class="col-sm-7 col-form-label">Linkage Font Size</label>
@@ -485,6 +486,15 @@
                         </div>
                       </div>
 
+                      <h5>Drawing Settings</h5>
+                      <div class="form-group row">
+                        <label for="orientation">Glycan Orientation</label>
+                        <select id="orientation" style="min-width:80%" class="form-control">
+                          <option value="bottom-to-top">Bottom to Top</option>
+                          <option value="right-to-left">Right to Left</option>
+                        </select>
+                      </div>
+                      
                       <button type="button" class="btn btn-primary" id="redraw">Redraw</button>
                     </div>
 
@@ -538,7 +548,7 @@
 
 
     <!-- If using the compiled file use just this and  comment/delete the rest of the files. -->
-    <script src="scripts/glycoglyph-min.js"></script>
+    <script src="scripts/glycoglyph.js"></script>
     <!-- Enter any other scripts before initializing the introductory tutorial and the interface -->
     <script src="scripts/initialize.js"></script>
     <script src="scripts/introtut.js"></script>

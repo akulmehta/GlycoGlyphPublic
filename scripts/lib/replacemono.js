@@ -1,8 +1,8 @@
 function replacemono(path, multiple) {
   //if first node just remove the svg to start fresh
   if (path.length == 1) {
-    document.getElementById(nameid).value = "";
-    $("#d3glycanstruc").empty();
+    outputname(childglycan);
+    resetchildglycan();
     return;
   }
 

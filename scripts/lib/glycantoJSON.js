@@ -87,10 +87,10 @@ function glycantojson(glycanname) {
 
       //special cases
       //Case 1: Neu5,9Ac
-      if (ch.search(/Neu5\,9Ac/g) > -1) {
-        mono = "Neu";
-        sub = '[5Ac][9Ac]';
-        link = ch.replace(/Neu5\,9Ac/g, '');
+      if (ch.search(/Neu5\,9Ac2?/g) > -1) {
+        mono = "Neu5Ac";
+        sub = '[9Ac]';
+        link = ch.replace(/Neu5\,9Ac2?/g, '');
         linknum = +link.substr(-1);
       }
 

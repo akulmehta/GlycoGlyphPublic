@@ -80,7 +80,7 @@ function outputname(nameobj) {
 
   // console.log(trackname);
   document.getElementById(nameid).value = newname; // output the name to the input field
-  d3glycanstructure(newname, 'd3glycanstruc');
+  d3glycanstructure(newname, {drawdivID: 'd3glycanstruc'});
 
   //update glycoCT
   cfgToGlycoCT();

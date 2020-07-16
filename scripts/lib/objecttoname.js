@@ -5,9 +5,10 @@ function objecttoname(obj, bindex) {
 
   //write down the name
   var name = '';
+  //console.log(obj);
   if (obj.data.monosaccharide != "" && obj.data.linkage != "") { //ideal conditions both mono and linkage present
     if (obj.data.substituent === undefined || obj.data.substituent === "[]") { obj.data.substituent = ""}
-    if (obj.data.linkage.search('-') === -1 && obj.depth > 0) {
+    if (obj.data.linkage && obj.data.linkage.search('-') === -1 && obj.depth > 0) {
       obj.data.linkage = obj.data.linkage + '-';
     }
     name = obj.data.substituent + obj.data.monosaccharide + obj.data.linkage + name;
@@ -23,7 +24,7 @@ function objecttoname(obj, bindex) {
     name = name + ')';
   }
   
-  if (obj.data.children.length > 0) {
+  if (obj.data.children && obj.data.children.length > 0) {
     obj.children.forEach((e,i) => {
       name = objecttoname(e, obj.children.length- i) + name;
 
