@@ -686,13 +686,13 @@ var getUrl = window.location.href.split('/').slice(0,-1).join('/') + '/';
 
 //load the css file into svgStyle
 var svgStyle = '';
-let fetchCSS = d3.text(getUrl + '/css/styles.css').then(function (d) {
+let fetchCSS = d3.text('/css/styles.css').then(function (d) {
     svgStyle = d;
 });
 
 // Get list of monosaccharides for which symbols are available
 var svgarr = [];
-let fetchSVG = d3.xml('img/monos.svg').then(function (data) {
+let fetchSVG = d3.xml('/img/monos.svg').then(function (data) {
     svgarr = [].map.call(data.querySelectorAll("symbol"), function (symbol) {
         return {
             id: symbol.getAttribute("data-abbr"), //use the data-abbr to get id
