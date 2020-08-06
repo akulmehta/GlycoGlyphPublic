@@ -1,5 +1,6 @@
 import {domElements, drawingSettings} from './globalvars.js';
 import {d3glycanstructure} from './d3glycanstruc.js';
+import { cfgToGlycoCT } from './glycoct.js';
 
 export var tracknum = -1;
 export var trackname = []; //array which tracks the names for undo/redo
@@ -33,8 +34,10 @@ export function undo() {
     nameinput.value = trackname[tracknum];
     if (nameinput.value != "") {
       d3glycanstructure(nameinput.value);
+      cfgToGlycoCT();
     } else {
       $(`#${drawingSettings.drawdivID}`).empty();
+      document.getElementById(domElements.glycoCTID).innerHTML = '';
     }
   }
   if (tracknum === 0) {
@@ -57,8 +60,10 @@ export function redo() {
     nameinput.value = trackname[tracknum];
     if (nameinput.value != "") {
       d3glycanstructure(nameinput.value);
+      cfgToGlycoCT();
     } else {
       $(`#${drawingSettings.drawdivID}`).empty();
+      document.getElementById(domElements.glycoCTID).innerHTML = '';
     }
   }
   if (tracknum === trackname.length-1){

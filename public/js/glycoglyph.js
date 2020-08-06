@@ -1068,74 +1068,6 @@
     return name;
   }
 
-  exports.tracknum = -1;
-  exports.trackname = []; //array which tracks the names for undo/redo
-
-  function tracknames(name) {
-    if (exports.tracknum > -1) {
-      $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
-    }
-    if (exports.trackname[exports.tracknum] == name) {
-      console.log('not adding');
-      return;
-    }
-    exports.tracknum++;
-    exports.trackname[exports.tracknum] = name; //push new name in position of the tracknum
-    exports.trackname = exports.trackname.filter((d,i) => i <= exports.tracknum);
-
-    //hide the redo button 
-    if (exports.tracknum < exports.trackname.length){
-      $(`#${domElements.redodiv}`).addClass('hide').removeClass('show');
-    }
-
-  }
-
-  function undo() {
-    if (exports.tracknum == 0) {
-      return;
-    }
-    var nameinput = document.getElementById(domElements.nameInputID);
-    exports.tracknum--;
-    if (exports.trackname[exports.tracknum] != undefined) {
-      nameinput.value = exports.trackname[exports.tracknum];
-      if (nameinput.value != "") {
-        d3glycanstructure(nameinput.value);
-      } else {
-        $(`#${drawingSettings.drawdivID}`).empty();
-      }
-    }
-    if (exports.tracknum === 0) {
-      //hide the undo button
-      $(`#${domElements.undodiv}`).addClass('hide').removeClass('show');
-    }
-    if (exports.tracknum < exports.trackname.length) {
-      $(`#${domElements.redodiv}`).removeClass('hide').addClass('show');
-    }
-
-  }
-
-  function redo() {
-    exports.tracknum++;
-    if (exports.tracknum == exports.trackname.length) { 
-      return;}
-    var nameinput = document.getElementById(domElements.nameInputID);
-
-    if (exports.trackname[exports.tracknum] != undefined) {
-      nameinput.value = exports.trackname[exports.tracknum];
-      if (nameinput.value != "") {
-        d3glycanstructure(nameinput.value);
-      } else {
-        $(`#${drawingSettings.drawdivID}`).empty();
-      }
-    }
-    if (exports.tracknum === exports.trackname.length-1){
-      $(`#${domElements.redodiv}`).addClass('hide').removeClass('show');
-    }
-    if (exports.tracknum < exports.trackname.length) {
-      $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
-    }
-  }
-
   //function takes the cfg name from the input field and outputs the GlycoCT
   function cfgToGlycoCT() {
     var cfgname = document.getElementById(domElements.nameInputID).value;
@@ -1361,6 +1293,78 @@
     }
 
     return 'x:x'
+  }
+
+  exports.tracknum = -1;
+  exports.trackname = []; //array which tracks the names for undo/redo
+
+  function tracknames(name) {
+    if (exports.tracknum > -1) {
+      $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
+    }
+    if (exports.trackname[exports.tracknum] == name) {
+      console.log('not adding');
+      return;
+    }
+    exports.tracknum++;
+    exports.trackname[exports.tracknum] = name; //push new name in position of the tracknum
+    exports.trackname = exports.trackname.filter((d,i) => i <= exports.tracknum);
+
+    //hide the redo button 
+    if (exports.tracknum < exports.trackname.length){
+      $(`#${domElements.redodiv}`).addClass('hide').removeClass('show');
+    }
+
+  }
+
+  function undo() {
+    if (exports.tracknum == 0) {
+      return;
+    }
+    var nameinput = document.getElementById(domElements.nameInputID);
+    exports.tracknum--;
+    if (exports.trackname[exports.tracknum] != undefined) {
+      nameinput.value = exports.trackname[exports.tracknum];
+      if (nameinput.value != "") {
+        d3glycanstructure(nameinput.value);
+        cfgToGlycoCT();
+      } else {
+        $(`#${drawingSettings.drawdivID}`).empty();
+        document.getElementById(domElements.glycoCTID).innerHTML = '';
+      }
+    }
+    if (exports.tracknum === 0) {
+      //hide the undo button
+      $(`#${domElements.undodiv}`).addClass('hide').removeClass('show');
+    }
+    if (exports.tracknum < exports.trackname.length) {
+      $(`#${domElements.redodiv}`).removeClass('hide').addClass('show');
+    }
+
+  }
+
+  function redo() {
+    exports.tracknum++;
+    if (exports.tracknum == exports.trackname.length) { 
+      return;}
+    var nameinput = document.getElementById(domElements.nameInputID);
+
+    if (exports.trackname[exports.tracknum] != undefined) {
+      nameinput.value = exports.trackname[exports.tracknum];
+      if (nameinput.value != "") {
+        d3glycanstructure(nameinput.value);
+        cfgToGlycoCT();
+      } else {
+        $(`#${drawingSettings.drawdivID}`).empty();
+        document.getElementById(domElements.glycoCTID).innerHTML = '';
+      }
+    }
+    if (exports.tracknum === exports.trackname.length-1){
+      $(`#${domElements.redodiv}`).addClass('hide').removeClass('show');
+    }
+    if (exports.tracknum < exports.trackname.length) {
+      $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
+    }
   }
 
   function outputname(nameobj) {
