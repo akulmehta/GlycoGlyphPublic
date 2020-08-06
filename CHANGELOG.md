@@ -1,5 +1,22 @@
 All changes to the project will be documented in this file
 
+## 2.0.0 - 2020-x-xx
+
+Version 2.0.0 changes the code to become more modular using Rollup ES6 Imports. This makes glycoglyph into an importable library package, whose features can be accessed under the `glycoglyph` namespace. This provides several improvements in overall code structure and makes maintainability much more easier. It also makes it easier to add new features. 
+
+For example, the public directory contains all the files for anyone who directly wants to use the application, while the src directory contains modular structure of the different components of GlycoGlyph.
+
+Documentation will be updated accordingly to reflect these changes.
+
+### Fixed
+- Bug where reducing end anomeric alpha/beta doesn't show greek letters.
+- Bug where rotation of glycan changes the width of the drawing.
+- Templates now have correct reducing ends for N-glycans (beta) and O-glycans (alpha).
+
+### Added 
+- Ability to copy the name and the GlycoCT using a copy button.
+- Ability to clear the drawing area and start fresh.
+
 ## 1.1.0 - 2020-7-16
 
 ### Fixed
