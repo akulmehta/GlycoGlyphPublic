@@ -1,6 +1,6 @@
 All changes to the project will be documented in this file
 
-## 2.0.0 - 2020-x-xx
+## 2.0.0 - 2020-8-06
 
 Version 2.0.0 changes the code to become more modular using Rollup ES6 Imports. This makes glycoglyph into an importable library package, whose features can be accessed under the `glycoglyph` namespace. This provides several improvements in overall code structure and makes maintainability much more easier. It also makes it easier to add new features. 
 
