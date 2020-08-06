@@ -121,8 +121,11 @@ $(document).ready(async () => {
   glycoglyph.tracknames(name);
 
   // if you need to set a custom file path, just await here before proceeding.
-  // await glycoglyph.setMonosSVGPath('/testin/assets/images/monos.svg');
-  // await glycoglyph.setCSSPath('/testin/css/glycoglyph.css');
+  // await glycoglyph.setMonosSVGPath('/testin/assets/images/monos.svg', 'absolute');
+  // await glycoglyph.setCSSPath('../testin/css/glycoglyph.css', 'relative');
+
+  // await glycoglyph.setMonosSVGPath('../assets/images/monos.svg', 'relative');
+  // await glycoglyph.setCSSPath('../css/glycoglyph.css', 'relative');
 
   glycoglyph.listMonosaccharides();
 

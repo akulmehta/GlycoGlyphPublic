@@ -4,7 +4,7 @@ import { monoselect } from './addinfo';
 //Once all the monosaccharide symbols are fetched start appending the buttons
 export async function listMonosaccharides() {
 
-  var svgarr = await d3.xml(`${window.location.protocol}//${window.location.host}${filePaths.monosSVG}`).then(function (data) {
+  var svgarr = await d3.xml(filePaths.monosSVG).then(function (data) {
     var arr = [].map.call(data.querySelectorAll("symbol"), function (symbol) {
       return {
         id: symbol.getAttribute("data-abbr"), //use the data-abbr to get id

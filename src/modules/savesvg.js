@@ -5,7 +5,7 @@ import { d3glycanstructure } from './d3glycanstruc.js';
 async function replacecss(svgid) {
 
     //load the css file into svgStyle
-    var svgStyle = await d3.text(`${window.location.protocol}//${window.location.host}${filePaths.css}`).then(function (d) {
+    var svgStyle = await d3.text(filePaths.css).then(function (d) {
         return d;
     });
 
@@ -44,7 +44,7 @@ async function replacecss(svgid) {
 
 // Replaces <use> in the svg using the svgarr global
 async function replaceuse(svgid) {
-    var svgarr = await d3.xml(`${window.location.protocol}//${window.location.host}${filePaths.monosSVG}`).then(function (data) {
+    var svgarr = await d3.xml(filePaths.monosSVG).then(function (data) {
         var arr = [].map.call(data.querySelectorAll("symbol"), function (symbol) {
             return {
                 id: symbol.getAttribute("data-abbr"), //use the data-abbr to get id

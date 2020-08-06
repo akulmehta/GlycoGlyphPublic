@@ -20,8 +20,8 @@
   };
 
   var filePaths = {
-    monosSVG: `/assets/images/monos.svg`,
-    css: `/css/glycoglyph.css`
+    monosSVG: `${window.location.protocol}//${window.location.host}/assets/images/monos.svg`,
+    css: `${window.location.protocol}//${window.location.host}/css/glycoglyph.css`
   };
 
 
@@ -727,13 +727,24 @@
     }
   };
 
-  async function setMonosSVGPath (newPath) {
-    filePaths.monosSVG = newPath;
+  async function setMonosSVGPath(newPath, pathType) {
+    if (pathType === "absolute") {
+      filePaths.monosSVG = `${window.location.protocol}//${window.location.host}${newPath}`;
+    }
+    if (pathType === "relative") {
+      filePaths.monosSVG = newPath;
+    }
     return
   }
 
-  async function setCSSPath (newPath) {
-    filePaths.css = newPath;
+  async function setCSSPath(newPath, pathType) {
+    if (!pathType || pathType === "absolute") {
+      filePaths.css = `${window.location.protocol}//${window.location.host}${newPath}`;
+    }
+    if (pathType === "relative") {
+      filePaths.css = newPath;
+    }
+
     return;
   }
 
@@ -2202,7 +2213,7 @@
   //Once all the monosaccharide symbols are fetched start appending the buttons
   async function listMonosaccharides() {
 
-    var svgarr = await d3.xml(`${window.location.protocol}//${window.location.host}${filePaths.monosSVG}`).then(function (data) {
+    var svgarr = await d3.xml(filePaths.monosSVG).then(function (data) {
       var arr = [].map.call(data.querySelectorAll("symbol"), function (symbol) {
         return {
           id: symbol.getAttribute("data-abbr"), //use the data-abbr to get id
@@ -2556,7 +2567,7 @@
   async function replacecss(svgid) {
 
       //load the css file into svgStyle
-      var svgStyle = await d3.text(`${window.location.protocol}//${window.location.host}${filePaths.css}`).then(function (d) {
+      var svgStyle = await d3.text(filePaths.css).then(function (d) {
           return d;
       });
 
@@ -2595,7 +2606,7 @@
 
   // Replaces <use> in the svg using the svgarr global
   async function replaceuse(svgid) {
-      var svgarr = await d3.xml(`${window.location.protocol}//${window.location.host}${filePaths.monosSVG}`).then(function (data) {
+      var svgarr = await d3.xml(filePaths.monosSVG).then(function (data) {
           var arr = [].map.call(data.querySelectorAll("symbol"), function (symbol) {
               return {
                   id: symbol.getAttribute("data-abbr"), //use the data-abbr to get id

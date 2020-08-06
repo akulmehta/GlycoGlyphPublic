@@ -114,13 +114,11 @@ Contains global variables for settings etc.
 
 - `domElements`: Object. Contains the id of the elements used by GlycoGlyph for e.g. the `nameInputID` is where the CFG name will be typed.
 
-- `pathToMonosSVG`: String. The root path to the `monos.svg` specified above in the [Images](#images) section.
-
-- `pathToCSS`: String. The root path to the `glycoglyph.css` specified above in the [CSS](#css) section.
+- `filePaths`: Object. Contains the paths to the `monos.svg` file and the CSS file. Can be set using the functions in _setfilepaths.js_.
 
 - `childglycan`: Object. Contains the information for the prepared structure to be added. The childglycan holds a `child` object with all the information about the child.
 
-- `drawingSettings`: Object. Contains parameters to control the default drawing settings for GlycoGlyph and is used by _glycoglyph.d3glycanstructure_ function
+- `drawingSettings`: Object. Contains parameters to control the default drawing settings for GlycoGlyph and is used by _glycoglyph.d3glycanstructure_ function and is described in the documentation for that file.
 
 - `dynamicDrawingSettings`: Object. Contains settings which change based on user drawing situation. e.g. `multimode` toggle. 
 
@@ -316,6 +314,15 @@ Contains functions to save the svg.
 
 
 - `savesvg(svgid)`: Function. Accepts arguments `svgid` which is the ID for the SVG to be saved. This function calls `replacecss()` and `replaceuse()` in the `svgid` and then creates a new `Blob` for the SVG to be saved. At the end it redraws the glycan so that the user may still interact with it.
+
+
+_src\modules\setfilepaths.js_
+
+Contains async functions to set the file paths for the SVG and CSS files.
+
+- `setMonosSVGPath(newPath, pathType)`: Function. Accepts `newPath` as string to set the new path. The `pathType` is a string and can be set to `absolute` (default) or `relative` depending on the path you would like to pass into the project.
+
+- `setCSSPath(newPath, pathType)`: Function. Accepts `newPath` as string to set the new path. The `pathType` is a string and can be set to `absolute` (default) or `relative` depending on the path you would like to pass into the project.
 
 
 _src\modules\sortchildren.js_

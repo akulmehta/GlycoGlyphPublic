@@ -13,8 +13,8 @@ export var domElements = {
 }
 
 export var filePaths = {
-  monosSVG: `/assets/images/monos.svg`,
-  css: `/css/glycoglyph.css`
+  monosSVG: `${window.location.protocol}//${window.location.host}/assets/images/monos.svg`,
+  css: `${window.location.protocol}//${window.location.host}/css/glycoglyph.css`
 }
 
 
