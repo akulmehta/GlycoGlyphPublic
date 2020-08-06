@@ -21,7 +21,8 @@
 
   var filePaths = {
     monosSVG: `${window.location.protocol}//${window.location.host}/assets/images/monos.svg`,
-    css: `${window.location.protocol}//${window.location.host}/css/glycoglyph.css`
+    css: `${window.location.protocol}//${window.location.host}/css/glycoglyph.css`,
+    images: `${window.location.protocol}//${window.location.host}/assets/images/`
   };
 
 
@@ -728,24 +729,27 @@
   };
 
   async function setMonosSVGPath(newPath, pathType) {
-    if (pathType === "absolute") {
-      filePaths.monosSVG = `${window.location.protocol}//${window.location.host}${newPath}`;
-    }
-    if (pathType === "relative") {
-      filePaths.monosSVG = newPath;
-    }
+    filePaths.monosSVG = setPath(newPath,pathType);
     return
   }
 
   async function setCSSPath(newPath, pathType) {
+    filePaths.css = setPath(newPath,pathType);
+    return;
+  }
+
+  async function setImagesPath(newPath, pathType) {
+    filePaths.images = setPath(newPath,pathType);
+    return;
+  }
+
+  function setPath (newPath, pathType) {
     if (!pathType || pathType === "absolute") {
-      filePaths.css = `${window.location.protocol}//${window.location.host}${newPath}`;
+      return `${window.location.protocol}//${window.location.host}${newPath}`;
     }
     if (pathType === "relative") {
-      filePaths.css = newPath;
+      return newPath;
     }
-
-    return;
   }
 
   //takes the CFG glycan name and converts it into a glycan tree object and returns it as json
@@ -2386,7 +2390,7 @@
       } else {
         $(`#${f.name}gtcid`).html(`${f.glytoucan.id} 
       <button id="copyGlycoCTBtn" class="btn btn-sm btn-link copybtn" onclick="glycoglyph.copyTextFromElement('${f.name}gtcid')" title="Copy">
-        <img src="/assets/images/copy.svg" alt="copy" width="20px">
+        <img src="${filePaths.images}copy.svg" alt="copy" width="20px">
       </button>
       `);
         $(`#${f.name}details`).append(`
@@ -2724,6 +2728,7 @@
   exports.resetchildglycan = resetchildglycan;
   exports.savesvg = savesvg;
   exports.setCSSPath = setCSSPath;
+  exports.setImagesPath = setImagesPath;
   exports.setMonosSVGPath = setMonosSVGPath;
   exports.sortchildren = sortchildren;
   exports.starttemplate = starttemplate;

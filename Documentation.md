@@ -324,6 +324,8 @@ Contains async functions to set the file paths for the SVG and CSS files.
 
 - `setCSSPath(newPath, pathType)`: Function. Accepts `newPath` as string to set the new path. The `pathType` is a string and can be set to `absolute` (default) or `relative` depending on the path you would like to pass into the project.
 
+- `setImagesPath(newPath, pathType)`: Function. Accepts `newPath` as string to set the new path. The `pathType` is a string and can be set to `absolute` (default) or `relative` depending on the path you would like to pass into the project.
+
 
 _src\modules\sortchildren.js_
 

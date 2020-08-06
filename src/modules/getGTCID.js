@@ -1,4 +1,4 @@
-import { domElements } from './globalvars.js';
+import { domElements, filePaths } from './globalvars.js';
 import { glycantojson } from './glycantoJSON.js';
 import { jsonToGlycoCT } from './glycoct.js';
 
@@ -68,7 +68,7 @@ export function drawGTCIDTable(glytoucanData) {
     } else {
       $(`#${f.name}gtcid`).html(`${f.glytoucan.id} 
       <button id="copyGlycoCTBtn" class="btn btn-sm btn-link copybtn" onclick="glycoglyph.copyTextFromElement('${f.name}gtcid')" title="Copy">
-        <img src="/assets/images/copy.svg" alt="copy" width="20px">
+        <img src="${filePaths.images}copy.svg" alt="copy" width="20px">
       </button>
       `)
       $(`#${f.name}details`).append(`
