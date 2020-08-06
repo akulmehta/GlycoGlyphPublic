@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D8D8D8;stroke:#333333;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:#D8D8D8;stroke:#333333;stroke-width:25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;stroke:#333333;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;stroke:#333333;stroke-width:25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="st0" d="M344,152.1V21.6H150.7c-9.5,0-17.2,7.7-17.2,17.3v398c0,9.5,7.7,17.3,17.2,17.3h307.9
+		c9.5,0,17.3-7.7,17.3-17.3V152.1H344z"/>
+	<polygon class="st1" points="344.5,21.6 344.5,151.3 475.8,151.3 	"/>
+</g>
+<g>
+	<path class="st2" d="M263,190.4V59.9H69.7c-9.5,0-17.2,7.7-17.2,17.2v398c0,9.5,7.7,17.3,17.2,17.3h307.9c9.5,0,17.3-7.7,17.3-17.3
+		V190.4H263z"/>
+	<polygon class="st3" points="263.5,59.9 263.5,189.7 394.8,189.7 	"/>
+</g>
+</svg>

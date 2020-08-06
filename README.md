@@ -1,4 +1,3 @@
-
 # GlycoGlyph
 
 ## Description
@@ -41,29 +40,35 @@ GlycoGlyph uses the following:
 	- Bootstrap v4.0.0-alpha.6 css
 
 ## Getting Started
+
+The public directory contains files to implement GlycoGlyph on a website.
+
 Use either:
-1. The minified glycoglyph-min.js with index.html
+1. The minified glycoglyph.min.js with index-min.html
 ```
-GlycoGlyph
+public
+└─ index-min.html
+└─ assets\*.*
+└─ css\*.*
+└─ js
+    └─ glycoglyph.min.js
+    └─ initialize.js
+    └─ introtut.js
+```
+
+2. The non-minified glycoglyph.js with index.html
+```
+public
 └─ index.html
-└─ img\*.*
+└─ assets\*.*
 └─ css\*.*
-└─ scripts
-    └─ glycoglyph-min.js
+└─ js
+    └─ glycoglyph.js
     └─ initialize.js
     └─ introtut.js
 ```
-3. Use individual js components from the lib folder with the index.1.html file.
-```
-GlycoGlyph
-└─ index.1.html
-└─ img\*.*
-└─ css\*.*
-└─ scripts
-    └─ lib\*.js
-    └─ initialize.js
-    └─ introtut.js
-```
+
+The `src` directory contains all source code files which are only required for development. The files in the `modules` directory of the `src` folder is compiled into one using Rollup.js.
 
 ## Full Documentation
 [Full Documentation Here.](Documentation.md)

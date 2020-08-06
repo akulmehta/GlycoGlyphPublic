@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>GlycoGlyph</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <script src="https://d3js.org/d3.v5.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+    integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+    integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="css/glycoglyph.css">
+
+</head>
+
+<body>
+
+  <!-- Div for the main tool copy paste this code where ever you would like to draw the structure -->
+  <div id="glycoglyphdiv" class="gdncontainer">
+    <div class="container">
+      <div class="d-flex mb-1">
+        <div class="mr-auto">
+          <h4>GlycoGlyph</h4>
+        </div>
+        <div class="mr-2">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="shortcuts" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Shortcuts
+            </button>
+            <div class="dropdown-menu" style="min-width: 500px" aria-labelledby="shortcuts">
+              <ul>
+                <li>Press and hold "M" key to toggle Multi-Mode to add/replace multiple monosaccharides.<br>
+                  Multi-Mode can only be turned on after adding first monosaccharide and in Add or Replace modes.</li>
+                <li>Ctrl+Z to Undo</li>
+                <li>Ctrl+Y to Redo</li>
+                <li>Press "D" key on keyboard when the mouse is over a symbol to delete the symbol.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="mr-2">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="citebtn" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              How To Cite
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" style="min-width: 500px" aria-labelledby="citebtn">
+              <div class="alert alert-primary" role="alert">
+                <strong>Please Cite: </strong>
+                <a href="https://doi.org/10.1093/bioinformatics/btaa190" target="_blank"
+                  class="alert-link">https://doi.org/10.1093/bioinformatics/btaa190</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mr-2">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="videoTutorial"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Video Tutorial
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="videoTutorial" style="min-width: 600px;">
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z1zEZGO_wKY" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="mr-2">
+          <h6>
+            <button type="button" class="btn btn-sm btn-light" id="tutorialbtn" onclick="startTutorial()">Introduction
+              Tutorial</button>
+          </h6>
+        </div>
+        <div class="mr-2">v2.0.0</div>
+
+      </div>
+
+      <div class="row">
+
+        <label for="cfg_name" class="col-sm-1 col-form-label">Name: </label>
+        <div class="col-sm-9">
+          <div class="input-group mb-3">
+            <input type="text" id="cfg_name" class="form-control" autocomplete="off">
+            <div class="input-group-append">
+              <button id="copyCFGName" class="btn btn-light mr-2" onclick="glycoglyph.copyTextFromElement('cfg_name')"
+                title="Copy Name" style="cursor: pointer">
+                <img src="/assets/images/copy.svg" alt="copy" width="20px">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="undoredobtndiv" class="col-sm-2 row">
+          <div id="undodiv" class="hide">
+            <button class="btn btn-secondary  mr-2" onclick="glycoglyph.undo()" title="Undo">
+              <img src="/assets/images/undo.svg" width="16px" alt="">
+            </button>
+          </div>
+          <div id="redodiv" class="hide">
+            <button class="btn btn-secondary  mr-2" onclick="glycoglyph.redo()" title="Redo">
+              <img src="/assets/images/redo.svg" width="16px" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-7">
+
+          <!-- Describe what will be added in the Prepared Structure -->
+          <div id="selection" class="mb-3">
+            <span>Prepared Structure: </span>
+            <span id="subscheck"></span>
+            <span id="monocheck"></span>
+            <span id="linkagecheck"></span>
+          </div>
+
+          <!-- Drawing Tools Navigation Bar -->
+          <div class="gdn-nav">
+            <ul class="gdn-navul">
+
+              <li class="gdndropdown gdn-navli" id="templatesdropdown">
+                <span>Templates</span>
+                <div class="gdndropdown-content">
+                  <!-- enter list of templates -->
+                  <ul class="gdndropdown2ul">
+                    <li class="gdndropdown2li">
+                      <span>N-Glycans</span>
+                      <div class="gdndropdown-content2">
+                        <ul>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Chitobiose-core')">Chitobiose Core</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core')">N-Core</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core-fuc')">N-Core-Fucosylated</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core-bis')">N-Core-Bisected</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core-bis-fuc')">N-Core-Bisected-Fucosylated</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core-hyb')">N-Core-Hybrid</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-core-hyb-fuc')">N-Core-Hybrid-Fucosylated</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('N-oligoman')">N-Oligomannose</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="gdndropdown2li">
+                      <span>O-Glycans</span>
+                      <div class="gdndropdown-content2">
+                        <ul>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-1')">Core-1</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-2')">Core-2</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-3')">Core-3</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-4')">Core-4</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-5')">Core-5</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-6')">Core-6</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-7')">Core-7</button>
+                          </li>
+                          <li class="template">
+                            <button class="btn btn-outline-primary btn-sm"
+                              onclick="glycoglyph.starttemplate('Core-8')">Core-8</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+
+                    <li class="gdndropdown2li">
+                      <span>Terminals</span>
+                      <div class="gdndropdown-content2" style="width: 400px;">
+                        <div id="terminalslist" class="d-flex flex-wrap">
+                        </div>
+                      </div>
+                    </li>
+
+                  </ul>
+                </div>
+              </li>
+
+              <li class="gdndropdown gdn-navli" id="monosaccharidedropdown">
+                <span>Monosaccharides</span>
+                <div class="gdndropdown-content">
+                  <!-- enter list of monosaccharides -->
+                  <!-- list of monosaccharides automatically populated by listmonos.js -->
+                  <label for="commonmonolist">Most Common Monosaccharides:</label>
+                  <div id="commonmonolist" class="monosaccharidelist">
+                  </div>
+                  <label for="fullmonolist">All Monosaccharides</label>
+                  <div id="fullmonolist" class="monosaccharidelist">
+                  </div>
+                </div>
+              </li>
+
+              <li class="gdndropdown gdn-navli">
+                <span>Linkage</span>
+                <div class="gdndropdown-content">
+                  <!-- enter list of linkage -->
+                  <label for="orientlist">Anomeric State: </label>
+                  <div id="orientlist">
+                    <label for="orientation1" class="btn btn-radio">
+                      <input type="radio" id="orientation1" name="orientation" value="a" checked> a
+                    </label>
+                    <label for="orientation2" class="btn btn-radio">
+                      <input type="radio" id="orientation2" name="orientation" value="b"> b
+                    </label>
+                    <label for="orientation3" class="btn btn-radio">
+                      <input type="radio" id="orientation3" name="orientation" value="?"> ?
+                    </label>
+                  </div>
+                  <label for="anoposlist">Anomeric Position: </label>
+                  <div id="anoposlist">
+                    <label for="anopos1" class="btn btn-radio">
+                      <input type="radio" id="anopos1" name="anopos" value="1" checked> 1
+                    </label>
+                    <label for="anopos2" class="btn btn-radio">
+                      <input type="radio" id="anopos2" name="anopos" value="2"> 2
+                    </label>
+                    <label for="anopos3" class="btn btn-radio">
+                      <input type="radio" id="anopos3" name="anopos" value="3"> 3
+                    </label>
+                    <label for="anopos4" class="btn btn-radio">
+                      <input type="radio" id="anopos4" name="anopos" value="?"> ?
+                    </label>
+                  </div>
+                  <label for="acclist">Acceptor Position: </label>
+                  <div id="acclist">
+                    <label for="accpos1" class="btn btn-radio">
+                      <input type="radio" id="accpos1" name="accpos" value="1"> 1
+                    </label>
+                    <label for="accpos2" class="btn btn-radio">
+                      <input type="radio" id="accpos2" name="accpos" value="2"> 2
+                    </label>
+                    <label for="accpos3" class="btn btn-radio">
+                      <input type="radio" id="accpos3" name="accpos" value="3"> 3
+                    </label>
+                    <label for="accpos4" class="btn btn-radio">
+                      <input type="radio" id="accpos4" name="accpos" value="4" checked> 4
+                    </label>
+                    <label for="accpos5" class="btn btn-radio">
+                      <input type="radio" id="accpos5" name="accpos" value="5"> 5
+                    </label>
+                    <label for="accpos6" class="btn btn-radio">
+                      <input type="radio" id="accpos6" name="accpos" value="6"> 6
+                    </label>
+                    <label for="accpos7" class="btn btn-radio">
+                      <input type="radio" id="accpos7" name="accpos" value="7"> 7
+                    </label>
+                    <label for="accpos8" class="btn btn-radio">
+                      <input type="radio" id="accpos8" name="accpos" value="8"> 8
+                    </label>
+                    <label for="accpos9" class="btn btn-radio">
+                      <input type="radio" id="accpos9" name="accpos" value="9"> 9
+                    </label>
+                    <label for="accpos10" class="btn btn-radio">
+                      <input type="radio" id="accpos10" name="accpos" value="N"> N
+                    </label>
+                    <label for="accpos11" class="btn btn-radio">
+                      <input type="radio" id="accpos11" name="accpos" value="?"> ?
+                    </label>
+                    <label for="accpos12" class="btn btn-radio">
+                      <input type="radio" id="accpos12" name="accpos" value=""> _
+                    </label>
+                  </div>
+                  <button class="btn btn-primary" onclick="glycoglyph.addLinkage()">Add Linkage</button>
+                </div>
+              </li>
+
+              <li class="gdndropdown gdn-navli">
+                <span>Substitutions</span>
+                <div class="gdndropdown-content">
+                  <!-- enter list of substituents -->
+                  <div class="form-group">
+                    <label for="subposlist">Position: </label>
+                    <div id="subposlist">
+                      <label for="subpos1" class="btn btn-radio">
+                        <input type="radio" id="subpos1" name="subpos" value="1"> 1
+                      </label>
+                      <label for="subpos2" class="btn btn-radio">
+                        <input type="radio" id="subpos2" name="subpos" value="2"> 2
+                      </label>
+                      <label for="subpos3" class="btn btn-radio">
+                        <input type="radio" id="subpos3" name="subpos" value="3"> 3
+                      </label>
+                      <label for="subpos4" class="btn btn-radio">
+                        <input type="radio" id="subpos4" name="subpos" value="4"> 4
+                      </label>
+                      <label for="subpos5" class="btn btn-radio">
+                        <input type="radio" id="subpos5" name="subpos" value="5"> 5
+                      </label>
+                      <label for="subpos6" class="btn btn-radio">
+                        <input type="radio" id="subpos6" name="subpos" value="6"> 6
+                      </label>
+                      <label for="subpos7" class="btn btn-radio">
+                        <input type="radio" id="subpos7" name="subpos" value="7"> 7
+                      </label>
+                      <label for="subpos8" class="btn btn-radio">
+                        <input type="radio" id="subpos8" name="subpos" value="8"> 8
+                      </label>
+                      <label for="subpos9" class="btn btn-radio">
+                        <input type="radio" id="subpos9" name="subpos" value="9"> 9
+                      </label>
+                      <label for="subpos10" class="btn btn-radio">
+                        <input type="radio" id="subpos10" name="subpos" value="?"> ?
+                      </label>
+                    </div>
+
+                    <label for="subtype">Type: </label>
+                    <div id="subtypelist">
+                      <label for="subtype1" class="btn btn-radio">
+                        <input type="radio" id="subtype1" name="subtype" value="Ac" checked> Acetyl
+                      </label>
+                      <label for="subtype2" class="btn btn-radio">
+                        <input type="radio" id="subtype2" name="subtype" value="S"> Sulfate
+                      </label>
+                      <label for="subtype3" class="btn btn-radio">
+                        <input type="radio" id="subtype3" name="subtype" value="P"> Phosphate
+                      </label>
+                      <label for="subtype4" class="btn btn-radio">
+                        <input type="radio" id="subtype4" name="subtype" value="Gc"> Glycolyl
+                      </label>
+                      <label for="subtype5" class="btn btn-radio">
+                        <input type="radio" id="subtype5" name="subtype" value="Me"> Methyl
+                      </label>
+                      <label for="subtype6" class="btn btn-radio">
+                        <input type="radio" id="subtype6" name="subtype" value="N"> Amino
+                      </label>
+                      <label for="subtype7" class="btn btn-radio">
+                        <input type="radio" id="subtype7" name="subtype" value="other"> Other
+                      </label>
+                    </div>
+                    <script>
+                      //script to show the othersub field below on toggle of radio button
+                      $('[name="subtype"]').on('change', function () {
+                        let show = $(this)[0];
+                        if (show.value === "other") {
+                          $('#othersub').collapse('show');
+                        } else {
+                          $('#othersub').collapse('hide');
+                        }
+                      });
+                    </script>
+                    <div id="othersub" class="collapse">
+                      <label for="substituentother">If Other Type Substituent Information: </label>
+                      <input type="text" id="substituentother" class="form-control">
+                      <small>Add substituent name. For example: "pyruvate"</small>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" onclick="glycoglyph.addSub()">Add Substitution</button>
+                  <button class="btn btn-primary" onclick="glycoglyph.clearSub()">Clear Substitution</button>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+
+          <label for="modelist" id="modelistlabel" class="mt-3">Mode: </label>
+          <div id="modelist">
+            <label for="addmode" class="btn btn-radio" title="Add Monosaccharide">
+              <input type="radio" id="addmode" name="mode" value="add" checked>
+              <img src="/assets/images/plus-solid.svg" alt="add">
+              Add
+            </label>
+            <label for="replacemode" class="btn btn-radio" title="Replace Monosaccharide/Linkage">
+              <input type="radio" id="replacemode" name="mode" value="replace">
+              <img src="/assets/images/exchange-alt-solid.svg" alt="replace">
+              Replace
+            </label>
+            <label for="deletemode" class="btn btn-radio" title="Delete Monosaccharide and Subsequent Nodes">
+              <input type="radio" id="deletemode" name="mode" value="delete">
+              <img src="/assets/images/eraser-solid.svg" alt="delete">
+              Delete
+            </label>
+            <div id="multimode" class="hide" title="Can add/replace multiple nodes."></div>
+          </div>
+
+
+
+
+          <div class="form-group col-5">
+            <div class="d-flex flex-row">
+              <div class="mr-auto p-2">
+                <label for="glycoCT">GlycoCT</label>
+              </div>
+              <div class="p-2">
+                <button id="copyGlycoCTBtn" class="btn btn-sm btn-secondary"
+                  onclick="glycoglyph.copyTextFromElement('glycoCT')" title="Copy GlycoCT">
+                  <img src="/assets/images/copy.svg" alt="copy" width="20px">
+                </button>
+              </div>
+            </div>
+            <div class="form-control" name="glycoCT" id="glycoCT" style="height: 100px; overflow-y: scroll;">
+            </div>
+          </div>
+
+
+          <button type="button" name="" id="getGTCIDBtn" class="btn btn-primary"
+            onclick="glycoglyph.generateGTCIDTable()">
+            Get GlyTouCan ID
+          </button>
+          <div id="gtcid"></div>
+
+        </div>
+        <div class="col-5">
+          <div class="d-flex flex-row col-11">
+            <div class="mr-auto mt-3">
+              <label for="d3glycanstruc">Draw Below:</label>
+            </div>
+            <div class="mt-2 mr-2" id="clearDrawingAreaColumn">
+              <button class="btn btn-secondary" onclick="glycoglyph.cleardrawingarea();" title="Clear">
+                <img src="/assets/images/new.svg" alt="Clear" width="20px">
+              </button>
+            </div>
+
+            <div class="mt-2 mr-2" id="settingscolumn">
+              <!-- drawing settings are hidden -->
+              <div id="glydrawSettings" class="dropdown">
+                <button type="button" class="dropbtn btn btn-secondary" id="drawSettingsBtn" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img src="/assets/images/cog.svg" alt="Settings" width="20px">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" id="glycoglyphDrawingSettings"
+                  aria-labelledby="drawSettingsBtn">
+                  <form>
+                    <div class="container">
+                      <h5>Node Settings</h5>
+                      <div class="form-group row">
+                        <label for="symbsize" class="col-sm-7 col-form-label">Symbol Size</label>
+                        <div class="col-sm-5">
+                          <input type="number" class="form-control" id="symbsize" value="25">
+                        </div>
+                      </div>
+                      <select id="drawingareachoice" style="min-width:80%" class="form-control">
+                        <option value="fixglycansize"> Fix Glycan Scaling </option>
+                        <option value="fixdrawingarea"> Fit Glycan in Box </option>
+                      </select>
+                      <label for="fucopt">Fucose Drawing:</label>
+                      <select id="fucopt" style="min-width:80%" class="form-control">
+                        <option value="fucout">Fucose Outwards</option>
+                        <option value="fucleft"> Fucose Left</option>
+                        <option value="fucdown"> Fucose Name Dependant</option>
+                        <option value="fucoriginal"> Fucose GLAD 1.0</option>
+                      </select>
+                      <hr>
+                      <h5>Linkage Settings</h5>
+                      <div>
+                        <input type="checkbox" id="linkageVisible" checked>
+                        <label for="linkageVisible" class="form-check-label">Visible</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="linkRotate" checked>
+                        <label for="linkRotate" class="form-check-label">Rotate Along Link</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="linkAbbr">
+                        <label for="linkAbbr" class="form-check-label">Abbreviated Linkage Text</label>
+                      </div>
+                      <div class="form-group row">
+                        <label for="linkFontSize" class="col-sm-7 col-form-label">Linkage Font Size</label>
+                        <div class="col-sm-5">
+                          <input type="number" class="form-control" id="linkFontSize" value="12">
+                        </div>
+                      </div>
+
+                      <h5>Drawing Settings</h5>
+                      <div class="form-group row">
+                        <label for="orientation">Glycan Orientation</label>
+                        <select id="orientation" style="min-width:80%" class="form-control">
+                          <option value="bottom-to-top">Bottom to Top</option>
+                          <option value="right-to-left">Right to Left</option>
+                        </select>
+                      </div>
+
+                      <button type="button" class="btn btn-primary" id="redraw">Redraw</button>
+                    </div>
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2 mr-2" id="snapshotcolumn">
+              <button class="btn btn-secondary" onclick="glycoglyph.savesvg('d3glycanstrucSVG')" title="Save SVG">
+                <img src="/assets/images/camera.svg" alt="Save SVG" width="30px">
+              </button>
+            </div>
+
+          </div>
+
+
+          <div id="d3glycanstruc">
+            <!-- Here is where the svg will be created for the drawings -->
+          </div>
+        </div>
+
+        <!-- Tutorial notices -->
+        <div id="tutorialnotice" class="hide">
+          <div class="tutorialoverlay">
+          </div>
+          <div id="tutorialstatus" class="container alert alert-info fixed-bottom" role="alert">
+            <button type="button" class="close btn-sm" onclick="endTutorial()">
+              <span aria-hidden="true">&times;</span>
+              <small>Exit</small>
+            </button>
+            <h4 class="alert-heading">Welcome to the GlycoGlyph Introduction Tutorial</h4>
+            Press:
+            'Right Arrow' or '&rarr;' to move ahead |
+            'Left Arrow' or '&larr;' to move back |
+            'Escape' or click on the "&times; Exit" in this popup to exit the tutorial
+          </div>
+        </div>
+
+        <div id="endtutorialnotice" class="container alert alert-success fixed-bottom hide" role="alert">
+          <button type="button" class="close btn-sm" onclick="endTutorial()">
+            <span aria-hidden="true">&times;</span>
+            <small>Exit</small>
+          </button>
+          <h4 class="alert-heading">End of Tutorial. Press Escape or click on the "&times; Close" button to exit
+            tutorial. </h4>
+          For more information check the documentation.
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- If using the compiled file use just this and  comment/delete the rest of the files. -->
+    <script src="js/glycoglyph.min.js"></script>
+    <!-- Enter any other scripts before initializing the introductory tutorial and the interface -->
+    <script src="js/initialize.js"></script>
+    <script src="js/introtut.js"></script>
+
+  </div>
+
+
+
+</body>
+
+</html>
