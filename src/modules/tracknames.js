@@ -10,7 +10,6 @@ export function tracknames(name) {
     $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
   }
   if (trackname[tracknum] == name) {
-    console.log('not adding');
     return;
   }
   tracknum++;

@@ -2,14 +2,22 @@
 export function copyTextFromElement(elementID) {
   let element = document.getElementById(elementID); //select the element
 
-  let elementText = element.textContent; //get the text content from the element
+  let elementText = element.innerText; //get the text content from the element
 
   if (element.tagName == 'INPUT' ) {
     elementText = element.value;
   }
 
-  copyText(elementText); //use the copyText function below
-  alert('Copied');
+  
+  elementText = elementText.trim();
+
+  if (elementText != '') {
+    copyText(elementText); //use the copyText function below
+    alert('Copied: \n' + elementText);
+  }else {
+    alert('Nothing to copy.');
+  }
+  
 }
 
 //If you only want to put some Text in the Clipboard just use this function
@@ -17,3 +25,4 @@ export function copyTextFromElement(elementID) {
 function copyText(text) {
   navigator.clipboard.writeText(text);
 }
+

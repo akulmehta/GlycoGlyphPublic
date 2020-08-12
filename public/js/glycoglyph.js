@@ -1,4 +1,4 @@
-//  v2.0.0 Copyright 2020 Akul Mehta
+//  v2.0.1 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -1303,7 +1303,6 @@
       $(`#${domElements.undodiv}`).removeClass('hide').addClass('show');
     }
     if (exports.trackname[exports.tracknum] == name) {
-      console.log('not adding');
       return;
     }
     exports.tracknum++;
@@ -2387,7 +2386,7 @@
     glytoucanData.forEach(f => {
       if (f.glytoucan.response == 'Error in Structure') {
         $(`#${f.name}gtcid`).html(`Error in Structure`);
-      } else if (f.glytoucan.response == 'Not Available') {
+      } else if (f.glytoucan.response == 'Not Available' || f.glytoucan.id == "") {
         $(`#${f.name}gtcid`).html(`Not Available`);
       } else if (f.glytoucan.response == 'Error Connecting') {
         $(`#${f.name}gtcid`).html(`Error Connecting`);
@@ -2440,7 +2439,7 @@
             id: data.id,
             response: 'Error in Structure'
           };
-        } else if (data.id === "no accnumber") { //if No Accession Number 
+        } else if (data.id === "no accnumber" || data.id === "") { //if No Accession Number 
           return {
             id: data.id,
             response: "Not Available"
@@ -2463,6 +2462,15 @@
   }
 
   async function fetchGlyGenData(id) {
+    if (id === "") {
+      console.log('GlyTouCan ID is missing');
+      return {
+        glygen: {
+          url: undefined,
+          response: 'Not Available'
+        }
+      }
+    }
     let glygen = fetch(`https://api.glygen.org/glycan/detail/${id}/`)
       .then(resp => resp.json())
       .then(data => {
@@ -2496,6 +2504,14 @@
         console.error(err);
         if (err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
           console.log('GlyTouCan ID does not exist in glygen');
+          return {
+            glygen: {
+              url: undefined,
+              response: 'Not Available'
+            }
+          }
+        } else if (err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
+          console.log('GlyTouCan ID is missing');
           return {
             glygen: {
               url: undefined,
@@ -2673,14 +2689,22 @@
   function copyTextFromElement(elementID) {
     let element = document.getElementById(elementID); //select the element
 
-    let elementText = element.textContent; //get the text content from the element
+    let elementText = element.innerText; //get the text content from the element
 
     if (element.tagName == 'INPUT' ) {
       elementText = element.value;
     }
 
-    copyText(elementText); //use the copyText function below
-    alert('Copied');
+    
+    elementText = elementText.trim();
+
+    if (elementText != '') {
+      copyText(elementText); //use the copyText function below
+      alert('Copied: \n' + elementText);
+    }else {
+      alert('Nothing to copy.');
+    }
+    
   }
 
   //If you only want to put some Text in the Clipboard just use this function
