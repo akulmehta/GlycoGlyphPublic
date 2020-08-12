@@ -2386,7 +2386,7 @@
     glytoucanData.forEach(f => {
       if (f.glytoucan.response == 'Error in Structure') {
         $(`#${f.name}gtcid`).html(`Error in Structure`);
-      } else if (f.glytoucan.response == 'Not Available') {
+      } else if (f.glytoucan.response == 'Not Available' || f.glytoucan.id == "") {
         $(`#${f.name}gtcid`).html(`Not Available`);
       } else if (f.glytoucan.response == 'Error Connecting') {
         $(`#${f.name}gtcid`).html(`Error Connecting`);
@@ -2439,7 +2439,7 @@
             id: data.id,
             response: 'Error in Structure'
           };
-        } else if (data.id === "no accnumber") { //if No Accession Number 
+        } else if (data.id === "no accnumber" || data.id === "") { //if No Accession Number 
           return {
             id: data.id,
             response: "Not Available"
@@ -2462,6 +2462,15 @@
   }
 
   async function fetchGlyGenData(id) {
+    if (id === "") {
+      console.log('GlyTouCan ID is missing');
+      return {
+        glygen: {
+          url: undefined,
+          response: 'Not Available'
+        }
+      }
+    }
     let glygen = fetch(`https://api.glygen.org/glycan/detail/${id}/`)
       .then(resp => resp.json())
       .then(data => {
@@ -2495,6 +2504,14 @@
         console.error(err);
         if (err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
           console.log('GlyTouCan ID does not exist in glygen');
+          return {
+            glygen: {
+              url: undefined,
+              response: 'Not Available'
+            }
+          }
+        } else if (err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
+          console.log('GlyTouCan ID is missing');
           return {
             glygen: {
               url: undefined,
