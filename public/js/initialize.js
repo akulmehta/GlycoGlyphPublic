@@ -116,6 +116,9 @@ $(window).keyup(function (e) {
 // after everything is loaded push the name into the trackname to start tracking
 // if there was a name left in the field
 $(document).ready(async () => {
+  document.getElementById('glycoglyphVersion').innerHTML = `
+  <a href="https://github.com/akulmehta/GlycoGlyphPublic/blob/master/CHANGELOG.md" target="_blank">${glycoglyph.version}</a>
+  `;
   var name = document.getElementById(glycoglyph.domElements.nameInputID).value;
   name = "";
   glycoglyph.tracknames(name);

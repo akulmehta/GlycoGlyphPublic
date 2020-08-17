@@ -83,7 +83,7 @@
               Tutorial</button>
           </h6>
         </div>
-        <div class="mr-2">v2.0.1</div>
+        <div class="mr-2" id="glycoglyphVersion"></div>
 
       </div>
 
@@ -425,22 +425,31 @@
 
 
 
-
-          <div class="form-group col-5">
-            <div class="d-flex flex-row">
-              <div class="mr-auto p-2">
-                <label for="glycoCT">GlycoCT</label>
+          <div class="row mb-4 mt-4">
+            <div class="col-5 mr-2 p-2" style="border: 1px solid #cccccc">
+              <div class="d-flex flex-row">
+                <div class="mr-auto p-2">
+                  <label for="glycoCT">GlycoCT</label>
+                </div>
+                <div class="p-2">
+                  <button id="copyGlycoCTBtn" class="btn btn-sm btn-secondary"
+                    onclick="glycoglyph.copyTextFromElement('glycoCT')" title="Copy GlycoCT">
+                    <img src="/assets/images/copy.svg" alt="copy" width="20px">
+                  </button>
+                </div>
               </div>
-              <div class="p-2">
-                <button id="copyGlycoCTBtn" class="btn btn-sm btn-secondary"
-                  onclick="glycoglyph.copyTextFromElement('glycoCT')" title="Copy GlycoCT">
-                  <img src="/assets/images/copy.svg" alt="copy" width="20px">
-                </button>
+              <div class="form-control" name="glycoCT" id="glycoCT" style="height: 100px; overflow-y: scroll;">
               </div>
             </div>
-            <div class="form-control" name="glycoCT" id="glycoCT" style="height: 100px; overflow-y: scroll;">
+
+            <div class="col-5 mr-2 p-2" style="border: 1px solid #cccccc">
+              <button type="button" class="btn btn-primary" onclick="glycoglyph.outputParams()">
+                Calculate Mass
+              </button>
+              <div id="calculated_parametersdiv" class="mt-3"></div>
             </div>
           </div>
+
 
 
           <button type="button" name="" id="getGTCIDBtn" class="btn btn-primary"

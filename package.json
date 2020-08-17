@@ -1,6 +1,6 @@
 {
   "name": "glycoglyph",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "GlycoGlyph is a glycan structure drawing tool",
   "keywords": [
     ""
@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.16.2",
+    "rollup": "^2.23.1",
     "rollup-plugin-node-resolve": "^3",
-    "rollup-plugin-terser": "^5.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "serve": "^11.0.2"
   },
   "dependencies": {},

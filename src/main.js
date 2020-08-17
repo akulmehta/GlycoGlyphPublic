@@ -1,3 +1,4 @@
+export let version = 'v2.1.0';
 export * from './modules/globalvars.js';
 export * from './modules/setfilepaths.js';
 export * from './modules/d3glycanstruc.js';
@@ -17,8 +18,7 @@ export * from './modules/savesvg.js';
 export * from './modules/sortchildren.js';
 export * from './modules/copyTextFromElement.js';
 export * from './modules/cleardrawingarea.js';
-
-
+export * from './modules/calcmassparams.js';
 
 
 // even though Rollup is bundling all your files together, errors and

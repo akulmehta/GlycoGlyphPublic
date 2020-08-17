@@ -175,6 +175,14 @@ Contains functions to add monosaccharide to the glycan object and output new nam
 - `addfirstmono()`: Function. Special case, while adding the first monosaccharide, since there is no path a special function is called.
 
 
+_src\modules\calcmassparams.js_
+
+Contains functions to calculate the mass parameters of a glycan
+
+- `outputParams()`: Function. Retrieves the name from the DOM. Checks if name is present. If it is present calls the `calcMassParams()` function with the name.
+- `calcMassParams(name)`: Function. Accepts the name as an argument. uses the `glycantojson()` function and `d3.hierarchy` to produce the list of monosaccharides and calculates the monoisotopic mass, along with the monosaccharide count. If any monosaccharides or substituents are not identified, they are counted separately. Function returns an object with the information.
+
+
 _src\modules\d3glycanstructure.js_
 
 
