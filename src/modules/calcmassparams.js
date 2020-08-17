@@ -110,7 +110,7 @@ export function outputParams() {
   if (name !== "") {
     let params = calcMassParams(name);
     let output = `Monoisotopic Mass: 
-    <a href="#" onclick="glycoglyph.copyTextFromElement('calculatedMonoisotopicMass')" title="Click to copy.">
+    <a href="#" onclick="glycoglyph.copyTextFromElement('calculatedMonoisotopicMass')" title="Click to Copy">
     <span id="calculatedMonoisotopicMass">${params.monoisotopicMass}</span>
     </a> <br>
     Monosaccharide Count: ${params.monosaccharideCount}`;
