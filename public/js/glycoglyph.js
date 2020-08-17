@@ -3233,7 +3233,7 @@
 
     let div = document.getElementById(domElements.parametersdiv);
     if (name !== "") {
-      let params = calcparams(name);
+      let params = calcMassParams(name);
       let output = `Monoisotopic Mass: 
     <a href="#" onclick="glycoglyph.copyTextFromElement('calculatedMonoisotopicMass')" title="Click to copy.">
     <span id="calculatedMonoisotopicMass">${params.monoisotopicMass}</span>
@@ -3254,7 +3254,7 @@
 
   }
 
-  function calcparams(name) {
+  function calcMassParams(name) {
 
     let glycanObj = d3.hierarchy(JSON.parse(glycantojson(name)));
 
@@ -3330,7 +3330,7 @@
   exports.addfirstmono = addfirstmono;
   exports.addmono = addmono;
   exports.appendTerminals = appendTerminals;
-  exports.calcparams = calcparams;
+  exports.calcMassParams = calcMassParams;
   exports.cfgToGlycoCT = cfgToGlycoCT;
   exports.childglycan = childglycan;
   exports.clearSub = clearSub;
