@@ -104,9 +104,11 @@ var mwlist = {
 }
 
 export function outputParams() {
-  let params = calcparams();
+  var name = document.getElementById(domElements.nameInputID).value;
+
   let div = document.getElementById(domElements.parametersdiv);
-  if (params) {
+  if (name !== "") {
+    let params = calcparams(name);
     let output = `Monoisotopic Mass: 
     <a href="#" onclick="glycoglyph.copyTextFromElement('calculatedMonoisotopicMass')" title="Click to copy.">
     <span id="calculatedMonoisotopicMass">${params.monoisotopicMass}</span>
@@ -127,11 +129,7 @@ export function outputParams() {
 
 }
 
-export function calcparams() {
-  var name = document.getElementById(domElements.nameInputID).value;
-  if (name == "") {
-    return;
-  }
+export function calcparams(name) {
 
   let glycanObj = d3.hierarchy(JSON.parse(glycantojson(name)));
 
