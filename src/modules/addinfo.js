@@ -44,6 +44,8 @@ export function clearSub() {
   childglycan.child.substituent = "";
   makechildglycanname();
 }
+
+
 //function on what to do when monosaccharide is selected
 export function monoselect(mono) {
   if (mono === "Unknown") {
@@ -57,6 +59,7 @@ export function monoselect(mono) {
     }
   }
   childglycan.child.monosaccharide = mono;  // add/overwrite monosaccharide to the childglycan object
+  childglycan.child.children = [];
   $('#' + domElements.preparedMonosaccharideSpan).empty().append(mono);
   makechildglycanname();
 }

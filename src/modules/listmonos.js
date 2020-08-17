@@ -13,9 +13,10 @@ export async function listMonosaccharides() {
         fullname: symbol.getAttribute("data-shortname") //use the data-shortname to get the shortname
       };
     });
-    // console.log(svgarr);
+    // console.log(arr);
     return arr;
   });
+
 
   svgarr.forEach(mono => {
     appendButton(mono, domElements.fullMonoList);
