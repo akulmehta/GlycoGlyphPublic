@@ -1,5 +1,17 @@
 All changes to the project will be documented in this file
 
+## 2.1.0 - 2020-xx-xx
+
+### Changed
+- Version number is now rendered programmatically requiring changes in fewer places in the code.
+
+### Added
+- Ability to calculate mass
+
+### Fixed
+- Issue [#10](https://github.com/akulmehta/GlycoGlyphPublic/issues/10) where there was some issues adding monosaccharides after adding terminals with multimode.
+
+
 ## 2.0.1 - 2020-08-12
 
 ### Fixed

@@ -1,3 +1,5 @@
+export * from './monoslist.js';
+
 export var domElements = {
   nameInputID: 'cfg_name',
   glycoCTID: 'glycoCT',
@@ -9,7 +11,8 @@ export var domElements = {
   multimode: 'multimode',
   glytoucanTableDiv: 'gtcid',
   commonMonoList: 'commonmonolist',
-  fullMonoList: 'fullmonolist'
+  fullMonoList: 'fullmonolist',
+  parametersdiv: 'calculated_parametersdiv'
 }
 
 export var filePaths = {
@@ -73,7 +76,7 @@ export var monos = [
   'Pse', 'Leg', 'Aci', '4eLeg',
   'Bac', 'LDmanHep', 'Kdo', 'Dha', 'DDmanHep', 'MurNAc', 'MurNGc', 'Mur',
   'Api', 'Fru', 'Tag', 'Sor', 'Psi',
-  'Hex', 'HexN', 'HexNAc'
+  'Hex', 'HexN', 'HexNAc', 'HexA'
 ];
 
 //list of commonly used monosaccharides
