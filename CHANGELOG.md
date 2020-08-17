@@ -1,6 +1,6 @@
 All changes to the project will be documented in this file
 
-## 2.1.0 - 2020-xx-xx
+## 2.1.0 - 2020-08-17
 
 ### Changed
 - Version number is now rendered programmatically requiring changes in fewer places in the code.
