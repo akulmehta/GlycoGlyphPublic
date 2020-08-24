@@ -8,6 +8,7 @@ All changes to the project will be documented in this file
 ### Fixed 
 - Issue [#12](https://github.com/akulmehta/GlycoGlyphPublic/issues/12) where the LIN information for certain glycans with hexoses was not working.
 
+
 ## 2.1.0 - 2020-08-17
 
 ### Changed
