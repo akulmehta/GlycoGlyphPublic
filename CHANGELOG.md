@@ -1,5 +1,14 @@
 All changes to the project will be documented in this file
 
+## 2.1.1 - 2020-08-24
+
+### Changed
+- Added `glygen` parameter to function `getGTCID()` so as to separate the fetching from Glygen if required.
+
+### Fixed 
+- Issue [#12](https://github.com/akulmehta/GlycoGlyphPublic/issues/12) where the LIN information for certain glycans with hexoses was not working.
+
+
 ## 2.1.0 - 2020-08-17
 
 ### Changed

@@ -1,4 +1,4 @@
-//  v2.1.0 Copyright 2020 Akul Mehta
+//  v2.1.1 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -1571,7 +1571,7 @@
 
 
       // Add the Linkage of the node to the parentRes
-      if (data.linkage !== '' && data.linkage !== "?" && LINcount != 1) {
+      if (data.linkage !== '' && data.linkage !== "?" && parentCount !== 1) {
         var link = data.linkage;
         //e.g. for a1-3 for RES 1 and 2:     1:1o(3+1)2d
         var parentAttachmentPos = link.charAt(link.length - 1),
@@ -2750,7 +2750,7 @@
       return;
     }
     let name = document.getElementById(domElements.nameInputID).value;
-    let glytoucanData = await getGTCID(name);
+    let glytoucanData = await getGTCID(name, true);
 
     drawGTCIDTable(glytoucanData);
   }
@@ -2939,7 +2939,7 @@
     return glygen;
   }
 
-  async function getGTCID(name) {
+  async function getGTCID(name, glygen = false) {
     // define reducing end types
     let types = [
       { anomer: "a", name: "alpha", },
@@ -2980,7 +2980,7 @@
 
       types[i].glytoucan = await fetchGlyTouCan(url);
 
-      if (types[i].glytoucan.response == 'Success') {
+      if (glygen && types[i].glytoucan.response == 'Success') {
         // console.log('Found Glytoucan ID checking other databases');
         types[i].glygenData = await fetchGlyGenData(types[i].glytoucan.id);
       }
@@ -3318,7 +3318,7 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.0';
+  let version = 'v2.1.1';
 
 
   // even though Rollup is bundling all your files together, errors and

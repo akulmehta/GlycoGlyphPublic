@@ -20,7 +20,7 @@ export async function generateGTCIDTable() {
     return;
   }
   let name = document.getElementById(domElements.nameInputID).value;
-  let glytoucanData = await getGTCID(name);
+  let glytoucanData = await getGTCID(name, true);
 
   drawGTCIDTable(glytoucanData);
 }
@@ -209,7 +209,7 @@ async function fetchGlyGenData(id) {
   return glygen;
 }
 
-export async function getGTCID(name) {
+export async function getGTCID(name, glygen = false) {
   // define reducing end types
   let types = [
     { anomer: "a", name: "alpha", },
@@ -250,7 +250,7 @@ export async function getGTCID(name) {
 
     types[i].glytoucan = await fetchGlyTouCan(url);
 
-    if (types[i].glytoucan.response == 'Success') {
+    if (glygen && types[i].glytoucan.response == 'Success') {
       // console.log('Found Glytoucan ID checking other databases');
       types[i].glygenData = await fetchGlyGenData(types[i].glytoucan.id);
     }

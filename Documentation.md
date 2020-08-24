@@ -250,7 +250,7 @@ Contains function to get the GlyTouCan ID from api.glycosmos.org
 
 - `generateGTCIDTable()`: Function. Uses `getGTCID` and `drawGTCIDTable` (below) to get and draw the glytoucan ID table.
 
-- `getGTCID()`: Function. Fetches the GlyTouCan ID from api.glycosmos.org by using the `glycoct2wurcs` api and retrieves Glygen data.
+- `getGTCID(name, glygen = false)`: Function. Fetches the GlyTouCan ID from api.glycosmos.org by using the `glycoct2wurcs` api. Can fetch corresponding data from GlyGen however by default this is set to false and needs to be explicitly mentioned if the user wishes to fetch this.
 
 - `drawGTCIDTable(glytoucanData)`: Function. Produced the Glytoucan ID table. Accepts the output of the `getGTCID` method as `glytoucanData`.
 
