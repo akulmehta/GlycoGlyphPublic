@@ -106,7 +106,7 @@ export function jsonToGlycoCT(json) {
 
 
     // Add the Linkage of the node to the parentRes
-    if (data.linkage !== '' && data.linkage !== "?" && LINcount != 1) {
+    if (data.linkage !== '' && data.linkage !== "?" && parentCount !== 1) {
       var link = data.linkage
       //e.g. for a1-3 for RES 1 and 2:     1:1o(3+1)2d
       var parentAttachmentPos = link.charAt(link.length - 1),
