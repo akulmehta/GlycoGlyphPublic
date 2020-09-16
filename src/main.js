@@ -19,6 +19,7 @@ export * from './modules/sortchildren.js';
 export * from './modules/copyTextFromElement.js';
 export * from './modules/cleardrawingarea.js';
 export * from './modules/calcmassparams.js';
+export * from './modules/monoslist.js';
 
 
 // even though Rollup is bundling all your files together, errors and
