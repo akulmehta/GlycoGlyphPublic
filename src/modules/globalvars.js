@@ -468,19 +468,25 @@ export var gctMonoList = {
 
   Rha: {
     glycoct: "man-HEX",
-    transform: "|6:d",
+    transform: "-1:5|6:d",
     configdefault: "l",
   },
 
-  SixdAlt: {
+  "6dAlt": {
     glycoct: "alt-HEX",
-    transform: "|6:d",
+    transform: "-1:5|6:d",
     configdefault: "l",
   },
 
-  SixdTal: {
+  "6dTal": {
     glycoct: "tal-HEX",
-    transform: "|6:d",
+    transform: "-1:5|6:d",
+    configdefault: "d",
+  },
+
+  "6dGul": {
+    glycoct: "gul-HEX",
+    transform: "-1:5|6:d",
     configdefault: "d",
   },
 

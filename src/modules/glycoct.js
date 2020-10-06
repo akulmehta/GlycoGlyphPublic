@@ -97,7 +97,14 @@ export function jsonToGlycoCT(json) {
       }
       //for cases with transforms in the gctMonoList
       else {
-        RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+        if (thisanomer == "o" 
+        //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
+        ) {
+          RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct;
+          RES += '-0:0' + gctMonoList[strippedmono].transform.replace(/\-\d\:\d/g, '') + '|1:aldi';
+        } else {
+          RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+        }
       }
 
       RES += "\n";
@@ -221,7 +228,7 @@ function getRingType(mono, anomer) {
 
   //list of pyranose type 
   var pyranose = `Gal,Glc,Man,GalNAc,GlcNAc,ManNAc,Fuc,Neu5Ac,Neu5Gc,Neu,Sia,Xyl,IdoA,GlcA,
-  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN
+  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN,Rha
   `;
   var furanose = `Rib,Api,Ara`;
 
