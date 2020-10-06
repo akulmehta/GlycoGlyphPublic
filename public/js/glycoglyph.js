@@ -1,4 +1,4 @@
-//  v2.1.1 Copyright 2020 Akul Mehta
+//  v2.1.2 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -947,19 +947,25 @@
 
     Rha: {
       glycoct: "man-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
       configdefault: "l",
     },
 
-    SixdAlt: {
+    "6dAlt": {
       glycoct: "alt-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
       configdefault: "l",
     },
 
-    SixdTal: {
+    "6dTal": {
       glycoct: "tal-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
+      configdefault: "d",
+    },
+
+    "6dGul": {
+      glycoct: "gul-HEX",
+      transform: "-1:5|6:d",
       configdefault: "d",
     },
 
@@ -1636,7 +1642,14 @@
         }
         //for cases with transforms in the gctMonoList
         else {
-          RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+          if (thisanomer == "o" 
+          //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
+          ) {
+            RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct;
+            RES += '-0:0' + gctMonoList[strippedmono].transform.replace(/\-\d\:\d/g, '') + '|1:aldi';
+          } else {
+            RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+          }
         }
 
         RES += "\n";
@@ -1755,7 +1768,7 @@
 
     //list of pyranose type 
     var pyranose = `Gal,Glc,Man,GalNAc,GlcNAc,ManNAc,Fuc,Neu5Ac,Neu5Gc,Neu,Sia,Xyl,IdoA,GlcA,
-  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN
+  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN,Rha
   `;
     var furanose = `Rib,Api,Ara`;
 
@@ -3047,7 +3060,7 @@
       let glycanjson = JSON.stringify(glycanobj); //recreate the JSON for the glycan
       let glycoCT = jsonToGlycoCT(glycanjson); //get the glycoCT
       // build the url to query GlyTouCan
-      let url = "https://api.glycosmos.org/glycanformatconverter/2.3.2-snapshot/glycoct2wurcs/";
+      let url = "https://api.glycosmos.org/glycanformatconverter/2.5.2/glycoct2wurcs/";
       url += encodeURI(glycoCT);
 
       types[i].primary = (types[i].anomer == primaryanomer) ? true : false;
@@ -3392,7 +3405,7 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.1';
+  let version = 'v2.1.2';
 
 
   // even though Rollup is bundling all your files together, errors and
