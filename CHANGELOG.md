@@ -1,5 +1,12 @@
 All changes to the project will be documented in this file
 
+## 2.1.2 - 2020-10-06
+
+### Fixed
+- Issue #14 for wrong GlycoCT for Rhamnose
+- Fixed Issue #15 for GlycanFormatConverter API address update 
+
+
 ## 2.1.1 - 2020-08-24
 
 ### Changed

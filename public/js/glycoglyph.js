@@ -1,4 +1,4 @@
-//  v2.1.1 Copyright 2020 Akul Mehta
+//  v2.1.2 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -9,400 +9,474 @@
   // TODO: check https://www.genome.jp/kegg/catalog/codes2.html to make sure the configuration and rings are correct
   let monosDict = [
     {
-      abbreviation: 'Glc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Glc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Man',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Man",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Gal',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Gal",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Gul',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Gul",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Alt',
-      configuration:'l',
-      ring: 'p',
+      "abbreviation": "Alt",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'All',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "All",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Tal',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Tal",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Ido',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Ido",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'GlcNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GlcNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'ManNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "ManNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'GalNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GalNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'GulNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GulNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'AltNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AltNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'AllNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AllNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'TalNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "TalNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'IdoNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "IdoNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
-      abbreviation: 'GlcN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GlcN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'ManN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "ManN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'GalN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GalN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'GulN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GulN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'AltN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AltN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'AllN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AllN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'TalN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "TalN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'IdoN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "IdoN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
     },
     {
-      abbreviation: 'GlcA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GlcA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'ManA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "ManA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'GalA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GalA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'GulA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "GulA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'AltA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AltA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'AllA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "AllA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'TalA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "TalA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'IdoA',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "IdoA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
     },
     {
-      abbreviation: 'Qui',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Qui",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: 'Rha',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Rha",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: '6dGul',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "6dGul",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: '6dAlt',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "6dAlt",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: '6dTal',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "6dTal",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: 'Fuc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Fuc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473
     },
     {
-      abbreviation: 'QuiNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "QuiNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
     },
     {
-      abbreviation: 'RhaNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "RhaNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
     },
     {
-      abbreviation: '6dAltNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "6dAltNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
     },
     {
-      abbreviation: '6dTalNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "6dTalNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
     },
     {
-      abbreviation: 'FucNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "FucNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
     },
     {
-      abbreviation: 'Oli',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Oli",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Tyv',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Tyv",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Abe',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Abe",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Par',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Par",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Dig',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Dig",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Col',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Col",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
     },
     {
-      abbreviation: 'Ara',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Ara",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823
     },
     {
-      abbreviation: 'Lyx',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Lyx",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823
     },
     {
-      abbreviation: 'Xyl',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Xyl",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823
     },
     {
-      abbreviation: 'Rib',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Rib",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823
     },
     {
-      abbreviation: 'Kdn',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Kdn",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 268.079432
     },
     {
-      abbreviation: 'Neu5Ac',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Neu5Ac",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 309.105981
     },
     {
-      abbreviation: 'Neu5Gc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Neu5Gc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 325.100896
     },
     {
-      abbreviation: 'Neu',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Neu",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 267.095417
     },
     {
-      abbreviation: 'Sia',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Sia",
+      "configuration": "d",
+      "ring": "p"
     },
     {
-      abbreviation: 'Pse',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Pse",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 250.116486
     },
     {
-      abbreviation: 'Leg',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Leg",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 250.116486
     },
     {
-      abbreviation: 'Aci',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Aci",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 250.116486
     },
     {
-      abbreviation: '4eLeg',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "4eLeg",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 250.116486
     },
     {
-      abbreviation: 'Bac',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Bac",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 162.100442
     },
     {
-      abbreviation: 'LDmanHep',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "LDmanHep",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 210.073953
     },
     {
-      abbreviation: 'Kdo',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Kdo",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 238.068867
     },
     {
-      abbreviation: 'Dha',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Dha",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 222.037567
     },
     {
-      abbreviation: 'DDmanHep',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "DDmanHep",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 210.073953
     },
     {
-      abbreviation: 'MurNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "MurNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 293.111067
     },
     {
-      abbreviation: 'MurNGc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "MurNGc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 309.105981
     },
     {
-      abbreviation: 'Mur',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Mur",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 251.100502
     },
     {
-      abbreviation: 'Api',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Api",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823
     },
     {
-      abbreviation: 'Fru',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Fru",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Tag',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Tag",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Sor',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Sor",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Psi',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Psi",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388
     },
     {
-      abbreviation: 'Hex',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "Hex",
+      "configuration": "d",
+      "ring": "p"
     },
     {
-      abbreviation: 'HexN',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "HexN",
+      "configuration": "d",
+      "ring": "p"
     },
     {
-      abbreviation: 'HexNAc',
-      configuration:'d',
-      ring: 'p',
+      "abbreviation": "HexNAc",
+      "configuration": "d",
+      "ring": "p"
     },
     {
-      abbreviation: 'HexA',
-      configuration:'d',
-      ring: 'p',
-    },
+      "abbreviation": "HexA",
+      "configuration": "d",
+      "ring": "p"
+    }
   ];
 
   var domElements = {
@@ -873,19 +947,25 @@
 
     Rha: {
       glycoct: "man-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
       configdefault: "l",
     },
 
-    SixdAlt: {
+    "6dAlt": {
       glycoct: "alt-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
       configdefault: "l",
     },
 
-    SixdTal: {
+    "6dTal": {
       glycoct: "tal-HEX",
-      transform: "|6:d",
+      transform: "-1:5|6:d",
+      configdefault: "d",
+    },
+
+    "6dGul": {
+      glycoct: "gul-HEX",
+      transform: "-1:5|6:d",
       configdefault: "d",
     },
 
@@ -1562,7 +1642,14 @@
         }
         //for cases with transforms in the gctMonoList
         else {
-          RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+          if (thisanomer == "o" 
+          //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
+          ) {
+            RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct;
+            RES += '-0:0' + gctMonoList[strippedmono].transform.replace(/\-\d\:\d/g, '') + '|1:aldi';
+          } else {
+            RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct + gctMonoList[strippedmono].transform;
+          }
         }
 
         RES += "\n";
@@ -1681,7 +1768,7 @@
 
     //list of pyranose type 
     var pyranose = `Gal,Glc,Man,GalNAc,GlcNAc,ManNAc,Fuc,Neu5Ac,Neu5Gc,Neu,Sia,Xyl,IdoA,GlcA,
-  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN
+  GalA,GlcA,ManA,GlcN,GalN,ManN,Hex,HexNAc,HexA,HexN,Rha
   `;
     var furanose = `Rib,Api,Ara`;
 
@@ -2973,7 +3060,7 @@
       let glycanjson = JSON.stringify(glycanobj); //recreate the JSON for the glycan
       let glycoCT = jsonToGlycoCT(glycanjson); //get the glycoCT
       // build the url to query GlyTouCan
-      let url = "https://api.glycosmos.org/glycanformatconverter/2.3.2-snapshot/glycoct2wurcs/";
+      let url = "https://api.glycosmos.org/glycanformatconverter/2.5.2/glycoct2wurcs/";
       url += encodeURI(glycoCT);
 
       types[i].primary = (types[i].anomer == primaryanomer) ? true : false;
@@ -3318,7 +3405,7 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.1';
+  let version = 'v2.1.2';
 
 
   // even though Rollup is bundling all your files together, errors and
