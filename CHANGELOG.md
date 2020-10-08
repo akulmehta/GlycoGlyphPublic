@@ -1,5 +1,12 @@
 All changes to the project will be documented in this file
 
+## 2.1.3 - 2020-10-08
+
+### Fixed
+- Issue #17 GlcNGc does not render correctly and wrong GlycoCT
+- Issue #18 Phosphate GlycoCT wrong
+- Issue #19 Glygen link being produced for GlyTouCan IDs not present in Glygen
+
 ## 2.1.2 - 2020-10-06
 
 ### Fixed
