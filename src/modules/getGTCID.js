@@ -149,6 +149,15 @@ async function fetchGlyGenData(id) {
   let glygen = fetch(`https://api.glygen.org/glycan/detail/${id}/`)
     .then(resp => resp.json())
     .then(data => {
+      if (data.error_list && data.error_list.some(f => f.error_code === "non-existent-record")) {
+        console.log('GlyTouCan ID does not exist in glygen');
+        return {
+          glygen: {
+            url: undefined,
+            response: 'Not Available'
+          }
+        }
+      }
       let output = {};
       output.glygen = {
         url: `https://www.glygen.org/glycan/${id}`,
@@ -173,11 +182,15 @@ async function fetchGlyGenData(id) {
 
       }
 
+      if (data.enzyme) {
+        output.enzymes = data.enzyme;
+      }
+
       return output
     })
     .catch(err => {
       console.error(err);
-      if (err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
+      if (err.responseJSON && err.err.responseJSON.error_list && err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
         console.log('GlyTouCan ID does not exist in glygen');
         return {
           glygen: {
@@ -185,7 +198,7 @@ async function fetchGlyGenData(id) {
             response: 'Not Available'
           }
         }
-      } else if (err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
+      } else if (err.responseJSON && err.err.responseJSON.error_list && err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
         console.log('GlyTouCan ID is missing');
         return {
           glygen: {

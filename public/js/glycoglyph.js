@@ -1,4 +1,4 @@
-//  v2.1.2 Copyright 2020 Akul Mehta
+//  v2.1.3 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -1329,6 +1329,13 @@
           linknum = +link.substr(-1);
         }
 
+        if (ch.search(/(GlcNGc)|(GalNGc)|(ManNGc)/g) > -1) {
+          mono = ch.replace(/Gc/g, '');
+          sub = '[2Gc]';
+          link = ch.replace(/(GlcNGc)|(GalNGc)|(ManNGc)/g, '');
+          linknum = +link.substr(-1);
+        }
+
         //end of special cases
 
         //add default values
@@ -1615,10 +1622,23 @@
       } else if (thismono === 'Neu5Gc') {
         strippedmono = "Kdn";
         subs.unshift("5Gc");
-      }
+      } 
       else if (thismono.indexOf('N') > -1 && gctMonoList.hasOwnProperty(thismono.replace(/N/g, ''))) {
-        strippedmono = thismono.replace(/N/g, '');
-        subs.unshift("N");
+        //special case for GlcNGc/GalNGc/ManNGc
+        if (thismono.search(/(GlcN)|(GalN)|(ManN)/g) > -1 && subs.includes('2Gc')) {
+          strippedmono = thismono.replace(/N/g, '');
+          subs = subs.map(m => {
+            if (m == "2Gc") {
+              m = "NGc";
+            }
+            return m;
+          }
+          );
+        } else {
+          strippedmono = thismono.replace(/N/g, '');
+          subs.unshift("N");
+        }
+
       } // add other conditions to strip the substituents from the base sugar
       else {
         strippedmono = thismono;
@@ -1642,8 +1662,8 @@
         }
         //for cases with transforms in the gctMonoList
         else {
-          if (thisanomer == "o" 
-          //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
+          if (thisanomer == "o"
+            //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
           ) {
             RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct;
             RES += '-0:0' + gctMonoList[strippedmono].transform.replace(/\-\d\:\d/g, '') + '|1:aldi';
@@ -1708,7 +1728,7 @@
             break;
           case (s.indexOf("P") > -1):
             position = s.split(/(?!\d)/g)[0];
-            substituent = "phospho";
+            substituent = "phosphate";
             break;
           default:
             position = s.charAt(0);
@@ -2966,6 +2986,15 @@
     let glygen = fetch(`https://api.glygen.org/glycan/detail/${id}/`)
       .then(resp => resp.json())
       .then(data => {
+        if (data.error_list && data.error_list.some(f => f.error_code === "non-existent-record")) {
+          console.log('GlyTouCan ID does not exist in glygen');
+          return {
+            glygen: {
+              url: undefined,
+              response: 'Not Available'
+            }
+          }
+        }
         let output = {};
         output.glygen = {
           url: `https://www.glygen.org/glycan/${id}`,
@@ -2990,11 +3019,15 @@
 
         }
 
+        if (data.enzyme) {
+          output.enzymes = data.enzyme;
+        }
+
         return output
       })
       .catch(err => {
         console.error(err);
-        if (err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
+        if (err.responseJSON && err.err.responseJSON.error_list && err.responseJSON.error_list.some(f => f.error_code === "non-existent-record")) {
           console.log('GlyTouCan ID does not exist in glygen');
           return {
             glygen: {
@@ -3002,7 +3035,7 @@
               response: 'Not Available'
             }
           }
-        } else if (err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
+        } else if (err.responseJSON && err.err.responseJSON.error_list && err.responseJSON.error_list.some(f => f.error_code === "missing-parameter")) {
           console.log('GlyTouCan ID is missing');
           return {
             glygen: {
@@ -3405,7 +3438,7 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.2';
+  let version = 'v2.1.3';
 
 
   // even though Rollup is bundling all your files together, errors and
