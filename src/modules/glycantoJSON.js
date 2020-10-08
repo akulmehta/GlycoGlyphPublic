@@ -96,6 +96,13 @@ export function glycantojson(glycanname) {
         linknum = +link.substr(-1);
       }
 
+      if (ch.search(/(GlcNGc)|(GalNGc)|(ManNGc)/g) > -1) {
+        mono = ch.replace(/Gc/g, '');
+        sub = '[2Gc]';
+        link = ch.replace(/(GlcNGc)|(GalNGc)|(ManNGc)/g, '');
+        linknum = +link.substr(-1);
+      }
+
       //end of special cases
 
       //add default values

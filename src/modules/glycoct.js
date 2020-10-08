@@ -1,5 +1,5 @@
 import { domElements, gctMonoList, gctSubList } from "./globalvars.js";
-import {glycantojson} from './glycantoJSON.js';
+import { glycantojson } from './glycantoJSON.js';
 
 //function takes the cfg name from the input field and outputs the GlycoCT
 export function cfgToGlycoCT() {
@@ -69,11 +69,24 @@ export function jsonToGlycoCT(json) {
       strippedmono = "Kdn";
       subs.unshift("5Gc");
       subcount++;
-    }
+    } 
     else if (thismono.indexOf('N') > -1 && gctMonoList.hasOwnProperty(thismono.replace(/N/g, ''))) {
-      strippedmono = thismono.replace(/N/g, '');
-      subs.unshift("N");
-      subcount++;
+      //special case for GlcNGc/GalNGc/ManNGc
+      if (thismono.search(/(GlcN)|(GalN)|(ManN)/g) > -1 && subs.includes('2Gc')) {
+        strippedmono = thismono.replace(/N/g, '');
+        subs = subs.map(m => {
+          if (m == "2Gc") {
+            m = "NGc";
+          }
+          return m;
+        }
+        )
+      } else {
+        strippedmono = thismono.replace(/N/g, '');
+        subs.unshift("N");
+        subcount++;
+      }
+
     } // add other conditions to strip the substituents from the base sugar
     else {
       strippedmono = thismono;
@@ -97,8 +110,8 @@ export function jsonToGlycoCT(json) {
       }
       //for cases with transforms in the gctMonoList
       else {
-        if (thisanomer == "o" 
-        //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
+        if (thisanomer == "o"
+          //&& gctMonoList[strippedmono].transform.search(/\-\d\:\d\|\d\:\w/g) > -1
         ) {
           RES += REScount + 'b:' + thisanomer + "-" + gctMonoList[strippedmono].configdefault + gctMonoList[strippedmono].glycoct;
           RES += '-0:0' + gctMonoList[strippedmono].transform.replace(/\-\d\:\d/g, '') + '|1:aldi';
@@ -167,7 +180,7 @@ export function jsonToGlycoCT(json) {
           break;
         case (s.indexOf("P") > -1):
           position = s.split(/(?!\d)/g)[0];
-          substituent = "phospho";
+          substituent = "phosphate";
           break;
         default:
           position = s.charAt(0);
