@@ -1,4 +1,4 @@
-//  v2.1.3 Copyright 2020 Akul Mehta
+//  v2.1.4 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3462,6 +3462,7 @@
   exports.drawGTCIDTable = drawGTCIDTable;
   exports.drawingSettings = drawingSettings;
   exports.dynamicDrawingSettings = dynamicDrawingSettings;
+  exports.fetchGlyGenData = fetchGlyGenData;
   exports.filePaths = filePaths;
   exports.gctMonoList = gctMonoList;
   exports.gctSubList = gctSubList;

@@ -136,7 +136,7 @@ async function fetchGlyTouCan(url) {
   return glytoucan;
 }
 
-async function fetchGlyGenData(id) {
+export async function fetchGlyGenData(id) {
   if (id === "") {
     console.log('GlyTouCan ID is missing');
     return {
