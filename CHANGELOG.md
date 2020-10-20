@@ -1,5 +1,9 @@
 All changes to the project will be documented in this file
 
+## 2.1.4 - 2020-10-20
+### Fixed
+- Issue #21 Blood group B template was wrong
+
 ## 2.1.3 - 2020-10-08
 
 ### Fixed
