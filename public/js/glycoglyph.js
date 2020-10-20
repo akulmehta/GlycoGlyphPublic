@@ -1,4 +1,4 @@
-//  v2.1.3 Copyright 2020 Akul Mehta
+//  v2.1.4 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -2998,7 +2998,8 @@
         let output = {};
         output.glygen = {
           url: `https://www.glygen.org/glycan/${id}`,
-          response: 'Success'
+          response: 'Success',
+          rawData: data
         };
         if (data.crossref) {
           let pubchemURL = data.crossref.find(f => f.database === "PubChem Compound");
@@ -3462,6 +3463,7 @@
   exports.drawGTCIDTable = drawGTCIDTable;
   exports.drawingSettings = drawingSettings;
   exports.dynamicDrawingSettings = dynamicDrawingSettings;
+  exports.fetchGlyGenData = fetchGlyGenData;
   exports.filePaths = filePaths;
   exports.gctMonoList = gctMonoList;
   exports.gctSubList = gctSubList;

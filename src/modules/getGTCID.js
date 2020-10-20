@@ -136,7 +136,7 @@ async function fetchGlyTouCan(url) {
   return glytoucan;
 }
 
-async function fetchGlyGenData(id) {
+export async function fetchGlyGenData(id) {
   if (id === "") {
     console.log('GlyTouCan ID is missing');
     return {
@@ -161,7 +161,8 @@ async function fetchGlyGenData(id) {
       let output = {};
       output.glygen = {
         url: `https://www.glygen.org/glycan/${id}`,
-        response: 'Success'
+        response: 'Success',
+        rawData: data
       }
       if (data.crossref) {
         let pubchemURL = data.crossref.find(f => f.database === "PubChem Compound");
