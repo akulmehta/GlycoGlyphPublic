@@ -161,7 +161,8 @@ export async function fetchGlyGenData(id) {
       let output = {};
       output.glygen = {
         url: `https://www.glygen.org/glycan/${id}`,
-        response: 'Success'
+        response: 'Success',
+        rawData: data
       }
       if (data.crossref) {
         let pubchemURL = data.crossref.find(f => f.database === "PubChem Compound");
