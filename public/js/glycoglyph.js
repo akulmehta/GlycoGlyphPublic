@@ -680,7 +680,7 @@
     },
     {
       name: "Blood Group B",
-      sequence: "Galb1-3(Fuca1-2)Gal",
+      sequence: "Gala1-3(Fuca1-2)Gal",
       type: "antigen",
     },
     {
@@ -3438,7 +3438,7 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.3';
+  let version = 'v2.1.4';
 
 
   // even though Rollup is bundling all your files together, errors and

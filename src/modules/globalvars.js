@@ -201,7 +201,7 @@ export var terminals = [
   },
   {
     name: "Blood Group B",
-    sequence: "Galb1-3(Fuca1-2)Gal",
+    sequence: "Gala1-3(Fuca1-2)Gal",
     type: "antigen",
   },
   {
