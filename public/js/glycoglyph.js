@@ -2585,10 +2585,10 @@
       }
       if (d.data.monosaccharide === "Fuc" && options.fuctype != 'fucoriginal') {
         if (angle <= 45) {
-          return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + 25) / 2 + ') rotate(' + angle + ')';
+          return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + options.symbsize - 6) / 2 + ') rotate(' + angle + ')';
         } else {
           angle = -30;
-          return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + 30) / 2 + ') rotate(' + angle + ')';
+          return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + options.symbsize - 6) / 2 + ') rotate(' + angle + ')';
         }
       }
       if (options.linkRotate == false) {

@@ -1,5 +1,9 @@
 All changes to the project will be documented in this file
 
+## 2.1.5 - 2020-12-03
+### Added
+- Ability to check name and automatically correct names. Specifically checks for wrong branch orders, replaces any long or short dashes (em-dash / en-dash) with regular hyphens (-), replaces any mistakes in capitalization of A in acetyls for HexNAc (e.g. GlcNac), and remove any trailing linkage information.
+- Fixed some fucose labels were cut by the linkage
 ## 2.1.4 - 2020-10-20
 ### Fixed
 - Issue #21 Blood group B template was wrong
