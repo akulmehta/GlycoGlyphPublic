@@ -1,4 +1,4 @@
-//  v2.1.4 Copyright 2020 Akul Mehta
+//  v2.1.5 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -1235,13 +1235,6 @@
 
   //takes the CFG glycan name and converts it into a glycan tree object and returns it as json
   function glycantojson(glycanname) {
-    // console.clear();
-    // MOD because this is a a builder we do not just say NoGlycan
-    //check if glycanname has any monosaccharides
-    // if (!monos.some(function (v) { return glycanname.search(v) > -1 })) {
-    //   glycanname = 'NoGlycan';
-    // }
-
     //remove whitespace between string if any
     glycanname = glycanname.replace(/ /g, '');
 
@@ -1249,9 +1242,17 @@
     glycanname = glycanname.replace(/\((?=\d[a-zA-Z]\))/g, '[');
     glycanname = glycanname.replace(/(\[\d[a-zA-Z])\)/g, '$1]');
 
+    glycanname = glycanname.replace(/\u03B1(?=(\d|\?)\-)/g, 'a').replace(/\u03B2(?=(\d|\?)\-)/g, 'b');
+
     //clean up GlcN(Gc)
     if (glycanname.indexOf('GlcN(Gc)') > -1) {
       glycanname = glycanname.replace(/GlcN\(Gc\)/, 'GlcNGc');
+    }
+    if (glycanname.indexOf('GalN(Gc)') > -1) {
+      glycanname = glycanname.replace(/GalN\(Gc\)/, 'GalNGc');
+    }
+    if (glycanname.indexOf('ManN(Gc)') > -1) {
+      glycanname = glycanname.replace(/ManN\(Gc\)/, 'ManNGc');
     }
 
     var glynamearray = glystrtoarray(glycanname);
@@ -1330,7 +1331,7 @@
         }
 
         if (ch.search(/(GlcNGc)|(GalNGc)|(ManNGc)/g) > -1) {
-          mono = ch.replace(/Gc/g, '');
+          mono = mono.replace(/Gc/g, '');
           sub = '[2Gc]';
           link = ch.replace(/(GlcNGc)|(GalNGc)|(ManNGc)/g, '');
           linknum = +link.substr(-1);
@@ -2584,10 +2585,10 @@
       }
       if (d.data.monosaccharide === "Fuc" && options.fuctype != 'fucoriginal') {
         if (angle <= 45) {
-          return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + 25) / 2 + ') rotate(' + angle + ')';
+          return 'translate(' + (d.parent.x - d.x - 10) / 2 + ',' + (d.y - d.parent.y + options.symbsize - 6) / 2 + ') rotate(' + angle + ')';
         } else {
           angle = -30;
-          return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + 30) / 2 + ') rotate(' + angle + ')';
+          return 'translate(' + (d.parent.x - d.x + 10) / 2 + ',' + (d.y - d.parent.y + options.symbsize - 6) / 2 + ') rotate(' + angle + ')';
         }
       }
       if (options.linkRotate == false) {
@@ -3439,7 +3440,53 @@
     return +Number.parseFloat(number).toPrecision(currentprecision);
   }
 
-  let version = 'v2.1.4';
+  //autoCheckName sorts branch order, replaces — em dash and en dash 
+  function autoCheckName(originalName) {
+    let name = originalName;
+    name = name.replace(/\u2013|\u2014/g, "-"); //replace en / em dash with hyphen
+    name = name.replace(/-\d$/g, ''); //remove any trailing linkage information
+
+    let glycanObj = JSON.parse(glycantojson(name));
+    
+    glycanObj = checkAcetyls(glycanObj); // fix acetyls from ac --> Ac
+
+    let correctedGlycan = sortchildren(d3.hierarchy(glycanObj)); // sort the glycan tree as per link number
+
+    let correctedSequence = objecttoname(correctedGlycan); // convert fixed glycan to name
+
+    let output = {
+      originalName: originalName,
+      correctedSequence: correctedSequence,
+      error: false
+    };
+    
+    if (correctedSequence !== originalName) {
+      output.error = true;
+    } 
+    return output;
+  }
+
+  // checks if Acetyl containing monosaccharides are mistyped with lowercase ac.
+  function checkAcetyls(glycanObj) {
+    console.log(glycanObj);
+
+    if (glycanObj.linkage.includes('ac')) {
+      glycanObj.linkage = glycanObj.linkage.replace(/ac/g,'');
+      glycanObj.name = glycanObj.name.replace(/ac/g,'Ac');
+      glycanObj.monosaccharide = glycanObj.monosaccharide + 'Ac';
+    }
+
+
+    if (glycanObj.children.length > 0) {
+      glycanObj.children.forEach(child => {
+        child = checkAcetyls(child);
+      });
+    }
+    
+    return glycanObj;
+  }
+
+  let version = 'v2.1.5';
 
 
   // even though Rollup is bundling all your files together, errors and
@@ -3451,6 +3498,7 @@
   exports.addfirstmono = addfirstmono;
   exports.addmono = addmono;
   exports.appendTerminals = appendTerminals;
+  exports.autoCheckName = autoCheckName;
   exports.calcMassParams = calcMassParams;
   exports.cfgToGlycoCT = cfgToGlycoCT;
   exports.childglycan = childglycan;

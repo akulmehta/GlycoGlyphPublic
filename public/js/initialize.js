@@ -5,11 +5,11 @@ function reactive.
 
 // Add an event listener to the name input field to draw the structure
 $("#" + glycoglyph.domElements.nameInputID).on('keyup', function () {
-  var name = $(this).val();
+  var name = $(this).val().trim();
   glycoglyph.tracknames(name);
-
   //draw structure based on name
   if (name.length > 0) {
+    document.getElementById('autoCheckName').hidden = false;
     glycoglyph.d3glycanstructure(name);
     glycoglyph.cfgToGlycoCT();
   }
@@ -137,4 +137,21 @@ $(document).ready(async () => {
   glycoglyph.appendTerminals();
 });
 
-
+function autocheck () {
+  let nameInputElement = document.getElementById(glycoglyph.domElements.nameInputID);
+  let originalName = nameInputElement.value;
+  if (originalName == '') {
+    document.getElementById('autoCheckName').hidden = true;
+    alert('Please enter a name to check');
+    return;
+  }
+  let checkedName = glycoglyph.autoCheckName(originalName);
+  if (checkedName.error == true){
+    nameInputElement.value = checkedName.correctedSequence;
+    glycoglyph.d3glycanstructure(nameInputElement.value);
+    alert('We found some errors and tried to fix them, please check the structure.')
+  }else {
+    alert('No errors were detected.')
+  }
+  document.getElementById('autoCheckName').hidden = true;
+}

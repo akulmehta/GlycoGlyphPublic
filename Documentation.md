@@ -1,6 +1,6 @@
 ## Documentation
 
-This documentation is for v2.0.0
+This documentation is for v2.1.5+
 
 The Documentation is split by files to make it easier to locate different functions.
 - [HTML](#html)
@@ -174,6 +174,11 @@ Contains functions to add monosaccharide to the glycan object and output new nam
 
 - `addfirstmono()`: Function. Special case, while adding the first monosaccharide, since there is no path a special function is called.
 
+_src\modules\autocheck.js_
+
+Contains functions to check if name of glycan is correct. This is useful especially for typed names.
+
+- `autoCheckName(originalName)`: Function. Accepts arguments `originalName` as a string of the name in CFG linear nomenclature format. The function checks for wrong branch orders, replaces any long or short dashes (em-dash / en-dash) with regular hyphens (-), remove any trailing linkage information and replaces any mistakes in capitalization of A in acetyls for HexNAc (e.g. GlcNac). Returns an object with `originalName`, `correctedName`, `error`. The `error` boolean specifies if there was any error found (`true` if found). 
 
 _src\modules\calcmassparams.js_
 
