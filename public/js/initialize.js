@@ -149,6 +149,7 @@ function autocheck () {
   if (checkedName.error == true){
     nameInputElement.value = checkedName.correctedSequence;
     glycoglyph.d3glycanstructure(nameInputElement.value);
+    glycoglyph.cfgToGlycoCT();
     alert('We found some errors and tried to fix them, please check the structure.')
   }else {
     alert('No errors were detected.')

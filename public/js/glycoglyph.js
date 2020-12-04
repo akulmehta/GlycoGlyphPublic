@@ -3468,8 +3468,6 @@
 
   // checks if Acetyl containing monosaccharides are mistyped with lowercase ac.
   function checkAcetyls(glycanObj) {
-    console.log(glycanObj);
-
     if (glycanObj.linkage.includes('ac')) {
       glycanObj.linkage = glycanObj.linkage.replace(/ac/g,'');
       glycanObj.name = glycanObj.name.replace(/ac/g,'Ac');
