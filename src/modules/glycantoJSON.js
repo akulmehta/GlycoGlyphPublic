@@ -2,13 +2,6 @@ import {monos} from './globalvars.js';
 
 //takes the CFG glycan name and converts it into a glycan tree object and returns it as json
 export function glycantojson(glycanname) {
-  // console.clear();
-  // MOD because this is a a builder we do not just say NoGlycan
-  //check if glycanname has any monosaccharides
-  // if (!monos.some(function (v) { return glycanname.search(v) > -1 })) {
-  //   glycanname = 'NoGlycan';
-  // }
-
   //remove whitespace between string if any
   glycanname = glycanname.replace(/ /g, '');
 
@@ -16,9 +9,17 @@ export function glycantojson(glycanname) {
   glycanname = glycanname.replace(/\((?=\d[a-zA-Z]\))/g, '[');
   glycanname = glycanname.replace(/(\[\d[a-zA-Z])\)/g, '$1]');
 
+  glycanname = glycanname.replace(/\u03B1(?=(\d|\?)\-)/g, 'a').replace(/\u03B2(?=(\d|\?)\-)/g, 'b');
+
   //clean up GlcN(Gc)
   if (glycanname.indexOf('GlcN(Gc)') > -1) {
     glycanname = glycanname.replace(/GlcN\(Gc\)/, 'GlcNGc');
+  }
+  if (glycanname.indexOf('GalN(Gc)') > -1) {
+    glycanname = glycanname.replace(/GalN\(Gc\)/, 'GalNGc');
+  }
+  if (glycanname.indexOf('ManN(Gc)') > -1) {
+    glycanname = glycanname.replace(/ManN\(Gc\)/, 'ManNGc');
   }
 
   var glynamearray = glystrtoarray(glycanname);
@@ -97,7 +98,7 @@ export function glycantojson(glycanname) {
       }
 
       if (ch.search(/(GlcNGc)|(GalNGc)|(ManNGc)/g) > -1) {
-        mono = ch.replace(/Gc/g, '');
+        mono = mono.replace(/Gc/g, '');
         sub = '[2Gc]';
         link = ch.replace(/(GlcNGc)|(GalNGc)|(ManNGc)/g, '');
         linknum = +link.substr(-1);
