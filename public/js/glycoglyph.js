@@ -7,219 +7,29 @@
 
   // This file is a dictionary of all monosaccharides with default configurations
   // TODO: check https://www.genome.jp/kegg/catalog/codes2.html to make sure the configuration and rings are correct
-  let monosDict = [
+
+  let monosDict = 
+  [
     {
-      "abbreviation": "Glc",
-      "configuration": "d",
+      "abbreviation": "4eLeg",
+      "configuration": "dd",
       "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Man",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Gal",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Gul",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Alt",
-      "configuration": "l",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "All",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Tal",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "Ido",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 180.063388
-    },
-    {
-      "abbreviation": "GlcNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "ManNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "GalNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "GulNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "AltNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "AllNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "TalNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "IdoNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 221.089937
-    },
-    {
-      "abbreviation": "GlcN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "ManN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "GalN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "GulN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "AltN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "AllN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "TalN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "IdoN",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 179.079373
-    },
-    {
-      "abbreviation": "GlcA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "ManA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "GalA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "GulA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "AltA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "AllA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "TalA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "IdoA",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 194.042653
-    },
-    {
-      "abbreviation": "Qui",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 164.068473
-    },
-    {
-      "abbreviation": "Rha",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 164.068473
-    },
-    {
-      "abbreviation": "6dGul",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 164.068473
+      "mass": 250.116486
     },
     {
       "abbreviation": "6dAlt",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 164.068473
+    },
+    {
+      "abbreviation": "6dAltNAc",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 205.095023
+    },
+    {
+      "abbreviation": "6dGul",
       "configuration": "d",
       "ring": "p",
       "mass": 164.068473
@@ -231,52 +41,10 @@
       "mass": 164.068473
     },
     {
-      "abbreviation": "Fuc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 164.068473
-    },
-    {
-      "abbreviation": "QuiNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 205.095023
-    },
-    {
-      "abbreviation": "RhaNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 205.095023
-    },
-    {
-      "abbreviation": "6dAltNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 205.095023
-    },
-    {
       "abbreviation": "6dTalNAc",
       "configuration": "d",
       "ring": "p",
       "mass": 205.095023
-    },
-    {
-      "abbreviation": "FucNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 205.095023
-    },
-    {
-      "abbreviation": "Oli",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 148.073559
-    },
-    {
-      "abbreviation": "Tyv",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 148.073559
     },
     {
       "abbreviation": "Abe",
@@ -285,99 +53,73 @@
       "mass": 148.073559
     },
     {
-      "abbreviation": "Par",
-      "configuration": "d",
+      "abbreviation": "Aci",
+      "configuration": "ll",
       "ring": "p",
-      "mass": 148.073559
+      "mass": 250.116486
     },
     {
-      "abbreviation": "Dig",
+      "abbreviation": "All",
       "configuration": "d",
       "ring": "p",
-      "mass": 148.073559
+      "mass": 180.063388,
+      "glycam": "DAllp"
     },
     {
-      "abbreviation": "Col",
+      "abbreviation": "AllA",
       "configuration": "d",
       "ring": "p",
-      "mass": 148.073559
+      "mass": 194.042653
+    },
+    {
+      "abbreviation": "AllN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "AllNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
+    },
+    {
+      "abbreviation": "Alt",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DAltp"
+    },
+    {
+      "abbreviation": "AltA",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 194.042653
+    },
+    {
+      "abbreviation": "AltN",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "AltNAc",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 221.089937
+    },
+    {
+      "abbreviation": "Api",
+      "configuration": "l",
+      "ring": "f",
+      "mass": 150.052823
     },
     {
       "abbreviation": "Ara",
-      "configuration": "d",
+      "configuration": "l",
       "ring": "p",
-      "mass": 150.052823
-    },
-    {
-      "abbreviation": "Lyx",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 150.052823
-    },
-    {
-      "abbreviation": "Xyl",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 150.052823
-    },
-    {
-      "abbreviation": "Rib",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 150.052823
-    },
-    {
-      "abbreviation": "Kdn",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 268.079432
-    },
-    {
-      "abbreviation": "Neu5Ac",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 309.105981
-    },
-    {
-      "abbreviation": "Neu5Gc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 325.100896
-    },
-    {
-      "abbreviation": "Neu",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 267.095417
-    },
-    {
-      "abbreviation": "Sia",
-      "configuration": "d",
-      "ring": "p"
-    },
-    {
-      "abbreviation": "Pse",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 250.116486
-    },
-    {
-      "abbreviation": "Leg",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 250.116486
-    },
-    {
-      "abbreviation": "Aci",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 250.116486
-    },
-    {
-      "abbreviation": "4eLeg",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 250.116486
+      "mass": 150.052823,
+      "glycam": "DArap"
     },
     {
       "abbreviation": "Bac",
@@ -386,16 +128,16 @@
       "mass": 162.100442
     },
     {
-      "abbreviation": "LDmanHep",
-      "configuration": "d",
+      "abbreviation": "Col",
+      "configuration": "l",
       "ring": "p",
-      "mass": 210.073953
+      "mass": 148.073559
     },
     {
-      "abbreviation": "Kdo",
-      "configuration": "d",
+      "abbreviation": "DDmanHep",
+      "configuration": "dd",
       "ring": "p",
-      "mass": 238.068867
+      "mass": 210.073953
     },
     {
       "abbreviation": "Dha",
@@ -404,61 +146,117 @@
       "mass": 222.037567
     },
     {
-      "abbreviation": "DDmanHep",
+      "abbreviation": "Dig",
       "configuration": "d",
       "ring": "p",
-      "mass": 210.073953
-    },
-    {
-      "abbreviation": "MurNAc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 293.111067
-    },
-    {
-      "abbreviation": "MurNGc",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 309.105981
-    },
-    {
-      "abbreviation": "Mur",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 251.100502
-    },
-    {
-      "abbreviation": "Api",
-      "configuration": "d",
-      "ring": "p",
-      "mass": 150.052823
+      "mass": 148.073559
     },
     {
       "abbreviation": "Fru",
       "configuration": "d",
       "ring": "p",
-      "mass": 180.063388
+      "mass": 180.063388,
+      "glycam": "DFrup"
     },
     {
-      "abbreviation": "Tag",
-      "configuration": "d",
+      "abbreviation": "Fuc",
+      "configuration": "l",
       "ring": "p",
-      "mass": 180.063388
+      "mass": 164.068473,
+      "glycam": "LFucp"
     },
     {
-      "abbreviation": "Sor",
-      "configuration": "d",
+      "abbreviation": "FucNAc",
+      "configuration": "l",
       "ring": "p",
-      "mass": 180.063388
+      "mass": 205.095023
     },
     {
-      "abbreviation": "Psi",
+      "abbreviation": "Gal",
       "configuration": "d",
       "ring": "p",
-      "mass": 180.063388
+      "mass": 180.063388,
+      "glycam": "DGalp"
+    },
+    {
+      "abbreviation": "GalA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653,
+      "glycam": "DGalpA"
+    },
+    {
+      "abbreviation": "GalN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "GalNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937,
+      "glycam": "DGalpNAc"
+    },
+    {
+      "abbreviation": "Glc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DGlcp"
+    },
+    {
+      "abbreviation": "GlcA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653,
+      "glycam": "DGlcpA"
+    },
+    {
+      "abbreviation": "GlcN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "GlcNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937,
+      "glycam": "DGlcpNAc"
+    },
+    {
+      "abbreviation": "Gul",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DGulp"
+    },
+    {
+      "abbreviation": "GulA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
+    },
+    {
+      "abbreviation": "GulN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "GulNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
     },
     {
       "abbreviation": "Hex",
+      "configuration": "d",
+      "ring": "p"
+    },
+    {
+      "abbreviation": "HexA",
       "configuration": "d",
       "ring": "p"
     },
@@ -473,9 +271,239 @@
       "ring": "p"
     },
     {
-      "abbreviation": "HexA",
+      "abbreviation": "Ido",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 180.063388
+    },
+    {
+      "abbreviation": "IdoA",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 194.042653,
+      "glycam": "LIdopA"
+    },
+    {
+      "abbreviation": "IdoN",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "IdoNAc",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 221.089937
+    },
+    {
+      "abbreviation": "Kdn",
+      "configuration": "dd",
+      "ring": "p",
+      "mass": 268.079432
+    },
+    {
+      "abbreviation": "Kdo",
       "configuration": "d",
+      "ring": "p",
+      "mass": 238.068867
+    },
+    {
+      "abbreviation": "LDmanHep",
+      "configuration": "ld",
+      "ring": "p",
+      "mass": 210.073953
+    },
+    {
+      "abbreviation": "Leg",
+      "configuration": "dd",
+      "ring": "p",
+      "mass": 250.116486
+    },
+    {
+      "abbreviation": "Lyx",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823,
+      "glycam": "DLyxp"
+    },
+    {
+      "abbreviation": "Man",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DManp"
+    },
+    {
+      "abbreviation": "ManA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
+    },
+    {
+      "abbreviation": "ManN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "ManNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937,
+      "glycam": "DManpNAc"
+    },
+    {
+      "abbreviation": "Mur",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 251.100502
+    },
+    {
+      "abbreviation": "MurNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 293.111067
+    },
+    {
+      "abbreviation": "MurNGc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 309.105981
+    },
+    {
+      "abbreviation": "Neu",
+      "configuration": "dd",
+      "ring": "p",
+      "mass": 267.095417
+    },
+    {
+      "abbreviation": "Neu5Ac",
+      "configuration": "dd",
+      "ring": "p",
+      "mass": 309.105981,
+      "glycam": "DNeup5Ac"
+    },
+    {
+      "abbreviation": "Neu5Gc",
+      "configuration": "dd",
+      "ring": "p",
+      "mass": 325.100896,
+      "glycam": "DNeup5Gca"
+    },
+    {
+      "abbreviation": "Oli",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
+    },
+    {
+      "abbreviation": "Par",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
+    },
+    {
+      "abbreviation": "Pse",
+      "configuration": "ll",
+      "ring": "p",
+      "mass": 250.116486
+    },
+    {
+      "abbreviation": "Psi",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DPsip"
+    },
+    {
+      "abbreviation": "Qui",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 164.068473,
+      "glycam": "DQuip"
+    },
+    {
+      "abbreviation": "QuiNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 205.095023
+    },
+    {
+      "abbreviation": "Rha",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 164.068473,
+      "glycam": "LRhap"
+    },
+    {
+      "abbreviation": "RhaNAc",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 205.095023
+    },
+    {
+      "abbreviation": "Rib",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823,
+      "glycam": "DRibp"
+    },
+    {
+      "abbreviation": "Sia",
+      "configuration": "dd",
       "ring": "p"
+    },
+    {
+      "abbreviation": "Sor",
+      "configuration": "l",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "LSorp"
+    },
+    {
+      "abbreviation": "Tag",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DTagp"
+    },
+    {
+      "abbreviation": "Tal",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 180.063388,
+      "glycam": "DTalp"
+    },
+    {
+      "abbreviation": "TalA",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 194.042653
+    },
+    {
+      "abbreviation": "TalN",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 179.079373
+    },
+    {
+      "abbreviation": "TalNAc",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 221.089937
+    },
+    {
+      "abbreviation": "Tyv",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 148.073559
+    },
+    {
+      "abbreviation": "Xyl",
+      "configuration": "d",
+      "ring": "p",
+      "mass": 150.052823,
+      "glycam": "DXylp"
     }
   ];
 
@@ -3484,7 +3512,77 @@
     return glycanObj;
   }
 
+  // takes the glycan sequence in CFG format and converts it to glycam sequence.
+  // returns an object with {name : 'Glycam Name' , errors: [array of errors]}
+  function sequenceToGlycam(sequence, {suffix = '-OH', linkerToReplace = ''} = {}) {
+    if (linkerToReplace != '') {
+      sequence = sequence.replace(linkerToReplace, '');
+    }
+    let glycanObj = d3.hierarchy(JSON.parse(glycantojson(sequence)));
+    let glycam = objectToGlycam(glycanObj);
+    glycam.name = glycam.name + suffix;
+    return glycam;
+  }
+
+
+  // recursive function to go through a glycan tree hierarchy and produce the name using the monosDict.
+  // returns an object with the glycam name for the tree and any errors encountered
+  function objectToGlycam(obj, bindex) {
+    let output = {
+      name: '',
+      errors: []
+    };
+
+    if (!obj.data.monosaccharide) {
+      output.errors.push('Undefined monosaccharide');
+    }
+    if (obj.data.linkage == '') {
+      output.errors.push('Undefined linkage');
+    }
+
+    
+    let dictionaryMono = monosDict.find(f => f.abbreviation === obj.data.monosaccharide);
+    if (!dictionaryMono || !dictionaryMono.glycam) {
+      output.errors.push('Undefined monosaccharide');
+    }else {
+      if (obj.data.monosaccharide != "" && obj.data.linkage != "") { //ideal conditions both mono and linkage present
+        if (obj.data.linkage && obj.data.linkage.search('-') === -1 && obj.depth > 0) ;
+        output.name = dictionaryMono.glycam + obj.data.linkage + output.name;
+        
+      } else if (obj.data.linkage == "" && obj.parent == null) { //condition for root node
+        output.name = dictionaryMono.glycam + output.name;
+      } else if (obj.data.linkage == "" && obj.parent.monosaccharide == null) {
+        output.name = dictionaryMono.glycam + output.name;
+      }
+      else { //condition for all other nodes without linkage information
+        output.errors.push('Undefined Linkage');
+      }
+    }
+    
+    
+    //if the index of the childnode is >1 then put a bracket for the branch
+    if (bindex > 1) {
+      output.name = output.name + ']';
+    }
+
+    if (obj.data.children && obj.data.children.length > 0) {
+      obj.children.forEach((e, i) => {
+        let childOutput = objectToGlycam(e, obj.children.length - i);
+        output.name = childOutput.name + output.name;
+        output.errors = [...output.errors, ...childOutput.errors];
+      });
+    }
+    
+    //if the index of the childnode is >1 then put a closing bracket for the branch
+    if (bindex > 1) {
+      output.name = '[' + output.name;
+    }
+    
+    return output;
+  }
+
   let version = 'v2.1.5';
+
 
 
   // even though Rollup is bundling all your files together, errors and
@@ -3522,6 +3620,7 @@
   exports.monos = monos;
   exports.monosDict = monosDict;
   exports.monoselect = monoselect;
+  exports.objectToGlycam = objectToGlycam;
   exports.objecttoname = objecttoname;
   exports.outputParams = outputParams;
   exports.outputname = outputname;
@@ -3529,6 +3628,7 @@
   exports.replacemono = replacemono;
   exports.resetchildglycan = resetchildglycan;
   exports.savesvg = savesvg;
+  exports.sequenceToGlycam = sequenceToGlycam;
   exports.setCSSPath = setCSSPath;
   exports.setImagesPath = setImagesPath;
   exports.setMonosSVGPath = setMonosSVGPath;
