@@ -137,7 +137,7 @@ $(document).ready(async () => {
   glycoglyph.appendTerminals();
 });
 
-function autocheck () {
+function autocheck() {
   let nameInputElement = document.getElementById(glycoglyph.domElements.nameInputID);
   let originalName = nameInputElement.value;
   if (originalName == '') {
@@ -146,13 +146,40 @@ function autocheck () {
     return;
   }
   let checkedName = glycoglyph.autoCheckName(originalName);
-  if (checkedName.error == true){
+  if (checkedName.error == true) {
     nameInputElement.value = checkedName.correctedSequence;
     glycoglyph.d3glycanstructure(nameInputElement.value);
     glycoglyph.cfgToGlycoCT();
     alert('We found some errors and tried to fix them, please check the structure.')
-  }else {
+  } else {
     alert('No errors were detected.')
   }
   document.getElementById('autoCheckName').hidden = true;
+}
+
+function getGlycam() {
+  let glycamElement = document.getElementById('glycamOutput');
+  let name = document.getElementById(glycoglyph.domElements.nameInputID).value;
+  let options = {
+    suffix : document.getElementById('glycamsuffix').value,
+    linkerToReplace : document.getElementById('glycamlinker').value
+  }
+
+  let glycamNotation = glycoglyph.sequenceToGlycam(name, options);
+
+  if (glycamNotation.errors.length === 0) {
+    glycamElement.innerHTML = `
+      <span class="text-primary"> 
+        <a href="http://glycam.org/url?condensed=${glycamNotation.name}" target="_blank">
+          ${glycamNotation.name}
+        </a>
+      </span>
+    `
+  } else {
+    glycamElement.innerHTML = `
+    <span class="text-danger"> 
+      Some Errors: <br>${glycamNotation.errors.join('<br>')}
+    </span>
+    `
+  }
 }

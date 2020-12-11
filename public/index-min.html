@@ -98,6 +98,9 @@
                 title="Copy Name" style="cursor: pointer">
                 <img src="/assets/images/copy.svg" alt="copy" width="20px">
               </button>
+              <button id="autoCheckName" class="btn btn-light mr-2" onclick="autocheck()" hidden>
+                Check Name
+              </button>
             </div>
           </div>
         </div>
@@ -457,6 +460,43 @@
             Get GlyTouCan ID
           </button>
           <div id="gtcid"></div>
+
+          
+
+          <div class="d-flex flex-row">
+            <div class="">
+              <button type="button" name="" id="getGlycamNotation" class="btn btn-primary" onclick="getGlycam()">
+                Glycam
+              </button>
+            </div>
+            <div class="ml-2">
+              <div class="dropdown">
+                <button type="button" class="dropbtn btn btn-secondary" id="settings" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img src="/assets/images/cog.svg" alt="Settings" width="20px">
+                </button>
+                <div class="dropdown-menu p-3" style="width: 600px" aria-labelledby="settings">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="glycamsuffix">Suffix: </label>
+                      <select class="form-control ml-2" name="glycamsuffix" id="glycamsuffix">
+                        <option value="-OH">-OH</option>
+                        <option value="-OME">-OMe</option>
+                        <option value="-OtBu">-OtBu</option>
+                      </select>
+                    </div>
+                    <div class="form-group ml-3">
+                      <label for="glycamlinker">Linker To Replace:</label>
+                      <input type="text" class="form-control ml-2" name="glycamlinker" id="glycamlinker"
+                        aria-describedby="helpId" placeholder="For example '-AEAB'">
+                      <small id="helpId" class="form-text text-muted sr-only">Remove any linker from the name.</small>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="glycamOutput" class="m-2"></div>
 
         </div>
         <div class="col-5">
