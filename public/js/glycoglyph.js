@@ -1,4 +1,4 @@
-//  v2.1.5 Copyright 2020 Akul Mehta
+//  v2.1.6 Copyright 2020 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3520,6 +3520,7 @@
     }
     let glycanObj = d3.hierarchy(JSON.parse(glycantojson(sequence)));
     let glycam = objectToGlycam(glycanObj);
+    glycam.errors = [...new Set(glycam.errors)];
     glycam.name = glycam.name + suffix;
     return glycam;
   }
@@ -3534,28 +3535,35 @@
     };
 
     if (!obj.data.monosaccharide) {
-      output.errors.push('Undefined monosaccharide');
+      output.errors.push(`Undefined monosaccharide in ${obj.data.name}`); //glycam cannot handle undefined linkages
     }
+    
     if (obj.data.linkage == '') {
-      output.errors.push('Undefined linkage');
+      output.errors.push(`Undefined linkage in ${obj.data.name}`); //glycam cannot handle undefined linkages
     }
 
-    
+    if (obj.data.substituents != undefined) {
+      output.errors.push(`Substituents present in ${obj.data.name}`); //glycam cannot handle substituents
+    }
+
     let dictionaryMono = monosDict.find(f => f.abbreviation === obj.data.monosaccharide);
     if (!dictionaryMono || !dictionaryMono.glycam) {
-      output.errors.push('Undefined monosaccharide');
+      output.errors.push(`Not supported by Glycam in ${obj.data.name}`); //glycam can only handle specific monosaccharides
     }else {
       if (obj.data.monosaccharide != "" && obj.data.linkage != "") { //ideal conditions both mono and linkage present
         if (obj.data.linkage && obj.data.linkage.search('-') === -1 && obj.depth > 0) ;
         output.name = dictionaryMono.glycam + obj.data.linkage + output.name;
         
       } else if (obj.data.linkage == "" && obj.parent == null) { //condition for root node
+        if (obj.data.linkage == "") {
+          output.errors.push(`Reducing end linkage required in ${obj.data.name}. For example "GlcNAcb1"`);
+        }
         output.name = dictionaryMono.glycam + output.name;
       } else if (obj.data.linkage == "" && obj.parent.monosaccharide == null) {
         output.name = dictionaryMono.glycam + output.name;
       }
       else { //condition for all other nodes without linkage information
-        output.errors.push('Undefined Linkage');
+        output.errors.push(`Undefined Linkage in ${obj.data.name}`);
       }
     }
     
@@ -3581,7 +3589,7 @@
     return output;
   }
 
-  let version = 'v2.1.5';
+  let version = 'v2.1.6';
 
 
 

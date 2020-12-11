@@ -1,4 +1,4 @@
-export let version = 'v2.1.5';
+export let version = 'v2.1.6';
 export * from './modules/globalvars.js';
 export * from './modules/setfilepaths.js';
 export * from './modules/d3glycanstruc.js';
