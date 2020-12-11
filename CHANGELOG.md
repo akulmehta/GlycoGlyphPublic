@@ -1,4 +1,7 @@
 All changes to the project will be documented in this file
+## 2.1.6 - 2020-12-10
+### Added
+- Ability to get name in Glycam compatible format which links to the glycam.org carbohydrate builder directly.
 
 ## 2.1.5 - 2020-12-03
 ### Added

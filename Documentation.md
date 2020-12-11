@@ -269,6 +269,15 @@ Contains function to take a CFG name and convert it to a glycan tree JSON data s
 - `glycantojson(glycanname)`: Function. Accepts `glycanname` as a string for the CFG name. The function first uses `bracketify()` function which produces a more balanced bracketing structure using `{`curly brackets`}`. It then uses a `parseTree()` function to produce a javascript object which is stringified and returned as JSON.
 
 
+_src\modules\glycamnotation.js_
+
+Contains functions to generate Glycam Notation from the CFG name. 
+
+- `sequenceToGlycam(sequence, {suffix = '-OH', linkerToReplace = ''} = {})`: Function. Accepts `sequence` as a string for the CFG name. Also accepts options as an object for `suffix` and `linkerToReplace`. The function replaces the linker optionally and then proceeds to generate the glycan object which can be passed into `objectToGlycam` function which returns the glycam name and any errors as an object. The function then adds the suffix to the glycam name, and returns the glycam object.
+
+- `objectToGlycam(obj, bindex)`: Function. Accepts the glycan tree object as `obj`. It recursively goes through the glycan object to generate a name. It returns an object with `name` key. If it has any issues producing the name, the function adds it to `errors` key as an array in the returned object.
+
+
 _src\modules\glycoct.js_
 
 

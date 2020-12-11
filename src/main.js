@@ -1,4 +1,4 @@
-export let version = 'v2.1.5';
+export let version = 'v2.1.6';
 export * from './modules/globalvars.js';
 export * from './modules/setfilepaths.js';
 export * from './modules/d3glycanstruc.js';
@@ -21,6 +21,8 @@ export * from './modules/cleardrawingarea.js';
 export * from './modules/calcmassparams.js';
 export * from './modules/monoslist.js';
 export * from './modules/autocheck.js';
+export * from './modules/glycamnotation.js';
+
 
 
 // even though Rollup is bundling all your files together, errors and
