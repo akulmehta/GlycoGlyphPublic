@@ -1,4 +1,4 @@
-//  v2.1.6 Copyright 2020 Akul Mehta
+//  v2.1.7 Copyright 2021 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3589,7 +3589,7 @@
     return output;
   }
 
-  let version = 'v2.1.6';
+  let version = 'v2.1.7';
 
 
 
