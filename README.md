@@ -68,6 +68,18 @@ public
     └─ introtut.js
 ```
 
+3. The minified glycoglyph.js with index_relative.html using relative file paths
+```
+public
+└─ index_relative.html
+└─ assets\*.*
+└─ css\*.*
+└─ js
+    └─ glycoglyph.js
+    └─ initialize_relative.js
+    └─ introtut.js
+```
+
 The `src` directory contains all source code files which are only required for development. The files in the `modules` directory of the `src` folder is compiled into one using Rollup.js.
 
 ## Full Documentation

@@ -1,4 +1,9 @@
 All changes to the project will be documented in this file
+
+## 2.1.7 - 2021-01-13
+### Added
+- Added index_relative.html for relative file paths and initialize_relative.js for relative file paths to the project. This should help address issue #30.
+
 ## 2.1.6 - 2020-12-10
 ### Added
 - Ability to get name in Glycam compatible format which links to the glycam.org carbohydrate builder directly.
