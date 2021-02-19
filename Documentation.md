@@ -266,8 +266,7 @@ _src\modules\glycantoJSON.js_
 Contains function to take a CFG name and convert it to a glycan tree JSON data structure.
 
 
-- `glycantojson(glycanname)`: Function. Accepts `glycanname` as a string for the CFG name. The function first uses `bracketify()` function which produces a more balanced bracketing structure using `{`curly brackets`}`. It then uses a `parseTree()` function to produce a javascript object which is stringified and returned as JSON.
-
+- `glycantojson(glycanname)`: Function. Accepts `glycanname` as a string for the CFG name. The function uses a `parseTree()` function to produce a javascript object which is stringified and returned as JSON.
 
 _src\modules\glycamnotation.js_
 
