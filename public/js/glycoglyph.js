@@ -1,4 +1,4 @@
-//  v2.1.7 Copyright 2021 Akul Mehta
+//  v2.1.8 Copyright 2021 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3632,6 +3632,14 @@
     return sequence;
   }
 
+  function detectPGlyco(str) {
+    let keys = Object.keys(pGlycoDict);
+    keys.push('(');
+    keys.push(')');
+    keys = keys.map(m => m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    let re = new RegExp(`^\((${keys})*\)$`);
+    return re.test(str);
+  }
 
   let pGlycoDict = {
     'H' : 'Hex',
@@ -3649,8 +3657,8 @@
     'PG' : '[pr]Gal',
     'sH' : '[S]Hex',
     'S' : '[5Az]Neu',
-    'mN' : '[mod]HexNAc',
     'mH' : '[mod]Hex',
+    'mN' : '[mod]HexNAc',
   };
 
   let version = 'v2.1.8';
@@ -3675,6 +3683,7 @@
   exports.commonMonos = commonMonos;
   exports.copyTextFromElement = copyTextFromElement;
   exports.d3glycanstructure = d3glycanstructure;
+  exports.detectPGlyco = detectPGlyco;
   exports.domElements = domElements;
   exports.drawGTCIDTable = drawGTCIDTable;
   exports.drawingSettings = drawingSettings;

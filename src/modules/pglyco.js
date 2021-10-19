@@ -44,6 +44,14 @@ export function pGlycoToGlycoGlyph(str) {
   return sequence;
 }
 
+export function detectPGlyco(str) {
+  let keys = Object.keys(pGlycoDict);
+  keys.push('(');
+  keys.push(')');
+  keys = keys.map(m => m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
+  let re = new RegExp(`^\((${keys})*\)$`)
+  return re.test(str);
+}
 
 export let pGlycoDict = {
   'H' : 'Hex',
@@ -61,6 +69,8 @@ export let pGlycoDict = {
   'PG' : '[pr]Gal',
   'sH' : '[S]Hex',
   'S' : '[5Az]Neu',
-  'mN' : '[mod]HexNAc',
   'mH' : '[mod]Hex',
+  'mN' : '[mod]HexNAc',
 }
+
+
