@@ -137,13 +137,28 @@ $(document).ready(async () => {
 function autocheck() {
   let nameInputElement = document.getElementById(glycoglyph.domElements.nameInputID);
   let originalName = nameInputElement.value;
-  if (originalName == '') {
+  let name = originalName.trim().replace(/\s/g, '');
+  if (name == '') {
     document.getElementById('autoCheckName').hidden = true;
     alert('Please enter a name to check');
     return;
   }
   let checkedName = glycoglyph.autoCheckName(originalName);
-  if (checkedName.error == true) {
+
+  let drawPGlyco = false;
+  if (glycoglyph.detectPGlyco(name)) {
+    if (confirm("The input format seems to be of pGlyco. Press OK if you would like GlycoGlyph to convert input to compatible format.")) {
+      name = glycoglyph.pGlycoToGlycoGlyph(name);
+      nameInputElement.value = name;
+      drawPGlyco = true;
+    } else {
+      alert('No changes were made')
+      return;
+    }
+  }
+
+  let checkedName = glycoglyph.autoCheckName(name);
+  if (checkedName.error == true || checkedName.correctedSequence != originalName || drawPGlyco) {
     nameInputElement.value = checkedName.correctedSequence;
     glycoglyph.d3glycanstructure(nameInputElement.value);
     glycoglyph.cfgToGlycoCT();

@@ -1,4 +1,4 @@
-//  v2.1.7 Copyright 2021 Akul Mehta
+//  v2.1.8 Copyright 2021 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3589,7 +3589,79 @@
     return output;
   }
 
-  let version = 'v2.1.7';
+  /**
+   * Converts pGlyco 3.0 Plausible Structure to GlycoGlyph Compatible Structure
+   * @param {any} str
+   * @returns {any}
+   */
+  function pGlycoToGlycoGlyph(str) {
+    let arr = str.split('');
+    let newarr = [];
+    let temp = [];
+    for (let i = arr.length; i >= 0; i--) {
+      if (arr[i] != '(' && arr[i] != ')') {
+        temp.push(arr[i]);
+      }
+      else {
+        let code = temp.reverse().join('');
+        if (code in pGlycoDict) {
+          newarr.push(`${pGlycoDict[code]}??-?`);
+        }else if (code != '') {
+          newarr.push(`${code}??-?`);
+        }
+        
+        if (arr[i] == ')') {
+          newarr.push('(');
+        }else if (arr[i] == '(') {
+          newarr.push(')');
+        }
+        temp = [];
+      }
+    }
+
+    let newSequence = newarr.join('');
+
+    let checkedSequence = autoCheckName(newSequence);
+
+    let sequence = checkedSequence.correctedSequence;
+
+    if (sequence.endsWith('-?')) {
+      sequence = sequence.slice(0, -2);
+    }
+
+    return sequence;
+  }
+
+  function detectPGlyco(str) {
+    let keys = Object.keys(pGlycoDict);
+    keys.push('(');
+    keys.push(')');
+    keys = keys.map(m => m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    let re = new RegExp(`^\((${keys})*\)$`);
+    return re.test(str);
+  }
+
+  let pGlycoDict = {
+    'H' : 'Hex',
+    'N' : 'HexNAc',
+    'A' : 'Neu5Ac',
+    'G' : 'Neu5Gc',
+    'F' : 'Fuc',
+    'X' : 'Xyl',
+    'HA' : 'HexA',
+    'HS' : 'HexN',
+    'MN' : 'MurNAc',
+    'KDN' : 'Kdn',
+    'pH' : '[P]Hex',
+    'aH' : '[+17]Hex',
+    'PG' : '[pr]Gal',
+    'sH' : '[S]Hex',
+    'S' : '[5Az]Neu',
+    'mH' : '[mod]Hex',
+    'mN' : '[mod]HexNAc',
+  };
+
+  let version = 'v2.1.8';
 
 
 
@@ -3611,6 +3683,7 @@
   exports.commonMonos = commonMonos;
   exports.copyTextFromElement = copyTextFromElement;
   exports.d3glycanstructure = d3glycanstructure;
+  exports.detectPGlyco = detectPGlyco;
   exports.domElements = domElements;
   exports.drawGTCIDTable = drawGTCIDTable;
   exports.drawingSettings = drawingSettings;
@@ -3632,6 +3705,8 @@
   exports.objecttoname = objecttoname;
   exports.outputParams = outputParams;
   exports.outputname = outputname;
+  exports.pGlycoDict = pGlycoDict;
+  exports.pGlycoToGlycoGlyph = pGlycoToGlycoGlyph;
   exports.redo = redo;
   exports.replacemono = replacemono;
   exports.resetchildglycan = resetchildglycan;
