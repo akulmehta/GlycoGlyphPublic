@@ -1,6 +1,6 @@
 All changes to the project will be documented in this file
-## 2.1.8 - 2021-10-05
-- Added ability to convert pGlyco3 plausible structure to glycoglyph compatible name. Currently only available via console.
+## 2.1.8 - 2021-10-19
+- Added ability to convert pGlyco3 plausible structure to glycoglyph compatible name. Enter name in pGlyco3 format and click on check name and it will prompt you to convert the name to valid format.
 
 ## 2.1.7 - 2021-01-13
 ### Added
