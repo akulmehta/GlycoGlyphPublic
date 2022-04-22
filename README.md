@@ -23,6 +23,7 @@ If you use GlycoGlyph, please cite: [https://doi.org/10.1093/bioinformatics/btaa
 
 # For Developers
 
+## Current Stable Version - 2.x
 
 ## License
 GlycoGlyph is released under MIT license. Please see [LICENSE.md](LICENSE) for details.

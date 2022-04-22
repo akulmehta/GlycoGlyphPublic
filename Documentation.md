@@ -1,6 +1,6 @@
 ## Documentation
 
-This documentation is for v2.1.5+
+This documentation is for v2.1.9+ (Current stable version)
 
 The Documentation is split by files to make it easier to locate different functions.
 - [HTML](#html)
