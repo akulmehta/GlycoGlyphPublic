@@ -1,4 +1,4 @@
-//  v2.1.8 Copyright 2021 Akul Mehta
+//  v2.1.8 Copyright 2022 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3123,7 +3123,7 @@
       let glycanjson = JSON.stringify(glycanobj); //recreate the JSON for the glycan
       let glycoCT = jsonToGlycoCT(glycanjson); //get the glycoCT
       // build the url to query GlyTouCan
-      let url = "https://api.glycosmos.org/glycanformatconverter/2.5.2/glycoct2wurcs/";
+      let url = "https://api.glycosmos.org/glycanformatconverter/2.7.0/glycoct2wurcs/";
       url += encodeURI(glycoCT);
 
       types[i].primary = (types[i].anomer == primaryanomer) ? true : false;
