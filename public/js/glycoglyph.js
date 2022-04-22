@@ -1,4 +1,4 @@
-//  v2.1.8 Copyright 2022 Akul Mehta
+//  v2.1.9 Copyright 2022 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3665,7 +3665,7 @@
     'mN' : '[mod]HexNAc',
   };
 
-  let version = 'v2.1.8';
+  let version = 'v2.1.9';
 
 
 
