@@ -1,4 +1,4 @@
-//  v2.1.8 Copyright 2021 Akul Mehta
+//  v2.1.9 Copyright 2022 Akul Mehta
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -3123,7 +3123,7 @@
       let glycanjson = JSON.stringify(glycanobj); //recreate the JSON for the glycan
       let glycoCT = jsonToGlycoCT(glycanjson); //get the glycoCT
       // build the url to query GlyTouCan
-      let url = "https://api.glycosmos.org/glycanformatconverter/2.5.2/glycoct2wurcs/";
+      let url = "https://api.glycosmos.org/glycanformatconverter/2.7.0/glycoct2wurcs/";
       url += encodeURI(glycoCT);
 
       types[i].primary = (types[i].anomer == primaryanomer) ? true : false;
@@ -3254,8 +3254,12 @@
     elementText = elementText.trim();
 
     if (elementText != '') {
-      copyText(elementText); //use the copyText function below
-      alert('Copied: \n' + elementText);
+      copyText(elementText).then(() => {
+        alert('Copied: \n' + elementText);
+      })
+      .catch(() => {
+        alert('Could not copy text. Please try copying manually');
+      }); //use the copyText function below
     }else {
       alert('Nothing to copy.');
     }
@@ -3265,7 +3269,7 @@
   //If you only want to put some Text in the Clipboard just use this function
   // and pass the string to copied as the argument.
   function copyText(text) {
-    navigator.clipboard.writeText(text);
+    return navigator.clipboard.writeText(text);
   }
 
   function cleardrawingarea() {
@@ -3661,7 +3665,7 @@
     'mN' : '[mod]HexNAc',
   };
 
-  let version = 'v2.1.8';
+  let version = 'v2.1.9';
 
 
 

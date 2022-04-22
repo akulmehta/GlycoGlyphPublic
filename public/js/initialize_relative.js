@@ -143,7 +143,7 @@ function autocheck() {
     alert('Please enter a name to check');
     return;
   }
-  let checkedName = glycoglyph.autoCheckName(originalName);
+  checkedName = glycoglyph.autoCheckName(originalName);
 
   let drawPGlyco = false;
   if (glycoglyph.detectPGlyco(name)) {
@@ -182,7 +182,7 @@ function getGlycam() {
   if (glycamNotation.errors.length === 0) {
     glycamElement.innerHTML = `
       <span class="text-primary"> 
-        <a href="http://glycam.org/url?condensed=${glycamNotation.name}" target="_blank">
+        <a href="http://glycam.org/url/condensed/${glycamNotation.name}" target="_blank">
           ${glycamNotation.name}
         </a>
       </span>
