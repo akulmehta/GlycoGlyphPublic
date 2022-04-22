@@ -1,6 +1,6 @@
 All changes to the project will be documented in this file
 ## 2.1.9 - 2022-04-22
-- Fixed several issues with links to external APIs
+- Fixed several issues with external APIs and links.
 - Fixed issues #34 and #35
 
 ## 2.1.8 - 2021-10-19
