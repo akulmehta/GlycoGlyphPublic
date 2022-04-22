@@ -143,7 +143,7 @@ function autocheck() {
     alert('Please enter a name to check');
     return;
   }
-  let checkedName = glycoglyph.autoCheckName(originalName);
+  checkedName = glycoglyph.autoCheckName(originalName);
 
   let drawPGlyco = false;
   if (glycoglyph.detectPGlyco(name)) {
