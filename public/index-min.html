@@ -33,6 +33,15 @@
           <h4>GlycoGlyph</h4>
         </div>
         <div class="mr-2">
+          <div class="custom-control custom-switch" style="padding-top: 8px;" 
+               title="When enabled, automatically applies standard child linkage positions (e.g., position 1 for most monosaccharides, position 2 for sialic acids) when adding monosaccharides. When disabled, uses ??-? for unknown linkages.">
+            <input type="checkbox" class="custom-control-input" id="standardLinkagesToggle" checked>
+            <label class="custom-control-label" for="standardLinkagesToggle" style="cursor: pointer;">
+              Apply Standard Linkages
+            </label>
+          </div>
+        </div>
+        <div class="mr-2">
           <div class="dropdown">
             <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="shortcuts" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -102,6 +111,25 @@
                 Check Name
               </button>
             </div>
+          </div>
+          
+          <!-- Linkage Warning -->
+          <div id="linkageWarningDiv" class="alert alert-warning" role="alert" style="display: none; margin-top: -10px; margin-bottom: 10px; position: relative;">
+            <button type="button" class="close" onclick="glycoglyph.dismissLinkageWarning()" aria-label="Dismiss" style="position: absolute; top: 10px; right: 10px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>⚠️ Unknown child linkage positions detected (??-?)</strong>
+            <p class="mb-2" style="font-size: 0.9em;">
+              Some databases may not accept completely unknown linkages. Common defaults based on monosaccharide structure:
+              <br>• Sialic acids (Neu5Ac, Neu5Gc, KDN, Neu, Sia) typically link via position 2
+              <br>• Most other monosaccharides typically link via position 1
+            </p>
+            <button class="btn btn-sm btn-primary" onclick="glycoglyph.fixUnknownLinkages()">
+              Apply Standard Linkages
+            </button>
+            <button class="btn btn-sm btn-secondary ml-2" onclick="glycoglyph.dismissLinkageWarning()">
+              Dismiss
+            </button>
           </div>
         </div>
 

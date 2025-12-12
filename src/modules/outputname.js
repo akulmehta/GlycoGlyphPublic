@@ -4,6 +4,7 @@ import { objecttoname } from './objecttoname.js';
 import { tracknames } from './tracknames.js';
 import { d3glycanstructure } from './d3glycanstruc.js';
 import { cfgToGlycoCT } from './glycoct.js';
+import { checkAndDisplayLinkageWarning } from './linkagewarning.js';
 
 export function outputname(nameobj) {
   // console.log(nameobj);
@@ -23,4 +24,7 @@ export function outputname(nameobj) {
 
   //update glycoCT
   cfgToGlycoCT();
+  
+  // Check for unknown linkages and show/hide warning
+  checkAndDisplayLinkageWarning(newname);
 }

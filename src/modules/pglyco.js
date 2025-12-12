@@ -1,5 +1,5 @@
 import { autoCheckName } from "./autocheck"
-import { commonMonosExtended, monos_with_2linkage } from "./globalvars";
+import { commonMonosExtended, monos_with_2linkage, linkageSettings } from "./globalvars"
 
 
 /**
@@ -18,12 +18,12 @@ export function pGlycoToGlycoGlyph(str) {
     else {
       let code = temp.reverse().join('');
       if (code in pGlycoDict) {
-        let linkage = "??-?"
-        if (commonMonosExtended.includes(pGlycoDict[code])) {
-          if (!monos_with_2linkage.includes(pGlycoDict[code])) {
-            linkage = "?1-?";
-          } else {
+        let linkage = "??-?";
+        if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
+          if (monos_with_2linkage.includes(pGlycoDict[code])) {
             linkage = "?2-?";
+          } else {
+            linkage = "?1-?";
           }
         }
         newarr.push(`${pGlycoDict[code]}${linkage}`)

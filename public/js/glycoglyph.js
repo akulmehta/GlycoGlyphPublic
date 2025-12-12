@@ -589,6 +589,18 @@
   //list of commonly used monosaccharides
   var commonMonos = ["Glc", "Man", "Gal", "GlcNAc", "GalNAc", "Fuc", "Neu5Ac", "Neu5Gc", "Neu", "Xyl", "IdoA", "GlcA", "Unknown"];
 
+  // For determining default child linkage position
+  var commonMonosExtended = commonMonos + ["Hex","HexNAc","dHex","Sia","Pent","HexA","HexN"];
+  var monos_with_2linkage = ["Neu5Ac", "Neu5Gc", "KDN", "Neu", "Sia"];
+
+  // User preference for applying standard linkages (default: true)
+  // When true: applies ?1-? or ?2-? based on monosaccharide type
+  // When false: applies conservative ??-? for all monosaccharides
+  var linkageSettings = {
+    applyStandardLinkages: true, // controlled by toggle switch in UI
+    warningDismissed: false  // Track if user dismissed warning (resets on page refresh)
+  };
+
   //templates holds the starter templates 
   // these can be directly added as names so it is easy
   var templates = [
@@ -1512,8 +1524,17 @@
         return;
       }
     }
+    //
+    // We reset *all* of the childglycan.child properties here...
+    // Since otherwise we get linkage information (and other information)
+    // potentiallyinappropriately carried over from the previously added mono...
+    // 
+    // However, this creates a order of operations issue for the UI - 
+    // modifiers such as linkage or substituent must be selected after the monosaccharide.
+    // IMHO this is OK, since that information is typically very much tied to the mono.
+    // 
+    resetchildglycan();
     childglycan.child.monosaccharide = mono;  // add/overwrite monosaccharide to the childglycan object
-    childglycan.child.children = [];
     $('#' + domElements.preparedMonosaccharideSpan).empty().append(mono);
     makechildglycanname();
   }
@@ -1713,11 +1734,8 @@
         var parentAttachmentPos = link.charAt(link.length - 1),
           childAttachmentPos = link.charAt(link.indexOf('-') - 1);
 
-        if (parentAttachmentPos === "?") { parentAttachmentPos = "-1"; }      if (childAttachmentPos === "?") { 
-          // For sialic acids, default child attachment position is 2, not 1
-          var sialicAcids = ['Neu5Ac', 'Neu5Gc', 'Neu', 'Sia', 'Kdn'];
-          childAttachmentPos = sialicAcids.includes(thismono) ? "2" : "1";
-        }      LIN += `${LINcount}:${parentRES}o(${parentAttachmentPos}+${childAttachmentPos})${parentCount}d\n`;
+        if (parentAttachmentPos === "?") { parentAttachmentPos = "-1"; }      if (childAttachmentPos === "?") { childAttachmentPos = "-1"; }
+        LIN += `${LINcount}:${parentRES}o(${parentAttachmentPos}+${childAttachmentPos})${parentCount}d\n`;
         LINcount++;
       }
 
@@ -1910,6 +1928,106 @@
     }
   }
 
+  /**
+   * Check if the current structure has any ??-? linkages and show/hide warning accordingly
+   * Shows warning whenever structure contains ??-? (unless user dismissed it)
+   * @param {string} name - The IUPAC name of the structure
+   */
+  function checkAndDisplayLinkageWarning(name) {
+    const warningDiv = document.getElementById('linkageWarningDiv');
+    
+    if (!warningDiv) {
+      // Warning div not in DOM yet
+      return;
+    }
+    
+    // Show warning if structure has ??-? linkages and user hasn't dismissed it
+    if (!linkageSettings.warningDismissed && name && name.includes('??-?')) {
+      warningDiv.style.display = 'block';
+    } else {
+      warningDiv.style.display = 'none';
+    }
+  }
+
+  /**
+   * Dismiss the warning until page refresh
+   */
+  function dismissLinkageWarning() {
+    linkageSettings.warningDismissed = true;
+    const warningDiv = document.getElementById('linkageWarningDiv');
+    if (warningDiv) {
+      warningDiv.style.display = 'none';
+    }
+  }
+
+  /**
+   * Apply standard child linkage positions to all ??-? linkages in the structure
+   * This replaces ??-? with ?1-? for most monosaccharides and ?2-? for sialic acids
+   * Also enables the toggle switch and updates the global setting
+   */
+  function fixUnknownLinkages() {
+    const nameInput = document.getElementById(domElements.nameInputID);
+    if (!nameInput || !nameInput.value) {
+      return;
+    }
+    
+    const currentName = nameInput.value;
+    
+    // Parse the structure to JSON
+    let structureObj;
+    try {
+      const jsonString = glycantojson(currentName);
+      structureObj = JSON.parse(jsonString);
+    } catch (e) {
+      console.error('Error parsing structure:', e);
+      alert('Unable to parse the current structure. Please check the name format.');
+      return;
+    }
+    
+    // Recursively fix linkages in the structure
+    fixLinkagesRecursive(structureObj);
+    
+    // Enable the toggle and update global setting
+    const toggle = document.getElementById('standardLinkagesToggle');
+    if (toggle) {
+      toggle.checked = true;
+      // Update the global variable
+      linkageSettings.applyStandardLinkages = true;
+    }
+    
+    // Output the updated structure
+    outputname(structureObj);
+  }
+
+  /**
+   * Recursively traverse the structure and fix ??-? linkages
+   * @param {Object} node - Current node in the glycan structure
+   */
+  function fixLinkagesRecursive(node) {
+    if (!node) return;
+    
+    // Fix the current node's linkage if it's ??-?
+    if (node.linkage === '??-?') {
+      const mono = node.monosaccharide;
+      
+      if (commonMonosExtended.includes(mono)) {
+        if (monos_with_2linkage.includes(mono)) {
+          node.linkage = '?2-?';
+        } else {
+          node.linkage = '?1-?';
+        }
+      }
+      // For uncommon monosaccharides, we leave it as ??-? (conservative)
+    }
+    
+    // Recursively process children
+    if (node.children && Array.isArray(node.children)) {
+      for (const child of node.children) {
+        fixLinkagesRecursive(child);
+      }
+    }
+  }
+
   function outputname(nameobj) {
     // console.log(nameobj);
     var struc = d3.hierarchy(nameobj); //call d3 hierarchy on structure obj
@@ -1928,6 +2046,9 @@
 
     //update glycoCT
     cfgToGlycoCT();
+    
+    // Check for unknown linkages and show/hide warning
+    checkAndDisplayLinkageWarning(newname);
   }
 
   function addmono(path, multiple) {
@@ -1939,7 +2060,15 @@
       return;
     }
     if (childglycan.child.linkage === "") {
-      childglycan.child.linkage = "??-?";
+      if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
+        if (monos_with_2linkage.includes(childglycan.child.monosaccharide)) {
+          childglycan.child.linkage = "?2-?";
+        } else {
+          childglycan.child.linkage = "?1-?";
+        }
+      } else {
+        childglycan.child.linkage = "??-?";
+      }
       // alert("Linkage information for the monosaccharide has not been added. \n\nPlease Add Linkage information.");
       // return;
     }
@@ -3643,7 +3772,15 @@
       else {
         let code = temp.reverse().join('');
         if (code in pGlycoDict) {
-          newarr.push(`${pGlycoDict[code]}??-?`);
+          let linkage = "??-?";
+          if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
+            if (monos_with_2linkage.includes(pGlycoDict[code])) {
+              linkage = "?2-?";
+            } else {
+              linkage = "?1-?";
+            }
+          }
+          newarr.push(`${pGlycoDict[code]}${linkage}`);
         }else if (code != '') {
           newarr.push(`${code}??-?`);
         }
@@ -3699,7 +3836,7 @@
     'mN' : '[mod]HexNAc',
   };
 
-  let version = 'v2.2.0';
+  let version = 'v2.3.0';
 
 
 
@@ -3715,29 +3852,35 @@
   exports.autoCheckName = autoCheckName;
   exports.calcMassParams = calcMassParams;
   exports.cfgToGlycoCT = cfgToGlycoCT;
+  exports.checkAndDisplayLinkageWarning = checkAndDisplayLinkageWarning;
   exports.childglycan = childglycan;
   exports.clearSub = clearSub;
   exports.cleardrawingarea = cleardrawingarea;
   exports.commonMonos = commonMonos;
+  exports.commonMonosExtended = commonMonosExtended;
   exports.copyTextFromElement = copyTextFromElement;
   exports.d3glycanstructure = d3glycanstructure;
   exports.detectPGlyco = detectPGlyco;
+  exports.dismissLinkageWarning = dismissLinkageWarning;
   exports.domElements = domElements;
   exports.drawGTCIDTable = drawGTCIDTable;
   exports.drawingSettings = drawingSettings;
   exports.dynamicDrawingSettings = dynamicDrawingSettings;
   exports.fetchGlyGenData = fetchGlyGenData;
   exports.filePaths = filePaths;
+  exports.fixUnknownLinkages = fixUnknownLinkages;
   exports.gctMonoList = gctMonoList;
   exports.gctSubList = gctSubList;
   exports.generateGTCIDTable = generateGTCIDTable;
   exports.getGTCID = getGTCID;
   exports.glycantojson = glycantojson;
   exports.jsonToGlycoCT = jsonToGlycoCT;
+  exports.linkageSettings = linkageSettings;
   exports.listMonosaccharides = listMonosaccharides;
   exports.makechildglycanname = makechildglycanname;
   exports.monos = monos;
   exports.monosDict = monosDict;
+  exports.monos_with_2linkage = monos_with_2linkage;
   exports.monoselect = monoselect;
   exports.objectToGlycam = objectToGlycam;
   exports.objecttoname = objecttoname;

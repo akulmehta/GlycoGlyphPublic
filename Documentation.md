@@ -3,13 +3,15 @@
 This documentation is for v2.1.9+ (Current stable version)
 
 The Documentation is split by files to make it easier to locate different functions.
-- [HTML](#html)
-
-- [Images](#images)
-
-- [CSS](#css)
-
-- [JavaScript](#javascript)
+- [Documentation](#documentation)
+  - [HTML](#html)
+  - [Images](#images)
+    - [Icons](#icons)
+    - [Monosaccharides](#monosaccharides)
+  - [CSS](#css)
+  - [JavaScript](#javascript)
+    - [Production files](#production-files)
+    - [Source Modules](#source-modules)
 
 ---
 
@@ -135,6 +137,12 @@ Contains global variables for settings etc.
 - `gctSubList`: Object. Holds dictionaries for substituents to help produce the GlycoCT in _glycoct.js_. Adapted from [SugarSketcher by Author: Davide Alocci](https://github.com/alodavide/sugarSketcher/blob/master/src/js/models/glycomics/dictionary/SubstituentType.js).
 
 - `commonMonos`: Array. Contains an array of commonly used monosaccharides.
+
+- `commonMonosExtended`: Array. Extended list of common monosaccharides including generic types like Hex and HexNAc. Used by the linkage warning system to determine which monosaccharides should have standard linkages applied.
+
+- `monos_with_2linkage`: Array. Contains monosaccharides that typically link via position 2, specifically sialic acids: ["Neu5Ac", "Neu5Gc", "KDN", "Neu", "Sia"].
+
+- `linkageSettings`: Object. Contains user preferences for linkage behavior. Properties include `applyStandardLinkages` (boolean, default `true`) which controls whether smart default linkages are applied automatically, and `warningDismissed` (boolean, default `false`) which tracks if the user has dismissed the linkage warning for the current session.
 
 - `svgStyle`: String. Contains entire _glycoglyph.css_ as text.
 
@@ -286,6 +294,21 @@ Contains functions to produce the GlycoCT from a CFG name.
 - `cfgToGlycoCT()`: Function. Gets the name from the CFG name input field. Calls `glycantojson()` to convert the name. Calls `jsonToGlycoCT()`to produce the GlycoCT. Outputs the GlycoCT to the GUI.
 
 - `jsonToGlycoCT(json)`: Function. Accepts `json` as JSON for the glycan tree produced by `glycantojson()`. Converts the glycan tree JSON to GlycoCT.
+
+
+_src\modules\linkagewarning.js_
+
+
+Contains functions to manage the linkage warning system and smart default linkages.
+
+
+- `checkAndDisplayLinkageWarning(name)`: Function. Accepts `name` as a string for the CFG name. Checks if the structure contains any `??-?` linkages and displays a warning message if found (unless user has dismissed it). The warning educates users about standard linkage positions and provides options to apply them.
+
+- `dismissLinkageWarning()`: Function. Dismisses the linkage warning until the page is refreshed. Sets `linkageSettings.warningDismissed` to `true` and hides the warning div.
+
+- `fixUnknownLinkages()`: Function. Applies standard child linkage positions to all `??-?` linkages in the current structure. Replaces `??-?` with `?1-?` for most monosaccharides and `?2-?` for sialic acids (Neu5Ac, Neu5Gc, KDN, Neu, Sia). Also enables the "Apply Standard Linkages" toggle switch and updates the global setting. Uses `fixLinkagesRecursive()` helper function to traverse the glycan tree.
+
+- `fixLinkagesRecursive(node)`: Function. Accepts `node` as an object for the current node in the glycan structure. Recursively traverses the glycan tree and fixes `??-?` linkages based on monosaccharide type. For uncommon monosaccharides not in the `commonMonosExtended` list, the linkage remains as `??-?` (conservative approach).
 
 
 
