@@ -19,7 +19,7 @@ export function pGlycoToGlycoGlyph(str) {
       let code = temp.reverse().join('');
       if (code in pGlycoDict) {
         let linkage = "??-?";
-        if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
+        if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
           if (monos_with_2linkage.includes(pGlycoDict[code])) {
             linkage = "?2-?";
           } else {

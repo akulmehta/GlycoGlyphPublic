@@ -34,10 +34,10 @@
         </div>
         <div class="mr-2">
           <div class="custom-control custom-switch" style="padding-top: 8px;" 
-               title="When enabled, automatically applies standard child linkage positions (e.g., position 1 for most monosaccharides, position 2 for sialic acids) when adding monosaccharides. When disabled, uses ??-? for unknown linkages.">
-            <input type="checkbox" class="custom-control-input" id="standardLinkagesToggle" checked>
-            <label class="custom-control-label" for="standardLinkagesToggle" style="cursor: pointer;">
-              Apply Standard Linkages
+               title="When enabled, automatically applies smart child linkage positions (e.g., position 1 for most monosaccharides, position 2 for sialic acids) when adding monosaccharides. When disabled, uses ??-? for unknown linkages.">
+            <input type="checkbox" class="custom-control-input" id="autoChildLinkagesToggle" checked>
+            <label class="custom-control-label" for="autoChildLinkagesToggle" style="cursor: pointer;">
+              Auto Child Linkages
             </label>
           </div>
         </div>
@@ -125,7 +125,7 @@
               <br>• Most other monosaccharides typically link via position 1
             </p>
             <button class="btn btn-sm btn-primary" onclick="glycoglyph.fixUnknownLinkages()">
-              Apply Standard Linkages
+              Apply Auto Child Linkages
             </button>
             <button class="btn btn-sm btn-secondary ml-2" onclick="glycoglyph.dismissLinkageWarning()">
               Dismiss

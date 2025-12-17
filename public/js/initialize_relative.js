@@ -3,9 +3,9 @@ This file holds all the initialization of event listeners and resets to make the
 function reactive.
 */
 
-// Event listener for the Apply Standard Linkages toggle
-$('#standardLinkagesToggle').on('change', function () {
-  glycoglyph.linkageSettings.applyStandardLinkages = this.checked;
+// Event listener for the Auto Child Linkages toggle
+$('#autoChildLinkagesToggle').on('change', function () {
+  glycoglyph.linkageSettings.applyAutoChildLinkages = this.checked;
   
   // Re-check warning display based on new toggle state
   var name = document.getElementById(glycoglyph.domElements.nameInputID).value;

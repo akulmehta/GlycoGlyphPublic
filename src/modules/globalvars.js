@@ -86,11 +86,11 @@ export var commonMonos = ["Glc", "Man", "Gal", "GlcNAc", "GalNAc", "Fuc", "Neu5A
 export var commonMonosExtended = commonMonos + ["Hex","HexNAc","dHex","Sia","Pent","HexA","HexN"]
 export var monos_with_2linkage = ["Neu5Ac", "Neu5Gc", "KDN", "Neu", "Sia"];
 
-// User preference for applying standard linkages (default: true)
+// User preference for applying auto child linkages (default: true)
 // When true: applies ?1-? or ?2-? based on monosaccharide type
 // When false: applies conservative ??-? for all monosaccharides
 export var linkageSettings = {
-  applyStandardLinkages: true, // controlled by toggle switch in UI
+  applyAutoChildLinkages: true, // controlled by toggle switch in UI
   warningDismissed: false  // Track if user dismissed warning (resets on page refresh)
 };
 

@@ -593,11 +593,11 @@
   var commonMonosExtended = commonMonos + ["Hex","HexNAc","dHex","Sia","Pent","HexA","HexN"];
   var monos_with_2linkage = ["Neu5Ac", "Neu5Gc", "KDN", "Neu", "Sia"];
 
-  // User preference for applying standard linkages (default: true)
+  // User preference for applying auto child linkages (default: true)
   // When true: applies ?1-? or ?2-? based on monosaccharide type
   // When false: applies conservative ??-? for all monosaccharides
   var linkageSettings = {
-    applyStandardLinkages: true, // controlled by toggle switch in UI
+    applyAutoChildLinkages: true, // controlled by toggle switch in UI
     warningDismissed: false  // Track if user dismissed warning (resets on page refresh)
   };
 
@@ -1988,11 +1988,11 @@
     fixLinkagesRecursive(structureObj);
     
     // Enable the toggle and update global setting
-    const toggle = document.getElementById('standardLinkagesToggle');
+    const toggle = document.getElementById('autoChildLinkagesToggle');
     if (toggle) {
       toggle.checked = true;
       // Update the global variable
-      linkageSettings.applyStandardLinkages = true;
+      linkageSettings.applyAutoChildLinkages = true;
     }
     
     // Output the updated structure
@@ -2060,7 +2060,7 @@
       return;
     }
     if (childglycan.child.linkage === "") {
-      if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
+      if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
         if (monos_with_2linkage.includes(childglycan.child.monosaccharide)) {
           childglycan.child.linkage = "?2-?";
         } else {
@@ -3773,7 +3773,7 @@
         let code = temp.reverse().join('');
         if (code in pGlycoDict) {
           let linkage = "??-?";
-          if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
+          if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(pGlycoDict[code])) {
             if (monos_with_2linkage.includes(pGlycoDict[code])) {
               linkage = "?2-?";
             } else {

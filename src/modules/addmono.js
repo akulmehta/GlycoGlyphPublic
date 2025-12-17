@@ -12,7 +12,7 @@ export function addmono(path, multiple) {
     return;
   }
   if (childglycan.child.linkage === "") {
-    if (linkageSettings.applyStandardLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
+    if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
       if (monos_with_2linkage.includes(childglycan.child.monosaccharide)) {
         childglycan.child.linkage = "?2-?";
       } else {

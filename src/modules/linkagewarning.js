@@ -62,11 +62,11 @@ export function fixUnknownLinkages() {
   fixLinkagesRecursive(structureObj);
   
   // Enable the toggle and update global setting
-  const toggle = document.getElementById('standardLinkagesToggle');
+  const toggle = document.getElementById('autoChildLinkagesToggle');
   if (toggle) {
     toggle.checked = true;
     // Update the global variable
-    linkageSettings.applyStandardLinkages = true;
+    linkageSettings.applyAutoChildLinkages = true;
   }
   
   // Output the updated structure
