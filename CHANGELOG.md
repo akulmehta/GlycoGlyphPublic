@@ -1,5 +1,19 @@
 All changes to the project will be documented in this file
 
+## 2.3.0 - 2026-01-20
+
+### Added
+- **Auto Child Linkages toggle**: Added a new "Auto Child Linkages" toggle in the header (default: ON) that gives users control over linkage behavior when linkage information is unknown
+  - When enabled: automatically applies smart default child linkage positions (e.g., ?1-? for most monosaccharides, ?2-? for sialic acids)
+  - When disabled: uses conservative ??-? for all unknown linkages
+- **Linkage Warning System**: Added warning message that appears when structures contain ??-? linkages, explaining implications for database compatibility
+  - Warning provides examples of standard linkage positions for common monosaccharides
+  - "Apply Auto Child Linkages" button in warning allows users to convert existing ??-? to standard positions
+  - "Dismiss" option to hide warning for current session
+- Extended list of common monosaccharides (`commonMonosExtended`) including generic types like Hex, HexNAc, dHex, Sia, Pent, HexA, and HexN for linkage determination
+- New `linkageSettings` object to track user preferences for linkage behavior and warning dismissal state
+- New module `linkagewarning.js` containing functions to manage the linkage warning system
+
 ## 2.2.0 - 2025-10-09
 ### Fixed
 - Fixed issue [#41](https://github.com/akulmehta/GlycoGlyphPublic/issues/41) related to GlycoCT generation
