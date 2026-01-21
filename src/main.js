@@ -1,4 +1,4 @@
-export let version = 'v2.2.0';
+export let version = 'v2.3.0';
 export * from './modules/globalvars.js';
 export * from './modules/setfilepaths.js';
 export * from './modules/d3glycanstruc.js';
@@ -23,6 +23,7 @@ export * from './modules/monoslist.js';
 export * from './modules/autocheck.js';
 export * from './modules/glycamnotation.js';
 export * from './modules/pglyco.js';
+export * from './modules/linkagewarning.js';
 
 
 

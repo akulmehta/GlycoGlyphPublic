@@ -1,4 +1,4 @@
-import {childglycan, domElements, drawingSettings} from './globalvars.js';
+import {childglycan, domElements, drawingSettings, commonMonosExtended, monos_with_2linkage, linkageSettings} from './globalvars.js';
 import {resetchildglycan} from './addinfo.js';
 import {glycantojson} from './glycantoJSON.js';
 import { outputname } from './outputname.js';
@@ -12,7 +12,15 @@ export function addmono(path, multiple) {
     return;
   }
   if (childglycan.child.linkage === "") {
-    childglycan.child.linkage = "??-?";
+    if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
+      if (monos_with_2linkage.includes(childglycan.child.monosaccharide)) {
+        childglycan.child.linkage = "?2-?";
+      } else {
+        childglycan.child.linkage = "?1-?";
+      }
+    } else {
+      childglycan.child.linkage = "??-?";
+    }
     // alert("Linkage information for the monosaccharide has not been added. \n\nPlease Add Linkage information.");
     // return;
   }

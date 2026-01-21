@@ -3,6 +3,17 @@ This file holds all the initialization of event listeners and resets to make the
 function reactive.
 */
 
+// Event listener for the Auto Child Linkages toggle
+$('#autoChildLinkagesToggle').on('change', function () {
+  glycoglyph.linkageSettings.applyAutoChildLinkages = this.checked;
+  
+  // Re-check warning display based on new toggle state
+  var name = document.getElementById(glycoglyph.domElements.nameInputID).value;
+  if (name) {
+    glycoglyph.checkAndDisplayLinkageWarning(name);
+  }
+});
+
 // Add an event listener to the name input field to draw the structure
 $("#" + glycoglyph.domElements.nameInputID).on('keyup', function () {
   var name = $(this).val().trim();
@@ -12,11 +23,13 @@ $("#" + glycoglyph.domElements.nameInputID).on('keyup', function () {
     document.getElementById('autoCheckName').hidden = false;
     glycoglyph.d3glycanstructure(name);
     glycoglyph.cfgToGlycoCT();
+    glycoglyph.checkAndDisplayLinkageWarning(name);
   }
   //clear drawing area if text is cleared
   if (!this.value) {
     $(`#${glycoglyph.drawingSettings.drawdivID}`).empty();
     $(`#${glycoglyph.domElements.glycoCTID}`).html("");
+    glycoglyph.checkAndDisplayLinkageWarning("");
   }
 });
 

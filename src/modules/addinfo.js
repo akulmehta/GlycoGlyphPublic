@@ -58,8 +58,17 @@ export function monoselect(mono) {
       return;
     }
   }
+  //
+  // We reset *all* of the childglycan.child properties here...
+  // Since otherwise we get linkage information (and other information)
+  // potentiallyinappropriately carried over from the previously added mono...
+  // 
+  // However, this creates a order of operations issue for the UI - 
+  // modifiers such as linkage or substituent must be selected after the monosaccharide.
+  // IMHO this is OK, since that information is typically very much tied to the mono.
+  // 
+  resetchildglycan();
   childglycan.child.monosaccharide = mono;  // add/overwrite monosaccharide to the childglycan object
-  childglycan.child.children = [];
   $('#' + domElements.preparedMonosaccharideSpan).empty().append(mono);
   makechildglycanname();
 }

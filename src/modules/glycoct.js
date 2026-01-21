@@ -133,11 +133,7 @@ export function jsonToGlycoCT(json) {
         childAttachmentPos = link.charAt(link.indexOf('-') - 1);
 
       if (parentAttachmentPos === "?") { parentAttachmentPos = "-1" };
-      if (childAttachmentPos === "?") { 
-        // For sialic acids, default child attachment position is 2, not 1
-        var sialicAcids = ['Neu5Ac', 'Neu5Gc', 'Neu', 'Sia', 'Kdn'];
-        childAttachmentPos = sialicAcids.includes(thismono) ? "2" : "1";
-      };
+      if (childAttachmentPos === "?") { childAttachmentPos = "-1" }
       LIN += `${LINcount}:${parentRES}o(${parentAttachmentPos}+${childAttachmentPos})${parentCount}d\n`;
       LINcount++;
     }
