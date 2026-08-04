@@ -15,8 +15,10 @@ export function addmono(path, multiple) {
     if (linkageSettings.applyAutoChildLinkages && commonMonosExtended.includes(childglycan.child.monosaccharide)) {
       if (monos_with_2linkage.includes(childglycan.child.monosaccharide)) {
         childglycan.child.linkage = "?2-?";
+        childglycan.child.linknum = 2;
       } else {
         childglycan.child.linkage = "?1-?";
+        childglycan.child.linknum = 1;
       }
     } else {
       childglycan.child.linkage = "??-?";
